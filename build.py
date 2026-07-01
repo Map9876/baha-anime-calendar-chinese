@@ -66,7 +66,7 @@ def load_schedule():
 
 
 def build_html(schedule, updated):
-    """Build Bilibili-style anime timeline page."""
+    """Build Bilibili-style anime timeline page with 30-hour time."""
     now = datetime.now()
     today_idx = now.weekday()  # 0=Mon, 6=Sun
     
@@ -84,62 +84,109 @@ def build_html(schedule, updated):
                 import time; time.sleep(0.3)
     save_cover_cache(cover_cache)
     
-    # Build date tabs and timeline content
-    today_date = now.strftime('%m/%d')
+    # This week's Monday to Sunday (matching Bahamut's 7-day schedule)
+    monday = now - timedelta(days=today_idx)
+    all_dates = [monday + timedelta(days=i) for i in range(7)]
+    
     weekday_names = ['一','二','三','四','五','六','日']
     
-    # Generate date tabs
-    date_tabs = ""
-    for i in range(7):
-        day = DAYS[i]
-        is_active = (i == today_idx)
-        active_cls = ' active' if is_active else ''
-        dot_html = '<div class="today-dot"></div>' if is_active else ''
-        date_str = (now + timedelta(days=i - today_idx)).strftime('%m/%d') if i >= today_idx else (now + timedelta(days=i - today_idx)).strftime('%m/%d')
-        # Actually just use the same week's dates
-        monday = now - timedelta(days=today_idx)
-        day_date = monday + timedelta(days=i)
-        date_str = day_date.strftime('%m/%d')
-        date_tabs += f'<div class="date-tab{active_cls}" data-day="{day}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{weekday_names[i]}</div></div>'
+    # Convert standard time to 30-hour format
+    def to_30h(hour_str, minute_str):
+        h = int(hour_str)
+        if h < 6:  # 0:00-5:59 → 24:00-29:59
+            h += 24
+        return f"{h}:{minute_str}"
     
-    # Generate timeline content for each day
-    timelines = {}
-    for day in DAYS:
+    # Current time in 30-hour format
+    now_h = now.hour
+    now_m = now.minute
+    now_30h = f"{now_h}:{now_m:02d}" if now_h >= 6 else f"{now_h+24}:{now_m:02d}"
+    now_30h_val = now_h + 24 if now_h < 6 else now_h
+    now_30h_min = now_h * 60 + now_m
+    
+    # Map weekday name → date for this week
+    day_date_map = {}
+    for dt in all_dates:
+        day_date_map[weekday_names[dt.weekday()]] = dt
+    
+    # Generate date tabs for this week's 7 days
+    date_tabs = ""
+    for dt in all_dates:
+        day_label = weekday_names[dt.weekday()]
+        is_today = (dt.date() == now.date())
+        active_cls = ' active' if is_today else ''
+        dot_html = '<div class="today-dot"></div>' if is_today else ''
+        date_str = dt.strftime('%m/%d')
+        date_tabs += f'<div class="date-tab{active_cls}" data-date="{date_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
+    
+    # Map anime entries to dates using 30-hour rule
+    # 週一 entries → Monday's date. Times < 6:00 belong to previous day's late slot.
+    date_entries = {}
+    for dt in all_dates:
+        date_entries[dt.strftime('%m/%d')] = []
+    for i, day in enumerate(DAYS):
         entries = schedule.get(day, [])
+        for entry in entries:
+            h = int(entry['time'].split(':')[0])
+            target_date = day_date_map.get(weekday_names[i])
+            if target_date is None:
+                continue
+            # 30-hour rule: air times before 6:00 belong to previous day
+            if h < 6:
+                target_date = target_date - timedelta(days=1)
+            key = target_date.strftime('%m/%d')
+            if key in date_entries:
+                date_entries[key].append(entry)
+            else:
+                # Before Monday, discard
+                pass
+    
+    # Generate timeline content for each date
+    timelines = {}
+    for dt in all_dates:
+        key = dt.strftime('%m/%d')
+        entries = date_entries.get(key, [])
         if not entries:
-            timelines[day] = '<div class="empty-day">当天无更新</div>'
+            timelines[key] = '<div class="empty-day">当天无更新</div>'
             continue
         html = ""
         for entry in entries:
             name_simple = to_simple_chinese(entry['name'])
             time_str = entry['time']
             hour, minute = time_str.split(':')
+            h = int(hour)
+            time_30h = to_30h(hour, minute)
+            # Check if near current time
+            entry_min = h * 60 + int(minute)
+            is_now = abs(entry_min - now_30h_min) <= 15 and dt.date() == now.date()
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
-            is_now = False
-            if day == DAYS[today_idx]:
-                now_time = now.strftime('%H:%M')
-                is_now = (time_str == now_time)
             now_cls = ' now-airing' if is_now else ''
             html += f'''
             <div class="timeline-item{now_cls}">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">{hour}:{minute}</div>
+                <div class="timeline-time">{time_30h}</div>
               </div>
               <div class="timeline-right">
                 {cover_html}
                 <div class="timeline-title">{name_simple}</div>
               </div>
             </div>'''
-        timelines[day] = html
+        # Add current time indicator for today
+        if dt.date() == now.date() and entries:
+            # Simple: add a time label at the end
+            html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+        timelines[key] = html
     
-    # Generate content divs for view pager
+    # Content divs
     content_divs = ""
-    for i, day in enumerate(DAYS):
-        active_cls = ' active' if i == today_idx else ''
-        content_divs += f'<div class="timeline-content{active_cls}" data-day="{day}">{timelines[day]}</div>'
+    for dt in all_dates:
+        key = dt.strftime('%m/%d')
+        is_today = (dt.date() == now.date())
+        active_cls = ' active' if is_today else ''
+        content_divs += f'<div class="timeline-content{active_cls}" data-date="{key}">{timelines[key]}</div>'
     
     total = sum(len(v) for v in schedule.values())
     
@@ -188,6 +235,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .timeline-item.now-airing .timeline-title {{ color:#fb7299; }}
 .footer {{ text-align:center; padding:16px; font-size:11px; color:#999; }}
 .footer a {{ color:#999; text-decoration:underline; }}
+.now-label-bar {{ position:relative; margin:8px 0; text-align:center; border-top:1px dashed #fb7299; padding-top:4px; }}
+.now-label-text {{ font-size:11px; color:#fb7299; background:#fff; padding:0 8px; display:inline-block; }}
 @media (max-width:480px) {{
   .timeline-left {{ flex-basis:48px; }}
   .timeline-cover {{ width:64px; }}

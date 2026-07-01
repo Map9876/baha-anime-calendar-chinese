@@ -43,6 +43,8 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 .timeline-item.now-airing .timeline-title { color:#fb7299; }
 .footer { text-align:center; padding:16px; font-size:11px; color:#999; }
 .footer a { color:#999; text-decoration:underline; }
+.now-label-bar { position:relative; margin:8px 0; text-align:center; border-top:1px dashed #fb7299; padding-top:4px; }
+.now-label-text { font-size:11px; color:#fb7299; background:#fff; padding:0 8px; display:inline-block; }
 @media (max-width:480px) {
   .timeline-left { flex-basis:48px; }
   .timeline-cover { width:64px; }
@@ -54,15 +56,15 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 
 <div class="header">
   <h1>新番时间表</h1>
-  <div class="meta">更新: 2026-07-02 04:14</div>
+  <div class="meta">更新: 2026-07-02 04:24</div>
 </div>
 
 <div class="date-bar" id="dateBar">
-  <div class="date-tab" data-day="週一"><div class="date-num">06/29</div><div class="date-weekday">一</div></div><div class="date-tab" data-day="週二"><div class="date-num">06/30</div><div class="date-weekday">二</div></div><div class="date-tab" data-day="週三"><div class="date-num">07/01</div><div class="date-weekday">三</div></div><div class="date-tab active" data-day="週四"><div class="today-dot"></div><div class="date-num">07/02</div><div class="date-weekday">四</div></div><div class="date-tab" data-day="週五"><div class="date-num">07/03</div><div class="date-weekday">五</div></div><div class="date-tab" data-day="週六"><div class="date-num">07/04</div><div class="date-weekday">六</div></div><div class="date-tab" data-day="週日"><div class="date-num">07/05</div><div class="date-weekday">日</div></div>
+  <div class="date-tab" data-date="06/29"><div class="date-num">06/29</div><div class="date-weekday">一</div></div><div class="date-tab" data-date="06/30"><div class="date-num">06/30</div><div class="date-weekday">二</div></div><div class="date-tab" data-date="07/01"><div class="date-num">07/01</div><div class="date-weekday">三</div></div><div class="date-tab active" data-date="07/02"><div class="today-dot"></div><div class="date-num">07/02</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="07/03"><div class="date-num">07/03</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="07/04"><div class="date-num">07/04</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="07/05"><div class="date-num">07/05</div><div class="date-weekday">日</div></div>
 </div>
 
 <div class="timeline-pager" id="timelinePager">
-  <div class="timeline-content" data-day="週一">
+  <div class="timeline-content" data-date="06/29">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -84,7 +86,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">THE WORLD IS DANCING 世界在起舞</div>
               </div>
-            </div></div><div class="timeline-content" data-day="週二">
+            </div></div><div class="timeline-content" data-date="06/30">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -117,23 +119,23 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">复制品的我也会谈恋爱</div>
               </div>
-            </div></div><div class="timeline-content" data-day="週三">
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">00:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">左撇子艾伦</div>
-              </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">08:00</div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">左撇子艾伦</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/01">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">8:00</div>
               </div>
               <div class="timeline-right">
                 
@@ -161,12 +163,12 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">Re：从零开始的异世界生活 第四季</div>
               </div>
-            </div></div><div class="timeline-content active" data-day="週四">
+            </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">24:00</div>
               </div>
               <div class="timeline-right">
                 
@@ -177,13 +179,13 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">01:00</div>
+                <div class="timeline-time">25:00</div>
               </div>
               <div class="timeline-right">
                 
                 <div class="timeline-title">花样少年少女 第二季</div>
               </div>
-            </div>
+            </div></div><div class="timeline-content active" data-date="07/02">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -227,12 +229,12 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">库吉马唱歌的家</div>
               </div>
-            </div></div><div class="timeline-content" data-day="週五">
+            </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:30</div>
+                <div class="timeline-time">24:30</div>
               </div>
               <div class="timeline-right">
                 
@@ -243,13 +245,13 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:50</div>
+                <div class="timeline-time">24:50</div>
               </div>
               <div class="timeline-right">
                 
                 <div class="timeline-title">淡岛百景</div>
               </div>
-            </div>
+            </div><div class="now-label-bar"><span class="now-label-text">now 28:24</span></div></div><div class="timeline-content" data-date="07/03">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -293,12 +295,12 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">冻结地球</div>
               </div>
-            </div></div><div class="timeline-content" data-day="週六">
+            </div></div><div class="timeline-content" data-date="07/04">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">09:00</div>
+                <div class="timeline-time">9:00</div>
               </div>
               <div class="timeline-right">
                 
@@ -359,12 +361,12 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">杀手青春</div>
               </div>
-            </div></div><div class="timeline-content" data-day="週日">
+            </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">24:00</div>
               </div>
               <div class="timeline-right">
                 
@@ -375,7 +377,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:30</div>
+                <div class="timeline-time">24:30</div>
               </div>
               <div class="timeline-right">
                 
@@ -386,7 +388,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">00:40</div>
+                <div class="timeline-time">24:40</div>
               </div>
               <div class="timeline-right">
                 
@@ -397,13 +399,13 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">01:00</div>
+                <div class="timeline-time">25:00</div>
               </div>
               <div class="timeline-right">
                 
                 <div class="timeline-title">主播女孩重度依赖</div>
               </div>
-            </div>
+            </div></div><div class="timeline-content" data-date="07/05">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
