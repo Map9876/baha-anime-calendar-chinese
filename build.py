@@ -186,8 +186,10 @@ def merge_linetv_schedule(schedule):
 
 
 def build_html(schedule, updated):
-    """Build Bilibili-style anime timeline page with 30-hour time."""
-    now = datetime.now()
+    """Build Bilibili-style anime timeline page."""
+    from datetime import timezone, timedelta
+    tz = timezone(timedelta(hours=8))
+    now = datetime.now(tz)
     today_idx = now.weekday()  # 0=Mon, 6=Sun
     
     # Query bgm.tv covers
@@ -321,7 +323,7 @@ def build_html(schedule, updated):
                     # Match exact date
                     if sd_dt == dt.date():
                         # Only mark as premiere if start_date is today or within next 3 days
-                        if sd_dt >= now.date() - timedelta(days=1) and sd_dt <= now.date() + timedelta(days=3):
+                        if sd_dt >= now.date() - timedelta(days=1) and sd_dt <= now.date() + timedelta(days=7):
                             is_premiere = True
                 except ValueError:
                     pass
@@ -494,7 +496,9 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     return html_out
 
 def main():
-    updated = datetime.now().strftime('%Y-%m-%d %H:%M')
+    from datetime import timezone, timedelta
+    tz = timezone(timedelta(hours=8))
+    updated = datetime.now(tz).strftime('%Y-%m-%d %H:%M')
     schedule = load_schedule()
     schedule = merge_linetv_schedule(schedule)
     if not schedule: print("No schedule data"); sys.exit(1)
