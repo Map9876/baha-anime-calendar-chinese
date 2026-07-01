@@ -100,7 +100,7 @@ def build_html(schedule, updated):
         monday = now - timedelta(days=today_idx)
         day_date = monday + timedelta(days=i)
         date_str = day_date.strftime('%m/%d')
-        date_tabs += f'<div class="date-tab{active_cls}" data-day="{day}">{dot_html}<div class="date-weekday">{weekday_names[i]}</div><div class="date-num">{date_str}</div></div>'
+        date_tabs += f'<div class="date-tab{active_cls}" data-day="{day}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{weekday_names[i]}</div></div>'
     
     # Generate timeline content for each day
     timelines = {}
@@ -152,20 +152,22 @@ def build_html(schedule, updated):
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }}
-.header {{ position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:12px 16px 8px; }}
-.header h1 {{ font-size:18px; color:#fff; font-weight:600; }}
-.header .meta {{ font-size:11px; color:rgba(255,255,255,.7); margin-top:2px; }}
-.date-bar {{ position:sticky; top:54px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; border-bottom:1px solid #eee; }}
+.header {{ position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:6px 12px 4px; }}
+.header h1 {{ font-size:15px; color:#fff; font-weight:600; }}
+.header .meta {{ font-size:10px; color:rgba(255,255,255,.7); }}
+.date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
+.date-bar::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(to bottom,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
+.date-bar::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(to top,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
 .date-bar::-webkit-scrollbar {{ display:none; }}
-.date-tab {{ flex:0 0 60px; min-width:60px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
+.date-tab {{ flex:0 0 52px; min-width:52px; padding:6px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ background:#fff; }}
-.date-tab.active .date-weekday {{ color:#fb7299; font-weight:700; }}
-.date-tab.active .date-num {{ color:#fb7299; }}
-.date-tab::after {{ content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:20px; height:3px; border-radius:2px; background:transparent; }}
+.date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
+.date-tab.active .date-weekday {{ color:#fb7299; }}
+.date-tab::after {{ content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:18px; height:3px; border-radius:2px; background:transparent; }}
 .date-tab.active::after {{ background:#fb7299; }}
-.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; margin:0 auto 3px; }}
-.date-weekday {{ font-size:15px; color:#666; margin-bottom:2px; }}
-.date-num {{ font-size:11px; color:#999; }}
+.today-dot {{ width:4px; height:4px; background:#fb7299; border-radius:50%; margin:0 auto 2px; }}
+.date-num {{ font-size:12px; color:#999; margin-bottom:1px; }}
+.date-weekday {{ font-size:16px; color:#333; }}
 .timeline-pager {{ overflow:hidden; position:relative; }}
 .timeline-content {{ display:none; padding:0 16px; transition:transform .3s ease; }}
 .timeline-content.active {{ display:block; }}
