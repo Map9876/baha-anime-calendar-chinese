@@ -131,6 +131,9 @@ def merge_linetv_schedule(schedule):
             continue
         
         parsed = anime.get('parsed_schedule', [])
+        # Check if this anime has first_week_special/first_episode entries
+        has_special = any(p.get('type') in ('first_week_special', 'first_episode') for p in parsed)
+        
         for entry in parsed:
             # Handle first_week_special: create entries for each time
             if entry.get('type') in ('first_week_special', 'first_episode'):
@@ -166,11 +169,15 @@ def merge_linetv_schedule(schedule):
             if not wd_cn or wd_cn not in wd_key_map:
                 continue
             day_key = wd_key_map[wd_cn]
+            # Mark as premiere only if no special first-week entry exists
+            # (otherwise premiere is already marked on the special entry)
+            is_premiere = not has_special
             new_entry = {
                 'time': entry['time'],
                 'name': anime['title'],
                 'source': 'linetv',
-                'start_date': entry.get('start_date', '')
+                'start_date': entry.get('start_date', ''),
+                'is_premiere': is_premiere
             }
             # Avoid exact duplicates
             if new_entry not in schedule.get(day_key, []):
@@ -316,14 +323,8 @@ def build_html(schedule, updated):
             now_cls = ' now-airing' if is_now else ''
             # Show premiere badge: LINE TV entries on their start date
             sd = entry.get('start_date', '')
-            is_premiere = bool(entry.get('note'))
-            if not is_premiere and sd and entry.get('source') == 'linetv':
-                try:
-                    sd_dt = datetime.strptime(sd[:10], '%Y/%m/%d').date()
-                    if sd_dt == dt.date():
-                        is_premiere = True
-                except ValueError:
-                    pass
+            # Show premiere badge: special entries or regular entries with is_premiere flag
+            is_premiere = bool(entry.get('note')) or (entry.get('is_premiere') and sd and entry.get('source') == 'linetv')
             badge = '<span class="timeline-badge">首播</span>' if is_premiere else ''
             html += f'''
             <div class="timeline-item{now_cls}">
