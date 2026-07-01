@@ -65,6 +65,96 @@ def load_schedule():
         return json.load(f)
 
 
+def merge_linetv_schedule(schedule):
+    """Merge LINE TV exclusive entries into Bahamut schedule dict, remove finished cross-season entries."""
+    linetv_path = os.path.join(SCRIPT_DIR, 'linetv_schedule.json')
+    if not os.path.exists(linetv_path):
+        return schedule
+    
+    with open(linetv_path, 'r', encoding='utf-8') as f:
+        linetv_data = json.load(f)
+    
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone(timedelta(hours=8)))
+    
+    # weekday_cn -> 週X mapping
+    wd_key_map = {'一':'週一','二':'週二','三':'週三','四':'週四',
+                  '五':'週五','六':'週六','日':'週日'}
+    
+    # Step 1: Build lookup: for each cross-season show (matched with Bahamut), 
+    # check if it has actually ended (end_timestamp in the past)
+    ended_titles = set()
+    ended_bahamut_titles = set()
+    for anime in linetv_data.get('anime', []):
+        if not anime.get('in_current_season') and anime.get('bahamut_match', {}).get('matched'):
+            end_ts = anime.get('end_timestamp')
+            if end_ts:
+                end_dt = datetime.fromtimestamp(end_ts / 1000, tz=now.tzinfo)
+                if end_dt < now:
+                    # Show has ended — mark for removal
+                    ended_titles.add(anime['title'])
+                    bt = anime.get('bahamut_match', {}).get('bahamut_title', '')
+                    if bt:
+                        ended_bahamut_titles.add(bt)
+            # If no end_timestamp, assume still airing (keep it)
+    
+    # Step 2: Remove ended cross-season entries from Bahamut schedule
+    removed = 0
+    for day_key in list(schedule.keys()):
+        filtered = []
+        for entry in schedule[day_key]:
+            name = entry['name']
+            name_norm = re.sub(r'\s+', '', name).lower()
+            is_ended = name in ended_titles or name in ended_bahamut_titles
+            if not is_ended:
+                for ct in ended_titles:
+                    if re.sub(r'\s+', '', ct).lower() == name_norm:
+                        is_ended = True
+                        break
+            if is_ended:
+                removed += 1
+            else:
+                filtered.append(entry)
+        if filtered:
+            schedule[day_key] = filtered
+        else:
+            del schedule[day_key]
+    
+    # Step 3: Merge LINE TV exclusive entries
+    added = 0
+    for anime in linetv_data.get('anime', []):
+        # Skip if not current season or already in Bahamut
+        if not anime.get('in_current_season'):
+            continue
+        if anime.get('bahamut_match', {}).get('matched'):
+            continue
+        
+        parsed = anime.get('parsed_schedule', [])
+        for entry in parsed:
+            if entry.get('type') != 'regular':
+                continue
+            wd_cn = entry.get('weekday_cn')
+            if not wd_cn or wd_cn not in wd_key_map:
+                continue
+            day_key = wd_key_map[wd_cn]
+            new_entry = {
+                'time': entry['time'],
+                'name': anime['title'],
+                'source': 'linetv'
+            }
+            # Avoid exact duplicates
+            if new_entry not in schedule.get(day_key, []):
+                schedule.setdefault(day_key, []).append(new_entry)
+                added += 1
+    
+    # Sort each day by time
+    for day_key in schedule:
+        schedule[day_key].sort(key=lambda x: x['time'])
+    
+    print(f"Removed {removed} cross-season entries, merged {added} LINE TV entries")
+    return schedule
+
+
 def build_html(schedule, updated):
     """Build Bilibili-style anime timeline page with 30-hour time."""
     now = datetime.now()
@@ -166,6 +256,22 @@ def build_html(schedule, updated):
             timelines[key] = '<div class="empty-day">当天无更新</div>'
             continue
         html = ""
+        is_today = (dt.date() == now.date())
+        now_indicator_added = False
+        # For today: insert "now" indicator before the first entry past current time
+        if is_today and entries:
+            first_future_idx = None
+            for idx, entry in enumerate(entries):
+                h = int(entry['time'].split(':')[0])
+                m = int(entry['time'].split(':')[1])
+                entry_min = h * 60 + m
+                if entry_min > now_30h_min:
+                    first_future_idx = idx
+                    break
+            # If all entries are in the past, insert at the beginning
+            if first_future_idx is None:
+                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+                now_indicator_added = True
         for entry in entries:
             name_simple = to_simple_chinese(entry['name'])
             time_str = entry['time']
@@ -174,7 +280,11 @@ def build_html(schedule, updated):
             time_30h = to_30h(hour, minute)
             # Check if near current time
             entry_min = h * 60 + int(minute)
-            is_now = abs(entry_min - now_30h_min) <= 15 and dt.date() == now.date()
+            is_now = abs(entry_min - now_30h_min) <= 15 and is_today
+            # Insert "now" indicator before the first entry that is past current time
+            if is_today and not now_indicator_added and entry_min > now_30h_min:
+                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+                now_indicator_added = True
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
             now_cls = ' now-airing' if is_now else ''
@@ -190,9 +300,8 @@ def build_html(schedule, updated):
                 <div class="timeline-title">{name_simple}</div>
               </div>
             </div>'''
-        # Add current time indicator for today
-        if dt.date() == now.date() and entries:
-            # Simple: add a time label at the end
+        # Add "now" indicator at the end if no entries are past current time
+        if is_today and not now_indicator_added:
             html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
         timelines[key] = html
     
@@ -219,8 +328,10 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .header h1 {{ font-size:15px; color:#fff; font-weight:600; }}
 .header .meta {{ font-size:10px; color:rgba(255,255,255,.7); }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
-.date-bar::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(to bottom,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
-.date-bar::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(to top,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
+.date-bar::before {{ content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }}
+.date-bar::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:8px; background:linear-gradient(to top,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }}
+.date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:12px; background:linear-gradient(to right,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }}
+.date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:12px; background:linear-gradient(to left,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }}
 .date-bar::-webkit-scrollbar {{ display:none; }}
 .date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ }}
@@ -268,6 +379,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 </div>
 
 <div class="date-bar" id="dateBar">
+  <div class="date-bar-shadow-l"></div>
+  <div class="date-bar-shadow-r"></div>
   {date_tabs}
 </div>
 
@@ -313,6 +426,24 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
       else if(diff<0 && currentPage>0) switchDay(--currentPage);
     }}
   }});
+  
+  // Scroll shadows for date bar
+  var shadowL = document.querySelector('.date-bar-shadow-l');
+  var shadowR = document.querySelector('.date-bar-shadow-r');
+  function updateShadows() {{
+    shadowL.style.opacity = bar.scrollLeft > 2 ? '1' : '0';
+    shadowR.style.opacity = bar.scrollLeft < bar.scrollWidth - bar.clientWidth - 2 ? '1' : '0';
+  }}
+  bar.addEventListener('scroll', updateShadows);
+  // Scroll to center today's tab on load
+  setTimeout(function() {{
+    var activeTab = document.querySelector('.date-tab.active');
+    if (activeTab) {{
+      var scrollLeft = activeTab.offsetLeft - bar.offsetWidth/2 + activeTab.offsetWidth/2;
+      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:'auto' }});
+    }}
+    updateShadows();
+  }}, 50);
 }})();
 </script>
 </body>
@@ -323,6 +454,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 def main():
     updated = datetime.now().strftime('%Y-%m-%d %H:%M')
     schedule = load_schedule()
+    schedule = merge_linetv_schedule(schedule)
     if not schedule: print("No schedule data"); sys.exit(1)
     html = build_html(schedule, updated)
     with open(OUTPUT, 'w', encoding='utf-8') as f: f.write(html)

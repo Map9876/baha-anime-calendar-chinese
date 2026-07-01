@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-02 06:16:55",
+  "fetched_at": "2026-07-02 06:50:18",
   "timezone": "Asia/Taipei (UTC+8)",
   "season": "7-9",
   "total": 88,
@@ -33,7 +33,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22955",
@@ -63,7 +67,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22959",
@@ -92,7 +100,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22937",
@@ -127,7 +139,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22931",
@@ -157,7 +173,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "the world is dancing 世界在起舞"
+      }
     },
     {
       "drama_id": "22953",
@@ -187,7 +208,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22944",
@@ -216,7 +241,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22850",
@@ -242,7 +271,11 @@
           "raw": "6/15起，每週一更新",
           "type": "unknown"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23007",
@@ -272,7 +305,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22961",
@@ -301,7 +338,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22950",
@@ -331,7 +372,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22958",
@@ -361,7 +406,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23002",
@@ -391,7 +440,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22943",
@@ -421,7 +474,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23000",
@@ -451,7 +508,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 0.95,
+        "bahamut_title": "花樣少年少女 第二季"
+      }
     },
     {
       "drama_id": "22960",
@@ -480,7 +542,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22938",
@@ -516,7 +582,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22871",
@@ -545,7 +615,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22994",
@@ -575,7 +649,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22993",
@@ -604,7 +682,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22040",
@@ -633,7 +715,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22952",
@@ -662,7 +748,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22939",
@@ -692,7 +782,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22870",
@@ -722,7 +816,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23003",
@@ -751,7 +849,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22932",
@@ -780,7 +882,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22930",
@@ -810,7 +916,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23006",
@@ -839,7 +949,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23001",
@@ -869,7 +983,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22919",
@@ -899,7 +1017,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22951",
@@ -928,7 +1050,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "貓與龍"
+      }
     },
     {
       "drama_id": "22934",
@@ -958,7 +1085,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22940",
@@ -987,7 +1118,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "23004",
@@ -1017,7 +1152,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22963",
@@ -1046,7 +1185,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22945",
@@ -1076,7 +1219,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22942",
@@ -1105,7 +1252,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22947",
@@ -1135,7 +1286,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22941",
@@ -1165,7 +1320,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22933",
@@ -1205,7 +1364,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22373",
@@ -1235,7 +1398,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22356",
@@ -1264,7 +1431,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22406",
@@ -1293,7 +1464,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22387",
@@ -1322,7 +1497,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22350",
@@ -1351,7 +1530,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22362",
@@ -1381,7 +1564,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "婚姻劇毒"
+      }
     },
     {
       "drama_id": "22399",
@@ -1410,7 +1598,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "想結束這場我愛你的遊戲"
+      }
     },
     {
       "drama_id": "22404",
@@ -1439,7 +1632,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22382",
@@ -1468,7 +1665,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "左撇子艾倫"
+      }
     },
     {
       "drama_id": "22390",
@@ -1497,7 +1699,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22391",
@@ -1526,7 +1732,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "18076",
@@ -1555,7 +1765,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "從前從前有隻貓！世界喵童話"
+      }
     },
     {
       "drama_id": "22357",
@@ -1584,7 +1799,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22355",
@@ -1613,7 +1832,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "candy caries 蛀在糖糖裡"
+      }
     },
     {
       "drama_id": "22398",
@@ -1643,7 +1867,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "18075",
@@ -1672,7 +1900,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "無尾熊繪日記"
+      }
     },
     {
       "drama_id": "17059",
@@ -1702,7 +1935,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22378",
@@ -1731,7 +1968,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "庫吉馬唱歌的家"
+      }
     },
     {
       "drama_id": "22380",
@@ -1760,7 +2002,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22434",
@@ -1790,7 +2036,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22372",
@@ -1819,7 +2069,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "輪迴的花瓣"
+      }
     },
     {
       "drama_id": "22383",
@@ -1849,7 +2104,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "淡島百景"
+      }
     },
     {
       "drama_id": "22385",
@@ -1878,7 +2138,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22400",
@@ -1907,7 +2171,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22242",
@@ -1937,7 +2205,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22364",
@@ -1967,7 +2239,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "關於我轉生變成史萊姆這檔事 第四季"
+      }
     },
     {
       "drama_id": "22240",
@@ -1996,7 +2273,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "神之雫"
+      }
     },
     {
       "drama_id": "22353",
@@ -2025,7 +2307,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "上伊那牡丹，醉姿如百合"
+      }
     },
     {
       "drama_id": "22354",
@@ -2055,7 +2342,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "凍結地球"
+      }
     },
     {
       "drama_id": "22359",
@@ -2084,7 +2376,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "拉拉熊"
+      }
     },
     {
       "drama_id": "22397",
@@ -2114,7 +2411,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "小書痴的下剋上 為了成為圖書管理員不擇手段！領主的養女"
+      }
     },
     {
       "drama_id": "22360",
@@ -2144,7 +2446,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 0.85,
+        "bahamut_title": "入間同學入魔了！第四季"
+      }
     },
     {
       "drama_id": "22386",
@@ -2173,7 +2480,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22377",
@@ -2202,7 +2513,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "殺手青春"
+      }
     },
     {
       "drama_id": "22243",
@@ -2231,7 +2547,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22351",
@@ -2261,7 +2581,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "黃泉使者"
+      }
     },
     {
       "drama_id": "22375",
@@ -2291,7 +2616,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "21069",
@@ -2321,7 +2650,12 @@
           "type": "regular",
           "note": "raw: 每週日00:30後更新"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "勇者之渣"
+      }
     },
     {
       "drama_id": "22269",
@@ -2351,7 +2685,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "春夏秋冬代行者 春之舞"
+      }
     },
     {
       "drama_id": "22374",
@@ -2381,7 +2720,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22267",
@@ -2411,7 +2754,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "主播女孩重度依賴"
+      }
     },
     {
       "drama_id": "22401",
@@ -2440,7 +2788,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22352",
@@ -2470,7 +2822,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 0.95,
+        "bahamut_title": "杖與劍的魔劍譚 season 2"
+      }
     },
     {
       "drama_id": "22358",
@@ -2500,7 +2857,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 0.95,
+        "bahamut_title": "夜櫻家大作戰 第二季"
+      }
     },
     {
       "drama_id": "22349",
@@ -2530,7 +2892,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "鑽石王牌 act2 第二季"
+      }
     },
     {
       "drama_id": "22379",
@@ -2559,7 +2926,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     },
     {
       "drama_id": "22376",
@@ -2588,7 +2959,12 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": true,
+        "score": 1.0,
+        "bahamut_title": "黑貓與魔女的教室"
+      }
     },
     {
       "drama_id": "22381",
@@ -2617,7 +2993,11 @@
           "frequency": "weekly",
           "type": "regular"
         }
-      ]
+      ],
+      "bahamut_match": {
+        "matched": false,
+        "score": 0
+      }
     }
   ]
 }

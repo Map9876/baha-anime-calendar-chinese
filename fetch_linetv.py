@@ -183,7 +183,7 @@ def normalize_title(title):
     t = title.strip()
     t = re.sub(r'[\s　]+', ' ', t)  # normalize spaces
     t = re.sub(r'[「」『』《》（）()【】\[\]]', '', t)  # remove brackets
-    t = t.replace('～', '~').replace('‧', '·')
+    t = t.replace('～', '~').replace('‧', '·').replace('–', '-').replace('—', '-')
     return t.lower()
 
 def similarity(a, b):
@@ -198,6 +198,11 @@ def similarity(a, b):
     # Check with season/episode markers stripped
     a_stripped = re.sub(r'[ 　][第季]\S+', '', a)
     b_stripped = re.sub(r'[ 　][第季]\S+', '', b)
+    # Also strip "season N" / "seasonN" patterns
+    a_stripped = re.sub(r'\s*season\s*\d+', '', a_stripped)
+    b_stripped = re.sub(r'\s*season\s*\d+', '', b_stripped)
+    a_stripped = a_stripped.strip()
+    b_stripped = b_stripped.strip()
     if a_stripped == b_stripped:
         return 0.95
     if a_stripped in b_stripped or b_stripped in a_stripped:
@@ -281,7 +286,7 @@ def fetch():
         return (season_sort, wd, t)
     anime_items.sort(key=sort_key)
     
-    # Save full data
+    # Build output
     output = {
         "fetched_at": now.strftime("%Y-%m-%d %H:%M:%S"),
         "timezone": "Asia/Taipei (UTC+8)",
@@ -290,6 +295,11 @@ def fetch():
         "current_season_count": len(in_season),
         "anime": anime_items
     }
+    
+    # Run dedup before saving so bahamut_match is included in the JSON
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    bahamut_path = os.path.join(script_dir, "schedule.json")
+    output = dedup_with_bahamut(output, bahamut_path)
     
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
@@ -371,7 +381,4 @@ def dedup_with_bahamut(linetv_data, bahamut_path="schedule.json"):
 
 if __name__ == "__main__":
     data = fetch()
-    # Also try dedup if Bahamut schedule.json exists in same dir
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    bahamut_path = os.path.join(script_dir, "schedule.json")
-    dedup_with_bahamut(data, bahamut_path)
+    print("Done.")
