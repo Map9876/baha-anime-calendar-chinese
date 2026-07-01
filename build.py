@@ -369,9 +369,9 @@ def build_html(schedule, updated):
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }}
-.header {{ position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:6px 12px 4px; }}
-.header h1 {{ font-size:15px; color:#fff; font-weight:600; }}
-.header .meta {{ font-size:10px; color:rgba(255,255,255,.7); }}
+.header {{ position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid #eee; padding:6px 12px 4px; }}
+.header h1 {{ font-size:15px; color:#333; font-weight:600; }}
+.header .meta {{ font-size:10px; color:#999; }}
 .date-bar-wrap {{ position:relative; }}
 .date-bar-wrap::before {{ content:''; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(to bottom,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
 .date-bar-wrap::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:6px; background:linear-gradient(to top,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
