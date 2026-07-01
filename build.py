@@ -314,17 +314,14 @@ def build_html(schedule, updated):
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
             now_cls = ' now-airing' if is_now else ''
-            # Show premiere badge: first_week_special entries or LINE TV entries starting today or future
+            # Show premiere badge: LINE TV entries on their start date
             sd = entry.get('start_date', '')
             is_premiere = bool(entry.get('note'))
             if not is_premiere and sd and entry.get('source') == 'linetv':
                 try:
                     sd_dt = datetime.strptime(sd[:10], '%Y/%m/%d').date()
-                    # Match exact date
                     if sd_dt == dt.date():
-                        # Only mark as premiere if start_date is today or within next 3 days
-                        if sd_dt >= now.date() - timedelta(days=1) and sd_dt <= now.date() + timedelta(days=7):
-                            is_premiere = True
+                        is_premiere = True
                 except ValueError:
                     pass
             badge = '<span class="timeline-badge">首播</span>' if is_premiere else ''
