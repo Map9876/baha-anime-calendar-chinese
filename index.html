@@ -1,394 +1,492 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>巴哈姆特动画疯 - 新番时间表</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>新番时间表</title>
 <style>
-body {
-    font-size: 80%;
-    margin: 0px;
-    line-height: 120%;
-    background-color: #ffffff;
-    font-family: 'Microsoft JhengHei', 'PingFang SC', -apple-system, sans-serif;
-}
-a {
-    color: #0099ff;
-    text-decoration: none;
-}
-a:hover { color: #0099ff; text-decoration: underline; }
-table {
-    font-size: 12px;
-    color: #444444;
-}
-.w_Hour_head {
-    color: #ffffff;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #9999cc;
-    width: 24px;
-}
-.w_Hour1 {
-    color: #424242;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #99ccff;
-    width: 24px;
-}
-.w_Hour2 {
-    color: #424242;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #99ff99;
-    width: 24px;
-}
-.w_Hour3 {
-    color: #424242;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #ffcc00;
-    width: 24px;
-}
-.oa_time {
-    font-weight: 900;
-    font-size: 10px;
-    color: #888;
-}
-.oa_title {
-    font-weight: 900;
-    font-size: 12px;
-    color: #424242;
-    line-height: 120%;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-}
-.w_WeekDay_date {
-    color: #ffffff;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #9999cc;
-    width: 120px;
-}
-.w_WeekDay {
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    color: #424242;
-    background-color: #F3F3F3;
-    line-height: 12px;
-    width: 120px;
-    vertical-align: top;
-    padding: 4px;
-}
-.w_Sun_date {
-    color: #424242;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #ff9966;
-    width: 120px;
-}
-.w_Sun {
-    font-size: 10px;
-    color: #424242;
-    background-color: #FFF0E7;
-    line-height: 12px;
-    width: 120px;
-    vertical-align: top;
-    padding: 4px;
-}
-.w_Sat_date {
-    color: #424242;
-    font-weight: 900;
-    font-size: 12px;
-    text-align: center;
-    background-color: #99cccc;
-    width: 120px;
-}
-.w_Sat {
-    font-size: 10px;
-    color: #424242;
-    background-color: #E6F0E1;
-    line-height: 12px;
-    width: 120px;
-    vertical-align: top;
-    padding: 4px;
-}
-.space {
-    background-color: #FFFFFF;
-}
-td {
-    line-height: 110%;
-    vertical-align: top;
-    padding: 3px;
-}
-.table_margin {
-    margin-top: 26px;
-}
-h1 {
-    font-size: 16px;
-    text-align: center;
-    margin: 10px 0 2px;
-    color: #444;
-}
-.meta {
-    text-align: center;
-    font-size: 11px;
-    color: #888;
-    margin-bottom: 6px;
-}
-.current-row td {
-    background-color: #ffffcc !important;
-}
-.current-row .oa_time {
-    color: #e65100;
-}
-.anime-entry {
-    margin-bottom: 6px;
-    padding-bottom: 4px;
-    border-bottom: 1px dotted #ccc;
-}
-.anime-entry:last-child {
-    border-bottom: none;
-}
-.anime-cover {
-    display: block;
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    margin: 4px auto;
-    border-radius: 2px;
-}
-.today-col {
-    background-color: #e8f0fe !important;
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }
+.header { position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:12px 16px 8px; }
+.header h1 { font-size:18px; color:#fff; font-weight:600; }
+.header .meta { font-size:11px; color:rgba(255,255,255,.7); margin-top:2px; }
+.date-bar { position:sticky; top:54px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; border-bottom:1px solid #eee; }
+.date-bar::-webkit-scrollbar { display:none; }
+.date-tab { flex:0 0 60px; min-width:60px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }
+.date-tab.active { background:#fff; }
+.date-tab.active .date-weekday { color:#fb7299; font-weight:700; }
+.date-tab.active .date-num { color:#fb7299; }
+.date-tab::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:20px; height:3px; border-radius:2px; background:transparent; }
+.date-tab.active::after { background:#fb7299; }
+.today-dot { width:5px; height:5px; background:#fb7299; border-radius:50%; margin:0 auto 3px; }
+.date-weekday { font-size:15px; color:#666; margin-bottom:2px; }
+.date-num { font-size:11px; color:#999; }
+.timeline-pager { overflow:hidden; position:relative; }
+.timeline-content { display:none; padding:0 16px; transition:transform .3s ease; }
+.timeline-content.active { display:block; }
+.empty-day { text-align:center; padding:60px 20px; color:#999; font-size:14px; }
+.timeline-item { display:flex; padding:12px 0; position:relative; }
+.timeline-item.now-airing { background:#fff0f5; margin:0 -16px; padding:12px 16px; border-radius:8px; }
+.timeline-left { flex:0 0 56px; display:flex; flex-direction:column; align-items:center; position:relative; }
+.timeline-cir { width:8px; height:8px; border-radius:50%; background:#ddd; z-index:1; flex-shrink:0; }
+.timeline-item.now-airing .timeline-cir { width:10px; height:10px; background:#fb7299; box-shadow:0 0 6px rgba(251,114,153,.5); }
+.timeline-line { width:1px; flex:1; background:#e0e0e0; min-height:20px; }
+.timeline-item:last-child .timeline-line { display:none; }
+.timeline-time { font-size:13px; color:#999; margin-top:4px; white-space:nowrap; }
+.timeline-item.now-airing .timeline-time { color:#fb7299; font-weight:600; }
+.timeline-right { flex:1; margin-left:12px; padding-bottom:8px; border-bottom:1px solid #f0f0f0; }
+.timeline-item:last-child .timeline-right { border-bottom:none; }
+.timeline-cover { display:block; width:80px; height:auto; border-radius:4px; margin-bottom:6px; }
+.timeline-title { font-size:14px; color:#333; line-height:1.5; }
+.timeline-item.now-airing .timeline-title { color:#fb7299; }
+.footer { text-align:center; padding:16px; font-size:11px; color:#999; }
+.footer a { color:#999; text-decoration:underline; }
+@media (max-width:480px) {
+  .timeline-left { flex-basis:48px; }
+  .timeline-cover { width:64px; }
+  .timeline-title { font-size:13px; }
 }
 </style>
 </head>
-<body onscroll="Menu()">
-<div align="center">
-<div id="menu" style="position:absolute; top:0; left:0; z-index:1; width:100%;">
-<table border="0" cellpadding="3" cellspacing="1" width="911px" bgcolor="#6699cc">
-<tr>
-<td width="24px" class="w_Hour_head">时</td>
-<td width="120px" class="w_WeekDay_date">周一</td><td width="120px" class="w_WeekDay_date">周二</td><td width="120px" class="w_WeekDay_date">周三</td><td width="120px" class="w_WeekDay_date">周四</td><td width="120px" class="w_Sat_date">周五</td><td width="120px" class="w_Sun_date">周六</td><td width="120px" class="w_WeekDay_date">周日</td>
-<td width="24px" class="w_Hour_head">时</td>
-</tr>
-</table>
-</div>
-<div class="table_margin">
-<table border="0" cellpadding="3" cellspacing="1" width="911px" bgcolor="#6699cc">
-<tr>
-<td class="w_Hour1" rowspan="4">00</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:00</div><div class="oa_title">左撇子艾伦</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:00</div><div class="oa_title">CANDY CARIES 蛀在糖糖里</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:00</div><div class="oa_title">黄泉使者</div></div></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:30</div><div class="oa_title">轮回的花瓣</div></div></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:30</div><div class="oa_title">春夏秋冬代行者 春之舞</div></div></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:40</div><div class="oa_title">勇者之渣</div></div></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:50</div><div class="oa_title">淡岛百景</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr class="current-row">
-<td class="w_Hour1" rowspan="1">01</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">01:00</div><div class="oa_title">花样少年少女 第二季</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">01:00</div><div class="oa_title">主播女孩重度依赖</div></div></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">08</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">08:00</div><div class="oa_title">假面骑士 ZEZTZ</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">09</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">09:00</div><div class="oa_title">拉拉熊</div></div></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">12</td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">12:00</div><div class="oa_title">MAO 摩绪</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">16</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">16:30</div><div class="oa_title">杖与剑的魔剑谭 Season 2</div></div><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">16:30</div><div class="oa_title">夜樱家大作战 第二季</div></div></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="2">17</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">17:00</div><div class="oa_title">钻石王牌 act2 第二季</div></div></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">17:30</div><div class="oa_title">小书痴的下克上  为了成为图书管理员不择手段！领主的养女</div></div></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">18</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">18:55</div><div class="oa_title">入间同学入魔了！第四季</div></div></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">19</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">19:00</div><div class="oa_title">从前从前有只猫！世界喵童话</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">19:00</div><div class="oa_title">无尾熊绘日记</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="1">20</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">20:30</div><div class="oa_title">女骑士成为蛮族新娘</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="2">21</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">21:00</div><div class="oa_title">弱弱老师</div></div><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">21:00</div><div class="oa_title">猫与龙</div></div></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">21:30</div><div class="oa_title">THE WORLD IS DANCING 世界在起舞</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="2">22</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">Re：从零开始的异世界生活 第四季</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">Dr.STONE 新石纪 第四季</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">库吉马唱歌的家</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">婚姻剧毒</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">想结束这场“我爱你”的游戏</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">复制品的我也会谈恋爱</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">22:30</div><div class="oa_title">杀手青春</div></div></td>
-<td class="space"></td>
-</tr>
-<tr>
-<td class="w_Hour1" rowspan="2">23</td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:00</div><div class="oa_title">关于我转生变成史莱姆这档事 第四季</div></div></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">23:00</div><div class="oa_title">黑猫与魔女的教室</div></div></td>
-</tr>
-<tr>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">神之雫</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">上伊那牡丹，醉姿如百合</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">冻结地球</div></div></td>
-<td class="space"></td>
-<td class="space"></td>
-</tr>
+<body>
 
-</table>
+<div class="header">
+  <h1>新番时间表</h1>
+  <div class="meta">更新: 2026-07-02 04:04</div>
 </div>
-<p style="font-size:10px; color:#888; margin-top:10px;">
-更新时间: 2026-07-02 03:52 | 来源: ani.gamer.com.tw | 封面: bgm.tv
-</p>
-<p style="font-size:10px; color:#888; text-align:center; margin:6px 0;">
-<a href="https://github.com/Map9876/baha-anime-calendar-chinese" style="color:#888; text-decoration:underline;">GitHub</a>
-</p>
+
+<div class="date-bar" id="dateBar">
+  <div class="date-tab" data-day="週一"><div class="date-weekday">一</div><div class="date-num">06/29</div></div><div class="date-tab" data-day="週二"><div class="date-weekday">二</div><div class="date-num">06/30</div></div><div class="date-tab" data-day="週三"><div class="date-weekday">三</div><div class="date-num">07/01</div></div><div class="date-tab active" data-day="週四"><div class="today-dot"></div><div class="date-weekday">四</div><div class="date-num">07/02</div></div><div class="date-tab" data-day="週五"><div class="date-weekday">五</div><div class="date-num">07/03</div></div><div class="date-tab" data-day="週六"><div class="date-weekday">六</div><div class="date-num">07/04</div></div><div class="date-tab" data-day="週日"><div class="date-weekday">日</div><div class="date-num">07/05</div></div>
 </div>
+
+<div class="timeline-pager" id="timelinePager">
+  <div class="timeline-content" data-day="週一">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">12:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">MAO 摩绪</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">21:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">THE WORLD IS DANCING 世界在起舞</div>
+              </div>
+            </div></div><div class="timeline-content" data-day="週二">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">婚姻剧毒</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">想结束这场“我爱你”的游戏</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">复制品的我也会谈恋爱</div>
+              </div>
+            </div></div><div class="timeline-content" data-day="週三">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">左撇子艾伦</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">08:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">假面骑士 ZEZTZ</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">19:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">从前从前有只猫！世界喵童话</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">Re：从零开始的异世界生活 第四季</div>
+              </div>
+            </div></div><div class="timeline-content active" data-day="週四">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">CANDY CARIES 蛀在糖糖里</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">01:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">花样少年少女 第二季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">19:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">无尾熊绘日记</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">20:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">女骑士成为蛮族新娘</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">Dr.STONE 新石纪 第四季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">库吉马唱歌的家</div>
+              </div>
+            </div></div><div class="timeline-content" data-day="週五">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">轮回的花瓣</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:50</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">淡岛百景</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">关于我转生变成史莱姆这档事 第四季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">神之雫</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">上伊那牡丹，醉姿如百合</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">冻结地球</div>
+              </div>
+            </div></div><div class="timeline-content" data-day="週六">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">09:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">拉拉熊</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">17:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">小书痴的下克上  为了成为图书管理员不择手段！领主的养女</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">18:55</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">入间同学入魔了！第四季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">21:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">弱弱老师</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">21:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">猫与龙</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">杀手青春</div>
+              </div>
+            </div></div><div class="timeline-content" data-day="週日">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">黄泉使者</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">春夏秋冬代行者 春之舞</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">00:40</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">勇者之渣</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">01:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">主播女孩重度依赖</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">16:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">杖与剑的魔剑谭 Season 2</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">16:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">夜樱家大作战 第二季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">17:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">钻石王牌 act2 第二季</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">黑猫与魔女的教室</div>
+              </div>
+            </div></div>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/Map9876/baha-anime-calendar-chinese">GitHub</a>
+</div>
+
 <script>
-function Menu() {
-    var el = document.getElementById('menu');
-    if (el) el.style.top = pageYOffset + 'px';
-}
-onscroll = Menu;
+(function() {
+  var tabs = document.querySelectorAll('.date-tab');
+  var pages = document.querySelectorAll('.timeline-content');
+  var bar = document.getElementById('dateBar');
+  
+  function switchDay(idx) {
+    tabs.forEach(function(t,i) { t.classList.toggle('active',i===idx); });
+    pages.forEach(function(p,i) { p.classList.toggle('active',i===idx); });
+    // Scroll tab into view
+    var tab = tabs[idx];
+    if (tab) {
+      var scrollLeft = tab.offsetLeft - bar.offsetWidth/2 + tab.offsetWidth/2;
+      bar.scrollTo({ left:Math.max(0,scrollLeft), behavior:'smooth' });
+    }
+  }
+  
+  tabs.forEach(function(tab,i) {
+    tab.addEventListener('click',function(){ switchDay(i); });
+  });
+  
+  // Touch swipe
+  var startX = 0, currentPage = 0;
+  tabs.forEach(function(t,i) { if(t.classList.contains('active')) currentPage=i; });
+  
+  var pager = document.getElementById('timelinePager');
+  pager.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; });
+  pager.addEventListener('touchend',function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff)>50) {
+      if(diff>0 && currentPage<6) switchDay(++currentPage);
+      else if(diff<0 && currentPage>0) switchDay(--currentPage);
+    }
+  });
+})();
 </script>
 </body>
 </html>
