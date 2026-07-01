@@ -84,9 +84,10 @@ def build_html(schedule, updated):
                 import time; time.sleep(0.3)
     save_cover_cache(cover_cache)
     
-    # This week's Monday to Sunday (matching Bahamut's 7-day schedule)
+    # Extended date range: Monday - 5 days to Monday + 13 days (19 days total)
+    # This covers: previous week's tail + current week + next week + beyond
     monday = now - timedelta(days=today_idx)
-    all_dates = [monday + timedelta(days=i) for i in range(7)]
+    all_dates = [monday + timedelta(days=i-5) for i in range(19)]  # -5 to +13, 19 days
     
     weekday_names = ['一','二','三','四','五','六','日']
     
@@ -120,26 +121,41 @@ def build_html(schedule, updated):
         date_tabs += f'<div class="date-tab{active_cls}" data-date="{date_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
     # Map anime entries to dates using 30-hour rule
-    # 週一 entries → Monday's date. Times < 6:00 belong to previous day's late slot.
+    # For each Bahamut weekday, map to the nearest matching date in our range
     date_entries = {}
     for dt in all_dates:
         date_entries[dt.strftime('%m/%d')] = []
+    
     for i, day in enumerate(DAYS):
         entries = schedule.get(day, [])
+        if not entries:
+            continue
+        # Find the date in our range that matches this weekday
+        matching_dates = [dt for dt in all_dates if dt.weekday() == i]
+        if not matching_dates:
+            continue
         for entry in entries:
             h = int(entry['time'].split(':')[0])
-            target_date = day_date_map.get(weekday_names[i])
-            if target_date is None:
-                continue
             # 30-hour rule: air times before 6:00 belong to previous day
+            target_idx = 0  # first matching date
+            if h < 6 and len(matching_dates) > 1:
+                target_idx = 0  # prev day's slot is first matching date
+            else:
+                # Use the most recent matching date that is not in the past
+                future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=2)]
+                if future_dates:
+                    target_idx = matching_dates.index(future_dates[0])
+                else:
+                    target_idx = -1  # last matching date
+            if target_idx < 0:
+                target_idx = len(matching_dates) - 1
+            
+            target_date = matching_dates[target_idx]
             if h < 6:
                 target_date = target_date - timedelta(days=1)
             key = target_date.strftime('%m/%d')
             if key in date_entries:
                 date_entries[key].append(entry)
-            else:
-                # Before Monday, discard
-                pass
     
     # Generate timeline content for each date
     timelines = {}
@@ -206,15 +222,15 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-bar::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(to bottom,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
 .date-bar::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:linear-gradient(to top,rgba(0,0,0,.08),transparent); z-index:1; pointer-events:none; }}
 .date-bar::-webkit-scrollbar {{ display:none; }}
-.date-tab {{ flex:0 0 52px; min-width:52px; padding:6px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
-.date-tab.active {{ background:#fff; }}
+.date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
+.date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
 .date-tab.active .date-weekday {{ color:#fb7299; }}
 .date-tab::after {{ content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:18px; height:3px; border-radius:2px; background:transparent; }}
 .date-tab.active::after {{ background:#fb7299; }}
 .today-dot {{ width:4px; height:4px; background:#fb7299; border-radius:50%; margin:0 auto 2px; }}
-.date-num {{ font-size:12px; color:#999; margin-bottom:1px; }}
-.date-weekday {{ font-size:16px; color:#333; }}
+.date-num {{ font-size:12px; color:#999; margin-bottom:1px; line-height:16px; }}
+.date-weekday {{ font-size:16px; color:#333; line-height:20px; }}
 .timeline-pager {{ overflow:hidden; position:relative; }}
 .timeline-content {{ display:none; padding:0 16px; transition:transform .3s ease; }}
 .timeline-content.active {{ display:block; }}
@@ -293,7 +309,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   pager.addEventListener('touchend',function(e){{
     var diff = startX - e.changedTouches[0].clientX;
     if(Math.abs(diff)>50) {{
-      if(diff>0 && currentPage<6) switchDay(++currentPage);
+      if(diff>0 && currentPage<tabs.length-1) switchDay(++currentPage);
       else if(diff<0 && currentPage>0) switchDay(--currentPage);
     }}
   }});
