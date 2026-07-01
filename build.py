@@ -183,6 +183,8 @@ def build_html(schedule, updated):
             rows_html += f'<td class="w_Hour1" rowspan="{rowspan}">{t.split(":")[0]}</td>\n'
         
         for di, day in enumerate(DAYS):
+            # Day border color: match itv6.jp header colors
+            day_border = ['#9999cc', '#9999cc', '#9999cc', '#9999cc', '#9999cc', '#99cccc', '#ff9966'][di]
             anime_list = grid.get(t, {}).get(day, [])
             if anime_list:
                 names_html = ""
@@ -190,7 +192,7 @@ def build_html(schedule, updated):
                     name_simple = to_simple_chinese(name)
                     cover = covers.get(name, '')
                     cover_html = f'<img src="{cover}" class="anime-cover" onerror="this.style.display=\'none\'">' if cover else ''
-                    names_html += f'<div class="anime-entry">{cover_html}<div class="oa_time">{t}</div><div class="oa_title">{name_simple}</div></div>'
+                    names_html += f'<div class="anime-entry" style="border-left: 4px solid {day_border};">{cover_html}<div class="oa_time">{t}</div><div class="oa_title">{name_simple}</div></div>'
                 is_today = ' w_WeekDay' if di == today_idx else ''
                 rows_html += f'<td class="w_WeekDay{is_today}">{names_html}</td>\n'
             else:
@@ -371,9 +373,9 @@ h1 {{
 }}
 </style>
 </head>
-<body>
+<body onscroll="Menu()">
 <div align="center">
-<div style="position:sticky; top:0; z-index:1; width:100%;">
+<div id="menu" style="position:absolute; top:0; left:0; z-index:1; width:100%;">
 <table border="0" cellpadding="3" cellspacing="1" width="911px" bgcolor="#6699cc">
 <tr>
 <td width="24px" class="w_Hour_head">时</td>
@@ -395,12 +397,11 @@ h1 {{
 </p>
 </div>
 <script>
-(function() {{
-    const rows = document.querySelectorAll('.current-row');
-    if (rows.length > 0) {{
-        rows[0].scrollIntoView({{ block: 'center', behavior: 'smooth' }});
-    }}
-}})();
+function Menu() {{
+    var el = document.getElementById('menu');
+    if (el) el.style.top = pageYOffset + 'px';
+}}
+onscroll = Menu;
 </script>
 </body>
 </html>'''

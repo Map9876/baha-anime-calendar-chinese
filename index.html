@@ -167,9 +167,9 @@ h1 {
 }
 </style>
 </head>
-<body>
+<body onscroll="Menu()">
 <div align="center">
-<div style="position:sticky; top:0; z-index:1; width:100%;">
+<div id="menu" style="position:absolute; top:0; left:0; z-index:1; width:100%;">
 <table border="0" cellpadding="3" cellspacing="1" width="911px" bgcolor="#6699cc">
 <tr>
 <td width="24px" class="w_Hour_head">时</td>
@@ -184,20 +184,20 @@ h1 {
 <td class="w_Hour1" rowspan="4">00</td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:00</div><div class="oa_title">左撇子艾伦</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry"><div class="oa_time">00:00</div><div class="oa_title">CANDY CARIES 蛀在糖糖里</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:00</div><div class="oa_title">左撇子艾伦</div></div></td>
+<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:00</div><div class="oa_title">CANDY CARIES 蛀在糖糖里</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:00</div><div class="oa_title">黄泉使者</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:00</div><div class="oa_title">黄泉使者</div></div></td>
 </tr>
 <tr>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:30</div><div class="oa_title">轮回的花瓣</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:30</div><div class="oa_title">轮回的花瓣</div></div></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:30</div><div class="oa_title">春夏秋冬代行者 春之舞</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:30</div><div class="oa_title">春夏秋冬代行者 春之舞</div></div></td>
 </tr>
 <tr>
 <td class="space"></td>
@@ -206,14 +206,14 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:40</div><div class="oa_title">勇者之渣</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">00:40</div><div class="oa_title">勇者之渣</div></div></td>
 </tr>
 <tr>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">00:50</div><div class="oa_title">淡岛百景</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">00:50</div><div class="oa_title">淡岛百景</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 </tr>
@@ -222,16 +222,16 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry"><div class="oa_time">01:00</div><div class="oa_title">花样少年少女 第二季</div></div></td>
+<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">01:00</div><div class="oa_title">花样少年少女 第二季</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">01:00</div><div class="oa_title">主播女孩重度依赖</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">01:00</div><div class="oa_title">主播女孩重度依赖</div></div></td>
 </tr>
 <tr>
 <td class="w_Hour1" rowspan="1">08</td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">08:00</div><div class="oa_title">假面骑士 ZEZTZ</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">08:00</div><div class="oa_title">假面骑士 ZEZTZ</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
@@ -244,12 +244,12 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">09:00</div><div class="oa_title">拉拉熊</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">09:00</div><div class="oa_title">拉拉熊</div></div></td>
 <td class="space"></td>
 </tr>
 <tr>
 <td class="w_Hour1" rowspan="1">12</td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">12:00</div><div class="oa_title">MAO 摩绪</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">12:00</div><div class="oa_title">MAO 摩绪</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
@@ -265,7 +265,7 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">16:30</div><div class="oa_title">杖与剑的魔剑谭 Season 2</div></div><div class="anime-entry"><div class="oa_time">16:30</div><div class="oa_title">夜樱家大作战 第二季</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">16:30</div><div class="oa_title">杖与剑的魔剑谭 Season 2</div></div><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">16:30</div><div class="oa_title">夜樱家大作战 第二季</div></div></td>
 </tr>
 <tr>
 <td class="w_Hour1" rowspan="2">17</td>
@@ -275,7 +275,7 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">17:00</div><div class="oa_title">钻石王牌 act2 第二季</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">17:00</div><div class="oa_title">钻石王牌 act2 第二季</div></div></td>
 </tr>
 <tr>
 <td class="space"></td>
@@ -283,7 +283,7 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">17:30</div><div class="oa_title">小书痴的下克上  为了成为图书管理员不择手段！领主的养女</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">17:30</div><div class="oa_title">小书痴的下克上  为了成为图书管理员不择手段！领主的养女</div></div></td>
 <td class="space"></td>
 </tr>
 <tr>
@@ -293,15 +293,15 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">18:55</div><div class="oa_title">入间同学入魔了！第四季</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">18:55</div><div class="oa_title">入间同学入魔了！第四季</div></div></td>
 <td class="space"></td>
 </tr>
 <tr>
 <td class="w_Hour1" rowspan="1">19</td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">19:00</div><div class="oa_title">从前从前有只猫！世界喵童话</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry"><div class="oa_time">19:00</div><div class="oa_title">无尾熊绘日记</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">19:00</div><div class="oa_title">从前从前有只猫！世界喵童话</div></div></td>
+<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">19:00</div><div class="oa_title">无尾熊绘日记</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
@@ -311,7 +311,7 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry"><div class="oa_time">20:30</div><div class="oa_title">女骑士成为蛮族新娘</div></div></td>
+<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">20:30</div><div class="oa_title">女骑士成为蛮族新娘</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
@@ -323,11 +323,11 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">21:00</div><div class="oa_title">弱弱老师</div></div><div class="anime-entry"><div class="oa_time">21:00</div><div class="oa_title">猫与龙</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">21:00</div><div class="oa_title">弱弱老师</div></div><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">21:00</div><div class="oa_title">猫与龙</div></div></td>
 <td class="space"></td>
 </tr>
 <tr>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">21:30</div><div class="oa_title">THE WORLD IS DANCING 世界在起舞</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">21:30</div><div class="oa_title">THE WORLD IS DANCING 世界在起舞</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
@@ -339,19 +339,19 @@ h1 {
 <td class="w_Hour1" rowspan="2">22</td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">22:00</div><div class="oa_title">Re：从零开始的异世界生活 第四季</div></div></td>
-<td class="w_WeekDay w_WeekDay"><div class="anime-entry"><div class="oa_time">22:00</div><div class="oa_title">Dr.STONE 新石纪 第四季</div></div><div class="anime-entry"><div class="oa_time">22:00</div><div class="oa_title">库吉马唱歌的家</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">Re：从零开始的异世界生活 第四季</div></div></td>
+<td class="w_WeekDay w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">Dr.STONE 新石纪 第四季</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:00</div><div class="oa_title">库吉马唱歌的家</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
 </tr>
 <tr>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">22:30</div><div class="oa_title">婚姻剧毒</div></div><div class="anime-entry"><div class="oa_time">22:30</div><div class="oa_title">想结束这场“我爱你”的游戏</div></div><div class="anime-entry"><div class="oa_time">22:30</div><div class="oa_title">复制品的我也会谈恋爱</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">婚姻剧毒</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">想结束这场“我爱你”的游戏</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">22:30</div><div class="oa_title">复制品的我也会谈恋爱</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">22:30</div><div class="oa_title">杀手青春</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #99cccc;"><div class="oa_time">22:30</div><div class="oa_title">杀手青春</div></div></td>
 <td class="space"></td>
 </tr>
 <tr>
@@ -360,16 +360,16 @@ h1 {
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">23:00</div><div class="oa_title">关于我转生变成史莱姆这档事 第四季</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:00</div><div class="oa_title">关于我转生变成史莱姆这档事 第四季</div></div></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">23:00</div><div class="oa_title">黑猫与魔女的教室</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #ff9966;"><div class="oa_time">23:00</div><div class="oa_title">黑猫与魔女的教室</div></div></td>
 </tr>
 <tr>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
 <td class="space"></td>
-<td class="w_WeekDay"><div class="anime-entry"><div class="oa_time">23:30</div><div class="oa_title">神之雫</div></div><div class="anime-entry"><div class="oa_time">23:30</div><div class="oa_title">上伊那牡丹，醉姿如百合</div></div><div class="anime-entry"><div class="oa_time">23:30</div><div class="oa_title">冻结地球</div></div></td>
+<td class="w_WeekDay"><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">神之雫</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">上伊那牡丹，醉姿如百合</div></div><div class="anime-entry" style="border-left: 4px solid #9999cc;"><div class="oa_time">23:30</div><div class="oa_title">冻结地球</div></div></td>
 <td class="space"></td>
 <td class="space"></td>
 </tr>
@@ -377,19 +377,18 @@ h1 {
 </table>
 </div>
 <p style="font-size:10px; color:#888; margin-top:10px;">
-更新时间: 2026-07-02 03:36 | 来源: ani.gamer.com.tw | 封面: bgm.tv
+更新时间: 2026-07-02 03:52 | 来源: ani.gamer.com.tw | 封面: bgm.tv
+</p>
+<p style="font-size:10px; color:#888; text-align:center; margin:6px 0;">
+<a href="https://github.com/Map9876/baha-anime-calendar-chinese" style="color:#888; text-decoration:underline;">GitHub</a>
 </p>
 </div>
 <script>
-(function() {
-    const rows = document.querySelectorAll('.current-row');
-    if (rows.length > 0) {
-        rows[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }
-})();
+function Menu() {
+    var el = document.getElementById('menu');
+    if (el) el.style.top = pageYOffset + 'px';
+}
+onscroll = Menu;
 </script>
-<p style="text-align:center; font-size:10px; color:#888; margin:10px 0;">
-<a href="https://github.com/Map9876/baha-anime-calendar-chinese" style="color:#888; text-decoration:underline;">GitHub</a>
-</p>
 </body>
 </html>
