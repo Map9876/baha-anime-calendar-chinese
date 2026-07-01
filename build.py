@@ -373,6 +373,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .header h1 {{ font-size:15px; color:#fff; font-weight:600; }}
 .header .meta {{ font-size:10px; color:rgba(255,255,255,.7); }}
 .date-bar-wrap {{ position:relative; }}
+.date-bar-wrap::before {{ content:''; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(to bottom,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
+.date-bar-wrap::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:6px; background:linear-gradient(to top,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
 .date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
