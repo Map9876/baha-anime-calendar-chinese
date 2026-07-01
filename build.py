@@ -333,6 +333,7 @@ def build_html(schedule, updated):
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
             now_cls = ' now-airing' if is_now else ''
+            badge = '<span class="timeline-badge">首播</span>' if entry.get('note') else ''
             html += f'''
             <div class="timeline-item{now_cls}">
               <div class="timeline-left">
@@ -342,7 +343,7 @@ def build_html(schedule, updated):
               </div>
               <div class="timeline-right">
                 {cover_html}
-                <div class="timeline-title">{name_simple}</div>
+                <div class="timeline-title">{name_simple}{badge}</div>
               </div>
             </div>'''
         # Add "now" indicator at the end if no entries are past current time
@@ -406,6 +407,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .timeline-cover {{ display:block; width:80px; height:auto; border-radius:4px; margin-bottom:6px; }}
 .timeline-title {{ font-size:14px; color:#333; line-height:1.5; }}
 .timeline-item.now-airing .timeline-title {{ color:#fb7299; }}
+.timeline-badge {{ display:inline-block; font-size:10px; color:#fb7299; border:1px solid #fb7299; border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle; line-height:16px; }}
 .footer {{ text-align:center; padding:16px; font-size:11px; color:#999; }}
 .footer a {{ color:#999; text-decoration:underline; }}
 .now-label-bar {{ position:relative; margin:8px 0; text-align:center; border-top:1px dashed #fb7299; padding-top:4px; }}
