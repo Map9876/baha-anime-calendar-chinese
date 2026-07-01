@@ -1,0 +1,62 @@
+name: Anime Calendar
+
+
+on:
+  schedule:
+    - cron: "0 18 * * *"
+  push:
+
+env:
+  TZ: Asia/Tokyo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install deps
+        run: pip3 install requests
+
+      - name: Start FlareSolverr
+        run: |
+          docker run -d --name flaresolverr -p 8191:8191 ghcr.io/flaresolverr/flaresolverr:latest
+          sleep 15
+
+      - name: Fetch baha source
+        run: python3 fetch.py
+        continue-on-error: true
+
+      - name: Build calendar
+        run: python3 build.py
+        continue-on-error: true
+
+      - name: Commit data
+        run: |
+          git config user.name "GitHub Actions[Bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source/ schedule.json schedule.txt cover_cache.json index.html
+          git commit -m "Update at $(date '+%Y-%m-%d %H:%M')" || echo "No changes"
+          git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
