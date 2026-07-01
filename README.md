@@ -1,6 +1,8 @@
 # 巴哈姆特动画疯 - 新番时间表
 
-独立页面: https://map9876.github.io/baha-anime-calendar-chinese/
+**GitHub Pages:** https://map9876.github.io/baha-anime-calendar-chinese/
+
+**国内直连 (Cloudflare Workers 反代):** https://c.map987.dpdns.org/https://map9876.github.io/baha-anime-calendar-chinese/
 
 每日通过 FlareSolverr 抓取巴哈姆特动画疯 [ani.gamer.com.tw](https://ani.gamer.com.tw/) 的「週期表」页面，查询 bgm.tv API 获取封面，生成 itv6.jp 复古风格的新番时间表。
 

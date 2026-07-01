@@ -26,7 +26,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install deps
-        run: pip3 install requests
+        run: pip3 install requests zhconv
 
       - name: Start FlareSolverr
         run: |

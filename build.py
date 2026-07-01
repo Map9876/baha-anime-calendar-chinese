@@ -2,6 +2,7 @@
 import os, sys, json, re
 import requests
 from datetime import datetime
+from zhconv import convert as zhconv_convert
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SOURCE_DIR = os.path.join(SCRIPT_DIR, 'source')
@@ -12,23 +13,9 @@ DAYS = ['週一','週二','週三','週四','週五','週六','週日']
 DAYS_SIMPLE = ['周一','周二','周三','周四','周五','周六','周日']
 COVER_CACHE = os.path.join(SCRIPT_DIR, 'cover_cache.json')
 
-# Simplified Chinese title mapping (繁→简)
-SIMPLE_MAP = {
-    '週': '周', '異': '异', '畫': '画', '為': '为', '體': '体',
-    '會': '会', '關': '关', '於': '于', '轉': '转', '廢': '废',
-    '這': '这', '場': '场', '愛': '爱', '戲': '戏', '製': '制',
-    '們': '们', '對': '对', '萬': '万', '對': '对', '從': '从',
-    '裡': '里', '類': '类', '貓': '猫', '圖': '图', '濟': '济',
-    '曆': '历', '曆': '历', '書': '书', '監': '监', '導': '导',
-    '爭': '争', '權': '权', '稱': '称', '綴': '缀', '擔': '担',
-    '業': '业', '錄': '录', '龍': '龙', '龜': '龟', '嚴': '严',
-    '禮': '礼', '裝': '装', '發': '发', '時': '时',
-}
-
 def to_simple_chinese(text):
-    for t, s in SIMPLE_MAP.items():
-        text = text.replace(t, s)
-    return text
+    """Convert Traditional Chinese to Simplified using zhconv."""
+    return zhconv_convert(text, 'zh-cn')
 
 
 def load_cover_cache():
@@ -49,10 +36,35 @@ def search_bgm_cover(anime_name, cache):
         return cache[anime_name]
     
     try:
-        # Try searching with simplified name
-        search_name = to_simple_chinese(anime_name.split('　')[0].split('  ')[0])
+        # Clean name: remove season info, simplify
+        search_name = to_simple_chinese(anime_name)
+        # Remove season/episode suffixes that hurt search
+        search_name = re.sub(r'[ 　][第季]\S+', '', search_name).strip()
+        search_name = re.sub(r'Season \d+', '', search_name, flags=re.I).strip()
+        search_name = re.sub(r'\d+季', '', search_name).strip()
+        
+        # Try v1 search (old API)
         resp = requests.get(
-            f'https://api.bgm.tv/v0/search/subjects',
+            f'https://api.bgm.tv/search/subject/{requests.utils.quote(search_name)}',
+            params={'type': 2},
+            headers={'User-Agent': 'AnimeCalendar/1.0'},
+            timeout=10
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            results = data.get('results', [])
+            if results:
+                best = results[0]
+                url = best.get('images', {}).get('large', '')
+                if url and not url.startswith('http'):
+                    url = 'https:' + url
+                if url:
+                    cache[anime_name] = url
+                    return url
+        
+        # Try v0 API as fallback
+        resp = requests.get(
+            'https://api.bgm.tv/v0/search/subjects',
             params={'keyword': search_name, 'subject_type': 2},
             headers={'User-Agent': 'AnimeCalendar/1.0'},
             timeout=10
@@ -61,17 +73,19 @@ def search_bgm_cover(anime_name, cache):
             data = resp.json()
             results = data.get('data', [])
             if results:
-                # Find best match by checking name contains keywords
                 best = results[0]
-                for r in results:
-                    if len(anime_name) >= 2 and anime_name[:2] in (r.get('name','')+r.get('name_cn','')):
+                for r in results[:5]:
+                    full_name = (r.get('name','') + r.get('name_cn',''))
+                    # Prefer matches where search_name keywords appear in result
+                    if any(kw in full_name for kw in search_name.split()[:3] if len(kw) > 1):
                         best = r
                         break
                 url = best.get('images', {}).get('large', '') or best.get('images', {}).get('medium', '')
                 if url and not url.startswith('http'):
                     url = 'https:' + url
-                cache[anime_name] = url
-                return url
+                if url:
+                    cache[anime_name] = url
+                    return url
     except Exception as e:
         print(f"  bgm.tv search failed for '{anime_name}': {e}")
     
