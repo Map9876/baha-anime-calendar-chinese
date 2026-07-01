@@ -1,0 +1,2623 @@
+{
+  "fetched_at": "2026-07-02 06:16:55",
+  "timezone": "Asia/Taipei (UTC+8)",
+  "season": "7-9",
+  "total": 88,
+  "current_season_count": 40,
+  "anime": [
+    {
+      "drama_id": "23005",
+      "title": "碧藍航線 微速前進！2",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/23005-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/23005-p_260626.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "00:45",
+      "description": "7/6起，每週一 00:45更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1790006400000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "00:45",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22955",
+      "title": "北斗之拳 拳王軍雜兵們的輓歌(暫定)",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/",
+      "weekday_list": [
+        1
+      ],
+      "time": "19:05",
+      "description": "7/6起，每週一19:05更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "19:05",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22959",
+      "title": "與奔馳於透明之夜的你，談一場看不見的戀愛。",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22959-b_260627.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22959-p_260627.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "20:30",
+      "description": "7/6起，每週一20:30更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1790006400000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "20:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22937",
+      "title": "骸骨騎士大人異世界冒險中 第二季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22937-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22937-p_260621.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "21:00",
+      "description": "7/4，EP1 19:30更新，7/13起，每週一21:00後更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1790006400000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "type": "first_episode",
+          "time": "19:30"
+        },
+        {
+          "start_date": "2026/07/13",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22931",
+      "title": "THE WORLD IS DANCING 世界在起舞",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22931-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22931-p_260621.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "21:30",
+      "description": "6/29起，每週一21:30後更新",
+      "start_timestamp": 1782489600000,
+      "end_timestamp": 1790006400000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 6,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/06/29",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "21:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22953",
+      "title": "無用聖女的異世界美食之旅 憑藉隱藏技能召喚露營車",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/",
+      "weekday_list": [
+        1
+      ],
+      "time": "22:30",
+      "description": "7/6起，每週一22:30更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22944",
+      "title": "鬥球兒彈子",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22944-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22944-p_260626.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "23:00",
+      "description": "7/6起，每週一23:00更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "23:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22850",
+      "title": "凡人修仙傳 S5",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22850-b_260608.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22850-p_260608.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": null,
+      "description": "6/15起，每週一更新",
+      "start_timestamp": 1781539200000,
+      "end_timestamp": 1798732740000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 6,
+      "start_month_source": "timestamp",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "raw": "6/15起，每週一更新",
+          "type": "unknown"
+        }
+      ]
+    },
+    {
+      "drama_id": "23007",
+      "title": "GRANDBLUE 碧藍之海3",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600250101/landscape.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600250101/portrait.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "00:00",
+      "description": "7/7起，每週二 00:00更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22961",
+      "title": "拯救替身千金的是冷酷無情冰之王子的愛(暫定)",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/",
+      "weekday_list": [
+        2
+      ],
+      "time": "21:00",
+      "description": "7/7起，每週二21:00更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22950",
+      "title": "Clevatess II-魔獸之王與虛假的勇者傳承-",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22950-b_260629.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22950-p_260629.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "20:00",
+      "description": "7/8起，每週三20:00更新",
+      "start_timestamp": 1783008000000,
+      "end_timestamp": 1790784000000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "20:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22958",
+      "title": "澈底對你成癮",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22958-b_260630.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22958-p_260630.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "21:00",
+      "description": "7/8起，每週三21:00更新",
+      "start_timestamp": 1783094400000,
+      "end_timestamp": 1790179200000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23002",
+      "title": "不虐待我的繼母與繼姊",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600249901/landscape.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600249901/portrait.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "22:30",
+      "description": "7/8起，每週三 22:30更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22943",
+      "title": "女性向遊戲世界對路人角色很不友好 2",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22943-b_260630.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22943-p_260630.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "23:30",
+      "description": "7/8起，每週三23:30更新",
+      "start_timestamp": 1783180800000,
+      "end_timestamp": 1790265600000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23000",
+      "title": "花樣少年少女 第2季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/23000-b_260627.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/23000-p_260627.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "01:00",
+      "description": "7/2起，每週四 01:00 更新",
+      "start_timestamp": 1782748800000,
+      "end_timestamp": 1789660800000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/02",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "01:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22960",
+      "title": "文豪野犬 汪！第二季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22960-b_260629.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22960-p_260629.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "20:40",
+      "description": "7/2起，每週四20:40更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/02",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "20:40",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22938",
+      "title": "BanG Dream! YUME∞MITA",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22938-b_260624.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22938-p_260624.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "22:00",
+      "description": "7/2首週播出3集，7/9起，每週四22:00後更新",
+      "start_timestamp": 1782662400000,
+      "end_timestamp": 1789056000000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/02",
+          "type": "first_week",
+          "detail": "7/2首週播出3集，7/9起，每週四22:00後更新",
+          "episodes": 3
+        },
+        {
+          "start_date": "2026/07/09",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22871",
+      "title": "科學小飛俠 F",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22871-b_260612.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22871-p_260612.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "6/26起，每週五00:00更新五集",
+      "start_timestamp": 1782144000000,
+      "end_timestamp": 1788019200000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 6,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/06/26",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22994",
+      "title": "(國語)戰鬥陀螺X 第二季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22993-b_260625.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22993-p_260625.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "7/3 起，每週五00:00更新五集",
+      "start_timestamp": 1782576000000,
+      "end_timestamp": 1788537600000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22993",
+      "title": "戰鬥陀螺X 第二季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22993-b_260625.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22993-p_260625.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "7/3 起，每週五00:00更新五集",
+      "start_timestamp": 1782748800000,
+      "end_timestamp": 1788537600000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22040",
+      "title": "(國語)海螺小姐",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22038-b_260617.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22038-p_260617.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "每週五00:00更新五集",
+      "start_timestamp": 1782403200000,
+      "end_timestamp": 1791043200000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 6,
+      "start_month_source": "timestamp",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": null,
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22952",
+      "title": "尼古喵喵",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22952-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22952-p_260626.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "7/3起，每週五00:00更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1789747200000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22939",
+      "title": "少女怪獸焦糖戀心",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22939-b_260630.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22939-p_260630.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "01:28",
+      "description": "7/3起，每週五01:28後更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "01:28",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22870",
+      "title": "遊戲BUG修復中",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22870-b_260612.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22870-p_260612.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "20:00",
+      "description": "6/19起，每週五20:00更新",
+      "start_timestamp": 1782057600000,
+      "end_timestamp": 1788105600000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 6,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/06/19",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "20:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23003",
+      "title": "從0位居民開始的邊境領主大人",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/23003-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/23003-p_260626.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "21:30",
+      "description": "7/3起，每週五 21:30更新",
+      "start_timestamp": 1782748800000,
+      "end_timestamp": 1789747200000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "21:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22932",
+      "title": "畫完這個再去死",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22932-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22932-p_260621.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "23:30",
+      "description": "7/3起，每週五23:30後更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22930",
+      "title": "擅長逃跑的殿下 S2",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22930-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22930-p_260621.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "00:00",
+      "description": "7/18起，每週六00:00後更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/18",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23006",
+      "title": "從後面來的神威先生 無修版",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600250401/landscape.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600250401/portrait.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "00:30",
+      "description": "7/4起，每週六 00:30更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23001",
+      "title": "地獄模式 ～喜歡挑戰特殊成就的玩家在廢設定的異世界成為無雙～2nd Season",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/23001-b_260630.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/23001-p_260630.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "00:30",
+      "description": "7/4起，每週六00:30更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22919",
+      "title": "超人力霸王狄奧",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22919-b_260616.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22919-p_260616.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "09:00",
+      "description": "7/4起，每週六 09:00更新",
+      "start_timestamp": 1782748800000,
+      "end_timestamp": 1799510400000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "09:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22951",
+      "title": "貓與龍",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22951-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22951-p_260626.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "21:00",
+      "description": "6/27起，每週六21:00更新",
+      "start_timestamp": 1782403200000,
+      "end_timestamp": 1789228800000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 6,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/06/27",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22934",
+      "title": "BLACK TORCH 闇黑燈火",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22934-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22934-p_260621.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "21:00",
+      "description": "7/4起，每週六21:00後更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1789833600000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22940",
+      "title": "Grow Up Show ～向日葵馬戲團～",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22940-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22940-p_260621.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:00",
+      "description": "7/5起，每週日00:00後更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1790524800000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "23004",
+      "title": "穹廬下的魔女",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600250301/landscape.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600250301/portrait.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:00",
+      "description": "7/5起，每週日 00:00更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22963",
+      "title": "鬼的新娘(暫定)",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/",
+      "weekday_list": [
+        7
+      ],
+      "time": "01:00",
+      "description": "7/5起，每週日01:00更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "01:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22945",
+      "title": "花織即使是轉生也想打架",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22945-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22945-p_260626.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "01:30",
+      "description": "7/12起，每週日01:30更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/12",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "01:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22942",
+      "title": "才女的侍從 在滿是高嶺之花的貴族學校暗中照顧（毫無生活自理能力的）學院第一大小姐",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22942-b_260623.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22942-p_260623.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "03:08",
+      "description": "7/5起，每週日03:08更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "03:08",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22947",
+      "title": "相反的你和我 第二季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22947-b_260626.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22947-p_260626.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "16:30",
+      "description": "7/5起，每週日16:30更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1791215940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "16:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22941",
+      "title": "超超超超超喜歡你的100個女朋友 S3",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22941-b_260624.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22941-p_260624.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "22:00",
+      "description": "7/5起，每週日22:00後更新",
+      "start_timestamp": 1767196800000,
+      "end_timestamp": 1767283140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22933",
+      "title": "無職轉生～到了異世界就拿出真本事～第3季",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22933-b_260621.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22933-p_260621.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "23:00",
+      "description": "7/4首週播出2集，EP1 19:00 EP2 19:30，7/12起，每週日23:00後更新",
+      "start_timestamp": 1782835200000,
+      "end_timestamp": 1790524800000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 7,
+      "start_month_source": "parsed",
+      "in_current_season": true,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/07/04",
+          "type": "first_week_special",
+          "detail": "EP1 19:00 EP2 19:30",
+          "episodes": 2,
+          "times": [
+            "19:00",
+            "19:30"
+          ]
+        },
+        {
+          "start_date": "2026/07/12",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "23:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22373",
+      "title": "MAO摩緒",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600237901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600237901/portrait_o.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "12:00",
+      "description": "4/6起，每週一12:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790870340000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "12:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22356",
+      "title": "異世界悠閒農家2",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240001/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240001/portrait_o.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "22:00",
+      "description": "4/6起，每週一22:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22406",
+      "title": "木頭風紀委員和迷你裙 JK 的故事",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600242201/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600242201/portrait_o.jpg",
+      "weekday_list": [
+        1
+      ],
+      "time": "22:00",
+      "description": "4/6起，每週一22:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/06",
+          "weekday": 1,
+          "weekday_cn": "一",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22387",
+      "title": "百鬼夜行抄",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239501/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239501/portrait_o.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "21:00",
+      "description": "4/7起，每週二21:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "21:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22350",
+      "title": "成為悲劇元兇的最強異端，最後頭目女王為了人民犧牲奉獻 第2季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241201/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241201/portrait_o.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "21:30",
+      "description": "4/7起，每週二21:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "21:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22362",
+      "title": "婚姻劇毒",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22362-b_260607.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22362-p_260607.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "22:30",
+      "description": "4/7起，每週二22:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1783267140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22399",
+      "title": "想結束這場「我愛你」的遊戲",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600242701/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600242701/portrait_o.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "22:30",
+      "description": "4/14起，每週二22:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/14",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22404",
+      "title": "我和班上第二可愛的女生成為朋友",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600242101/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600242101/portrait_o.jpg",
+      "weekday_list": [
+        2
+      ],
+      "time": "23:00",
+      "description": "4/7起，每週二23:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/07",
+          "weekday": 2,
+          "weekday_cn": "二",
+          "time": "23:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22382",
+      "title": "左撇子艾倫",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239201/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239201/portrait_o.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "00:00",
+      "description": "4/8起，每週三00:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1783267140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22390",
+      "title": "我回來了，他又來打擾了！",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241901/portrait_o.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "01:45",
+      "description": "4/8起，每週三01:45更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "01:45",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22391",
+      "title": "女神「異世界轉生想成為什麽」我「勇者的肋骨」",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241801/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241801/portrait_o.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "02:15",
+      "description": "4/8起，每週三02:15更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "02:15",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "18076",
+      "title": "從前從前有隻貓！世界喵童話",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/18076-p_251022.png",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/18076-b_251022.png",
+      "weekday_list": [
+        3
+      ],
+      "time": "19:00",
+      "description": "每週三19:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790351940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "timestamp",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": null,
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "19:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22357",
+      "title": "歡迎來到實力至上主義的教室 第四季 2年級篇 第一學期",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240601/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240601/portrait_o.jpg",
+      "weekday_list": [
+        3
+      ],
+      "time": "20:30",
+      "description": "4/8起，每週三20:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/08",
+          "weekday": 3,
+          "weekday_cn": "三",
+          "time": "20:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22355",
+      "title": "CANDY CARIES 蛀在糖糖裡",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241501/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241501/portrait_o.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "00:00",
+      "description": "4/16起，每週四00:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790351940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/16",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22398",
+      "title": "終末起點 第2季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600242601/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600242601/portrait_o.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "00:45",
+      "description": "4/9起，每週四00:45更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/09",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "00:45",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "18075",
+      "title": "無尾熊繪日記",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/18075-b_251022.png",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/18075-p_251022.png",
+      "weekday_list": [
+        4
+      ],
+      "time": "19:00",
+      "description": "每週四19:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1788623940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "timestamp",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": null,
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "19:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "17059",
+      "title": "Dr. STONE 新石紀（第四季）",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/17059-b_260330.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/17059-p_260330.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "22:00",
+      "description": "4/2起，每週四22:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790870340000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/02",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22378",
+      "title": "庫吉馬唱歌的家",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238701/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238701/portrait_o.jpg",
+      "weekday_list": [
+        4
+      ],
+      "time": "22:00",
+      "description": "4/9起，每週四22:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/09",
+          "weekday": 4,
+          "weekday_cn": "四",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22380",
+      "title": "霧尾粉絲後援會",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239701/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239701/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "4/3起，每週五00:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22434",
+      "title": "死亡筆記本",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22434-b_260504.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22434-p_260504.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:00",
+      "description": "5/15 起，每週五 00:00 更新五集",
+      "start_timestamp": 1778688000000,
+      "end_timestamp": 1782748800000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 5,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/05/15",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22372",
+      "title": "輪迴的花瓣",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238401/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238401/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:30",
+      "description": "4/3起，每週五00:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22383",
+      "title": "淡島百景",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238801/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238801/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "00:45",
+      "description": "4/10起，每週五00:45更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/10",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "00:45",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22385",
+      "title": "吞噬魔物的冒險者",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239301/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239301/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "01:15",
+      "description": "4/3起，每週五01:15更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "01:15",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22400",
+      "title": "你又被殺了呢，偵探大人",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600242901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600242901/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "01:30",
+      "description": "4/3起，每週五 01:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "01:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22242",
+      "title": "關於我在無意間被隔壁的天使變成廢柴這件事2",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238001/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238001/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "22:30",
+      "description": "4/3起，每週五22:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22364",
+      "title": "關於我轉生變成史萊姆這檔事 第四季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240201/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240201/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "23:00",
+      "description": "4/3起，每週五23:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790870340000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "23:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22240",
+      "title": "神之雫",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241701/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241701/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "23:30",
+      "description": "4/10起，每週五23:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1789919940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/10",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22353",
+      "title": "上伊那牡丹，醉姿如百合",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240901/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "23:30",
+      "description": "4/10起，每週五23:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/10",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22354",
+      "title": "凍結地球",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241401/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241401/portrait_o.jpg",
+      "weekday_list": [
+        5
+      ],
+      "time": "23:30",
+      "description": "4/3起，每週五23:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/03",
+          "weekday": 5,
+          "weekday_cn": "五",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22359",
+      "title": "拉拉熊",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241601/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241601/portrait_o.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "09:00",
+      "description": "4/4起，每週六09:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1805126340000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "09:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22397",
+      "title": "小書痴的下剋上 為了成為圖書管理員不擇手段！領主的養女",
+      "horizontal_poster": "https://img.linetv.tw/medium/drama/22397-b_260527.jpg",
+      "vertical_poster": "https://img.linetv.tw/medium/drama/22397-p_260527.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "17:30",
+      "description": "4/18起，每週六17:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1789487940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/18",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "17:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22360",
+      "title": "入間同學入魔了 第4季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240301/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240301/portrait_o.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "18:55",
+      "description": "4/4起，每週六18:55後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1789487940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "18:55",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22386",
+      "title": "大賢者里德爾的時間逆行",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239401/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239401/portrait_o.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "20:55",
+      "description": "4/4起，每週六20:55更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/04",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "20:55",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22377",
+      "title": "殺手青春",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239801/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239801/portrait_o.jpg",
+      "weekday_list": [
+        6
+      ],
+      "time": "22:30",
+      "description": "4/11起，每週六22:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/11",
+          "weekday": 6,
+          "weekday_cn": "六",
+          "time": "22:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22243",
+      "title": "容易對付的惡魔大人",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238601/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238601/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:00",
+      "description": "4/5起，每週日00:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22351",
+      "title": "黃泉使者",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240801/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240801/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:00",
+      "description": "4/5起，每週日00:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1789487940000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22375",
+      "title": "朱音落語",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238201/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238201/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:00",
+      "description": "4/5起，每週日00:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "21069",
+      "title": "勇者之渣",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600232001/landscape.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600232001/portrait.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:30",
+      "description": "每週日00:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "timestamp",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": null,
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular",
+          "note": "raw: 每週日00:30後更新"
+        }
+      ]
+    },
+    {
+      "drama_id": "22269",
+      "title": "春夏秋冬代行者 春之舞",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600240401/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600240401/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:30",
+      "description": "3/29起，每週日00:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 3,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/03/29",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22374",
+      "title": "楠木邸的神明庭院",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238101/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238101/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "00:30",
+      "description": "4/5起，每週日00:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "00:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22267",
+      "title": "主播女孩重度依賴",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238901/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "01:00",
+      "description": "4/5起，每週日01:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "01:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22401",
+      "title": "一疊間漫畫咖啡廳日常",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600243101/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600243101/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "01:00",
+      "description": "4/12起，每週日01:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782143940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/12",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "01:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22352",
+      "title": "杖與劍的魔劍譚Season2",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239901/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239901/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "16:30",
+      "description": "4/5起，每週日16:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "16:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22358",
+      "title": "夜櫻家大作戰 第2季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241301/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241301/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "16:30",
+      "description": "4/12起，每週日16:30後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/12",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "16:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22349",
+      "title": "鑽石王牌 ACT2 第二季",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600241001/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600241001/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "17:00",
+      "description": "4/5起，每週日17:00後更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782921540000,
+      "channel_name": [
+        "動畫",
+        "小編推薦"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "17:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22379",
+      "title": "魔法姊妹露露特莉莉",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239001/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239001/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "22:00",
+      "description": "4/5起，每週日22:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "22:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22376",
+      "title": "黑貓與魔女的教室",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600238301/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600238301/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "23:00",
+      "description": "4/12起，每週日23:00更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1790351940000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/12",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "23:00",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    },
+    {
+      "drama_id": "22381",
+      "title": "GHOST CONCERT : 失落之歌",
+      "horizontal_poster": "https://images.kktv.com.tw/resized_covers/0600239101/landscape_o.jpg",
+      "vertical_poster": "https://images.kktv.com.tw/resized_covers/0600239101/portrait_o.jpg",
+      "weekday_list": [
+        7
+      ],
+      "time": "23:30",
+      "description": "4/5起，每週日23:30更新",
+      "start_timestamp": 1774972800000,
+      "end_timestamp": 1782403140000,
+      "channel_name": [
+        "動畫"
+      ],
+      "start_month": 4,
+      "start_month_source": "parsed",
+      "in_current_season": false,
+      "parsed_schedule": [
+        {
+          "start_date": "2026/04/05",
+          "weekday": 7,
+          "weekday_cn": "日",
+          "time": "23:30",
+          "frequency": "weekly",
+          "type": "regular"
+        }
+      ]
+    }
+  ]
+}

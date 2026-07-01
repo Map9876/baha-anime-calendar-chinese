@@ -1,9 +1,110 @@
-# 巴哈姆特动画疯 - 新番时间表
+# Bahamut Anime Crazy - Anime Schedule
 
-**国内直连 (Cloudflare Workers 反代):** https://c.map987.dpdns.org/https://map9876.github.io/baha-anime-calendar-chinese/
+**China Direct (Cloudflare Workers Proxy):** https://c.map987.dpdns.org/https://map9876.github.io/baha-anime-calendar-chinese/
 
 **GitHub Pages:** https://map9876.github.io/baha-anime-calendar-chinese/
 
-每日通过 FlareSolverr 抓取巴哈姆特动画疯 [ani.gamer.com.tw](https://ani.gamer.com.tw/) 的「週期表」页面，查询 bgm.tv API 获取封面，生成 itv6.jp 复古风格的新番时间表。
+Scrape Bahamut Anime Crazy weekly schedule via FlareSolverr, fetch covers from bgm.tv API,
+generate a Bilibili-style timeline page.
 
-> ani.gamer.com.tw 大约在 2024 年末到 2025 年初才新增了週期表功能，之前只有「本季新番」列表和分类筛选。现在的週期表按周一到周日展示每部番的更新时间，方便追踪当季番剧。
+---
+
+## LINE TV Data Source
+
+Bahamut only shows 3-4 days of future data. LINE TV provides full season schedules.
+
+### API Endpoint
+
+
+
+Static JSON, accessible via plain HTTP GET (no auth, no Cloudflare).
+
+### Data Format
+
+
+
+- uid=0(root) gid=0(root) 组=0(root) -- drama_id
+-  -- day array (1=Mon ... 7=Sun)
+-  -- update time
+-  -- human readable schedule
+-  -- Unix ms timestamps
+
+### API Discovery
+
+1. Open https://www.linetv.tw/channel/2/genre/191
+2. Open DevTools (F12) -> Network tab
+3. Reload, filter by 
+4. Found  - contains all airing shows
+5. Verified: no auth needed, accessible via curl
+
+> Note: Page is React-rendered. Schedule text like "7/8 start, every Wed 23:30"
+> is NOT in initial HTML - it is rendered by frontend from scheduleList.json.
+
+### Source Comparison
+
+| Feature | Bahamut (ani.gamer) | LINE TV |
+|---------|---------------------|---------|
+| Range | Current week only | Full season |
+| Time info | Time only | Start date + weekly time |
+| Count | ~20-30/week | ~80-90/season |
+| Access | FlareSolverr needed | Plain HTTP GET |
+| Episodes | None | total_eps available |
+| Covers | bgm.tv API | Built-in posters |
+| Coverage | This week only | Full season |
+
+### Season Filtering
+
+LINE TV includes shows from multiple seasons. Filter by start month:
+
+
+
+Season boundaries:
+- Winter (Jan): Jan-Mar (allow prev Dec)
+- Spring (Apr): Apr-Jun (allow Mar)
+- Summer (Jul): Jul-Sep (allow Jun)
+- Autumn (Oct): Oct-Dec (allow Sep)
+
+### Complex Schedule Parsing
+
+Some anime have special first-week schedules:
+- "7/4 start, 2 eps first week, EP1 19:00 EP2 19:30, 7/12 onwards every Sun 23:00"
+- "7/2 start, 3 eps first week, 7/9 onwards every Thu 22:00"
+
+See  for full parsing logic.
+
+---
+
+## Data Flow
+
+
+
+---
+
+## Agent-Browser MCP Setup
+
+### Quick Install
+
+
+
+### One-Click Script
+
+
+
+### Verify
+
+
+
+### MCP Tools Available
+
+- browser_navigate - Navigate to URL
+- browser_evaluate - Execute JavaScript
+- browser_snapshot - Page snapshot
+- browser_click - Click element
+- browser_type - Type text
+- browser_network - Network monitor
+- browser_get - Get element info
+
+### Config Locations
+
+- MCP config: /root/.codebuddy/.mcp.json
+- Playwright cache: /root/.cache/ms-playwright/
