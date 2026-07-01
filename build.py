@@ -184,15 +184,15 @@ def build_html(schedule, updated):
     # Convert standard time to 30-hour format
     def to_30h(hour_str, minute_str):
         h = int(hour_str)
-        if h < 6:  # 0:00-5:59 → 24:00-29:59
+        if h <= 6:  # 0:00-5:59 → 24:00-29:59, 6:00-6:59 → 30:00-30:59
             h += 24
         return f"{h}:{minute_str}"
     
     # Current time in 30-hour format
     now_h = now.hour
     now_m = now.minute
-    now_30h = f"{now_h}:{now_m:02d}" if now_h >= 6 else f"{now_h+24}:{now_m:02d}"
-    now_30h_val = now_h + 24 if now_h < 6 else now_h
+    now_30h = f"{now_h}:{now_m:02d}" if now_h > 6 else f"{now_h+24}:{now_m:02d}"
+    now_30h_val = now_h + 24 if now_h <= 6 else now_h
     now_30h_min = now_h * 60 + now_m
     
     # Map weekday name → date for this week
@@ -258,7 +258,7 @@ def build_html(schedule, updated):
         html = ""
         is_today = (dt.date() == now.date())
         now_indicator_added = False
-        # For today: insert "now" indicator before the first entry past current time
+        # For today: find the first entry past current time
         if is_today and entries:
             first_future_idx = None
             for idx, entry in enumerate(entries):
@@ -268,8 +268,9 @@ def build_html(schedule, updated):
                 if entry_min > now_30h_min:
                     first_future_idx = idx
                     break
-            # If all entries are in the past, insert at the beginning
-            if first_future_idx is None:
+            # All entries are past → now at the beginning
+            # All entries are future → now at the beginning too
+            if first_future_idx == 0 or first_future_idx is None:
                 html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
                 now_indicator_added = True
         for entry in entries:
