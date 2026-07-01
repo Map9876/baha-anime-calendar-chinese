@@ -211,19 +211,9 @@ def build_html(schedule, updated):
     
     weekday_names = ['一','二','三','四','五','六','日']
     
-    # Convert standard time to 30-hour format
-    def to_30h(hour_str, minute_str):
-        h = int(hour_str)
-        if h <= 6:  # 0:00-5:59 → 24:00-29:59, 6:00-6:59 → 30:00-30:59
-            h += 24
-        return f"{h}:{minute_str}"
-    
-    # Current time in 30-hour format
-    now_h = now.hour
-    now_m = now.minute
-    now_30h = f"{now_h}:{now_m:02d}" if now_h > 6 else f"{now_h+24}:{now_m:02d}"
-    now_30h_val = now_h + 24 if now_h <= 6 else now_h
-    now_30h_min = now_h * 60 + now_m
+    # Current time
+    now_str = f"{now.hour}:{now.minute:02d}"
+    now_min = now.hour * 60 + now.minute
     
     # Map weekday name → date for this week
     day_date_map = {}
@@ -240,8 +230,7 @@ def build_html(schedule, updated):
         date_str = dt.strftime('%m/%d')
         date_tabs += f'<div class="date-tab{active_cls}" data-date="{date_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
-    # Map anime entries to dates using 30-hour rule
-    # For each Bahamut weekday, map to the nearest matching date in our range
+    # Map anime entries to dates by weekday
     date_entries = {}
     for dt in all_dates:
         date_entries[dt.strftime('%m/%d')] = []
@@ -255,16 +244,11 @@ def build_html(schedule, updated):
         if not matching_dates:
             continue
         for entry in entries:
-            h = int(entry['time'].split(':')[0])
-            # 30-hour rule: air times before 6:00 belong to previous day
-            target_idx = 0  # first matching date
-            
             # LINE TV entries have start_date — use it to find correct date
             start_date_str = entry.get('start_date', '')
             if start_date_str and entry.get('source') == 'linetv':
                 try:
                     sd = datetime.strptime(start_date_str, '%Y/%m/%d').date()
-                    # Find the matching date >= start_date
                     future_dates = [dt for dt in matching_dates if dt.date() >= sd]
                     if future_dates:
                         target_idx = matching_dates.index(future_dates[0])
@@ -272,21 +256,17 @@ def build_html(schedule, updated):
                         target_idx = -1
                 except ValueError:
                     target_idx = 0
-            elif h < 6 and len(matching_dates) > 1:
-                target_idx = 0  # prev day's slot is first matching date
             else:
                 # For Bahamut entries, use the most recent matching date
                 future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=1)]
                 if future_dates:
                     target_idx = matching_dates.index(future_dates[0])
                 else:
-                    target_idx = -1  # last matching date
+                    target_idx = -1
             if target_idx < 0:
                 target_idx = len(matching_dates) - 1
             
             target_date = matching_dates[target_idx]
-            if h < 6:
-                target_date = target_date - timedelta(days=1)
             key = target_date.strftime('%m/%d')
             if key in date_entries:
                 date_entries[key].append(entry)
@@ -309,37 +289,49 @@ def build_html(schedule, updated):
                 h = int(entry['time'].split(':')[0])
                 m = int(entry['time'].split(':')[1])
                 entry_min = h * 60 + m
-                if entry_min > now_30h_min:
+                if entry_min > now_min:
                     first_future_idx = idx
                     break
             # All entries are past → now at the beginning
             # All entries are future → now at the beginning too
             if first_future_idx == 0 or first_future_idx is None:
-                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
                 now_indicator_added = True
         for entry in entries:
             name_simple = to_simple_chinese(entry['name'])
             time_str = entry['time']
             hour, minute = time_str.split(':')
             h = int(hour)
-            time_30h = to_30h(hour, minute)
             # Check if near current time
             entry_min = h * 60 + int(minute)
-            is_now = abs(entry_min - now_30h_min) <= 15 and is_today
+            is_now = abs(entry_min - now_min) <= 15 and is_today
             # Insert "now" indicator before the first entry that is past current time
-            if is_today and not now_indicator_added and entry_min > now_30h_min:
-                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+            if is_today and not now_indicator_added and entry_min > now_min:
+                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
                 now_indicator_added = True
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
             now_cls = ' now-airing' if is_now else ''
-            badge = '<span class="timeline-badge">首播</span>' if entry.get('note') else ''
+            # Show premiere badge: first_week_special entries or LINE TV entries starting today or future
+            sd = entry.get('start_date', '')
+            is_premiere = bool(entry.get('note'))
+            if not is_premiere and sd and entry.get('source') == 'linetv':
+                try:
+                    sd_dt = datetime.strptime(sd[:10], '%Y/%m/%d').date()
+                    # Match exact date
+                    if sd_dt == dt.date():
+                        # Only mark as premiere if start_date is today or within next 3 days
+                        if sd_dt >= now.date() - timedelta(days=1) and sd_dt <= now.date() + timedelta(days=3):
+                            is_premiere = True
+                except ValueError:
+                    pass
+            badge = '<span class="timeline-badge">首播</span>' if is_premiere else ''
             html += f'''
             <div class="timeline-item{now_cls}">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">{time_30h}</div>
+                <div class="timeline-time">{time_str}</div>
               </div>
               <div class="timeline-right">
                 {cover_html}
@@ -348,7 +340,7 @@ def build_html(schedule, updated):
             </div>'''
         # Add "now" indicator at the end if no entries are past current time
         if is_today and not now_indicator_added:
-            html += f'<div class="now-label-bar"><span class="now-label-text">now {now_30h}</span></div>'
+            html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
         timelines[key] = html
     
     # Content divs
@@ -375,7 +367,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .header .meta {{ font-size:10px; color:#999; }}
 .date-bar-wrap {{ position:relative; }}
 .date-bar-wrap::before {{ content:''; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(to bottom,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
-.date-bar-wrap::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:6px; background:linear-gradient(to top,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
+.date-bar-wrap::after {{ content:''; position:absolute; bottom:-6px; left:0; right:0; height:6px; background:linear-gradient(to top,rgba(0,0,0,.1),transparent); z-index:11; pointer-events:none; }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
 .date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
