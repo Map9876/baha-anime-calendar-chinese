@@ -122,6 +122,7 @@ def merge_linetv_schedule(schedule):
     
     # Step 3: Merge LINE TV exclusive entries
     added = 0
+    wd_from_date = {0:'一',1:'二',2:'三',3:'四',4:'五',5:'六',6:'日'}
     for anime in linetv_data.get('anime', []):
         # Skip if not current season or already in Bahamut
         if not anime.get('in_current_season'):
@@ -131,6 +132,34 @@ def merge_linetv_schedule(schedule):
         
         parsed = anime.get('parsed_schedule', [])
         for entry in parsed:
+            # Handle first_week_special: create entries for each time
+            if entry.get('type') in ('first_week_special', 'first_episode'):
+                times = entry.get('times', [])
+                if entry.get('time'):  # first_episode has single time
+                    times = [entry['time']]
+                start_date_str = entry.get('start_date', '')
+                if not start_date_str or not times:
+                    continue
+                try:
+                    sd = datetime.strptime(start_date_str, '%Y/%m/%d')
+                    wd_cn = wd_from_date[sd.weekday()]
+                except (ValueError, KeyError):
+                    continue
+                day_key = wd_key_map[wd_cn]
+                for t in times:
+                    new_entry = {
+                        'time': t,
+                        'name': anime['title'],
+                        'source': 'linetv',
+                        'start_date': start_date_str,
+                        'note': entry.get('detail', '首播')
+                    }
+                    if new_entry not in schedule.get(day_key, []):
+                        schedule.setdefault(day_key, []).append(new_entry)
+                        added += 1
+                continue
+            
+            # Regular weekly entries
             if entry.get('type') != 'regular':
                 continue
             wd_cn = entry.get('weekday_cn')
