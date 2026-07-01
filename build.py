@@ -390,6 +390,9 @@ h1 {{
 <p style="font-size:10px; color:#888; margin-top:10px;">
 更新时间: {updated} | 来源: ani.gamer.com.tw | 封面: bgm.tv
 </p>
+<p style="font-size:10px; color:#888; text-align:center; margin:6px 0;">
+<a href="https://github.com/Map9876/baha-anime-calendar-chinese" style="color:#888; text-decoration:underline;">GitHub</a>
+</p>
 </div>
 <script>
 (function() {{
