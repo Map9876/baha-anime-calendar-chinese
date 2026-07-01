@@ -10,11 +10,10 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 .header { position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:6px 12px 4px; }
 .header h1 { font-size:15px; color:#fff; font-weight:600; }
 .header .meta { font-size:10px; color:rgba(255,255,255,.7); }
+.date-bar-wrap { position:relative; }
 .date-bar { position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.date-bar::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }
-.date-bar::after { content:''; position:absolute; bottom:0; left:0; right:0; height:8px; background:linear-gradient(to top,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }
-.date-bar-shadow-l { position:absolute; top:0; left:0; bottom:0; width:12px; background:linear-gradient(to right,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }
-.date-bar-shadow-r { position:absolute; top:0; right:0; bottom:0; width:12px; background:linear-gradient(to left,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }
+.date-bar-shadow-l { position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }
+.date-bar-shadow-r { position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }
 .date-bar::-webkit-scrollbar { display:none; }
 .date-tab { flex:0 0 52px; min-width:52px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }
 .date-tab.active { }
@@ -58,13 +57,15 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 
 <div class="header">
   <h1>新番时间表</h1>
-  <div class="meta">更新: 2026-07-02 06:56</div>
+  <div class="meta">更新: 2026-07-02 07:06</div>
 </div>
 
-<div class="date-bar" id="dateBar">
+<div class="date-bar-wrap">
   <div class="date-bar-shadow-l"></div>
   <div class="date-bar-shadow-r"></div>
-  <div class="date-tab" data-date="06/24"><div class="date-num">06/24</div><div class="date-weekday">三</div></div><div class="date-tab" data-date="06/25"><div class="date-num">06/25</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="06/26"><div class="date-num">06/26</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="06/27"><div class="date-num">06/27</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="06/28"><div class="date-num">06/28</div><div class="date-weekday">日</div></div><div class="date-tab" data-date="06/29"><div class="date-num">06/29</div><div class="date-weekday">一</div></div><div class="date-tab" data-date="06/30"><div class="date-num">06/30</div><div class="date-weekday">二</div></div><div class="date-tab" data-date="07/01"><div class="date-num">07/01</div><div class="date-weekday">三</div></div><div class="date-tab active" data-date="07/02"><div class="today-dot"></div><div class="date-num">07/02</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="07/03"><div class="date-num">07/03</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="07/04"><div class="date-num">07/04</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="07/05"><div class="date-num">07/05</div><div class="date-weekday">日</div></div><div class="date-tab" data-date="07/06"><div class="date-num">07/06</div><div class="date-weekday">一</div></div><div class="date-tab" data-date="07/07"><div class="date-num">07/07</div><div class="date-weekday">二</div></div><div class="date-tab" data-date="07/08"><div class="date-num">07/08</div><div class="date-weekday">三</div></div><div class="date-tab" data-date="07/09"><div class="date-num">07/09</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="07/10"><div class="date-num">07/10</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="07/11"><div class="date-num">07/11</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="07/12"><div class="date-num">07/12</div><div class="date-weekday">日</div></div>
+  <div class="date-bar" id="dateBar">
+    <div class="date-tab" data-date="06/24"><div class="date-num">06/24</div><div class="date-weekday">三</div></div><div class="date-tab" data-date="06/25"><div class="date-num">06/25</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="06/26"><div class="date-num">06/26</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="06/27"><div class="date-num">06/27</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="06/28"><div class="date-num">06/28</div><div class="date-weekday">日</div></div><div class="date-tab" data-date="06/29"><div class="date-num">06/29</div><div class="date-weekday">一</div></div><div class="date-tab" data-date="06/30"><div class="date-num">06/30</div><div class="date-weekday">二</div></div><div class="date-tab" data-date="07/01"><div class="date-num">07/01</div><div class="date-weekday">三</div></div><div class="date-tab active" data-date="07/02"><div class="today-dot"></div><div class="date-num">07/02</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="07/03"><div class="date-num">07/03</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="07/04"><div class="date-num">07/04</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="07/05"><div class="date-num">07/05</div><div class="date-weekday">日</div></div><div class="date-tab" data-date="07/06"><div class="date-num">07/06</div><div class="date-weekday">一</div></div><div class="date-tab" data-date="07/07"><div class="date-num">07/07</div><div class="date-weekday">二</div></div><div class="date-tab" data-date="07/08"><div class="date-num">07/08</div><div class="date-weekday">三</div></div><div class="date-tab" data-date="07/09"><div class="date-num">07/09</div><div class="date-weekday">四</div></div><div class="date-tab" data-date="07/10"><div class="date-num">07/10</div><div class="date-weekday">五</div></div><div class="date-tab" data-date="07/11"><div class="date-num">07/11</div><div class="date-weekday">六</div></div><div class="date-tab" data-date="07/12"><div class="date-num">07/12</div><div class="date-weekday">日</div></div>
+  </div>
 </div>
 
 <div class="timeline-pager" id="timelinePager">
@@ -110,84 +111,18 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               </div>
               <div class="timeline-right">
                 
-                <div class="timeline-title">(国语)战斗陀螺X 第二季</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">战斗陀螺X 第二季</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
                 <div class="timeline-title">(国语)海螺小姐</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">尼古喵喵</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">25:28</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">少女怪兽焦糖恋心</div>
               </div>
             </div></div><div class="timeline-content" data-date="06/26">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
+                <div class="timeline-time">20:00</div>
               </div>
               <div class="timeline-right">
                 
-                <div class="timeline-title">擅长逃跑的殿下 S2</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">从后面来的神威先生 无修版</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">地狱模式 ～喜欢挑战特殊成就的玩家在废设定的异世界成为无双～2nd Season</div>
+                <div class="timeline-title">游戏BUG修复中</div>
               </div>
             </div></div><div class="timeline-content" data-date="06/27">
             <div class="timeline-item">
@@ -200,117 +135,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">黄泉使者</div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">Grow Up Show ～向日葵马戏团～</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">穹庐下的魔女</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">25:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">鬼的新娘(暂定)</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">25:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">花织即使是转生也想打架</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">27:08</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">才女的侍从 在满是高岭之花的贵族学校暗中照顾（毫无生活自理能力的）学院第一大小姐</div>
-              </div>
-            </div></div><div class="timeline-content" data-date="06/28">
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:45</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">碧蓝航线 微速前进！2</div>
-              </div>
-            </div></div><div class="timeline-content" data-date="06/29">
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">24:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">GRANDBLUE 碧蓝之海3</div>
-              </div>
-            </div></div><div class="timeline-content" data-date="06/30">
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">21:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">拯救替身千金的是冷酷无情冰之王子的爱(暂定)</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">22:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">婚姻剧毒</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">22:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">复制品的我也会谈恋爱</div>
-              </div>
-            </div></div><div class="timeline-content" data-date="07/01">
+            </div></div><div class="timeline-content" data-date="06/28"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="06/29"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="06/30"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/01">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -337,57 +162,13 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">20:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">Clevatess II-魔兽之王与虚假的勇者传承-</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">21:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">彻底对你成瘾</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
                 <div class="timeline-time">22:00</div>
               </div>
               <div class="timeline-right">
                 
                 <div class="timeline-title">Re：从零开始的异世界生活 第四季</div>
               </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">22:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">不虐待我的继母与继姊</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">23:30</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">女性向游戏世界对路人角色很不友好 2</div>
-              </div>
-            </div></div><div class="timeline-content active" data-date="07/02"><div class="now-label-bar"><span class="now-label-text">now 6:56</span></div>
+            </div></div><div class="timeline-content active" data-date="07/02"><div class="now-label-bar"><span class="now-label-text">now 7:06</span></div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -436,24 +217,46 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">22:00</div>
+                <div class="timeline-time">24:00</div>
               </div>
               <div class="timeline-right">
                 
-                <div class="timeline-title">BanG Dream! YUME∞MITA</div>
+                <div class="timeline-title">(国语)战斗陀螺X 第二季</div>
               </div>
-            </div></div><div class="timeline-content" data-date="07/03">
+            </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
-                <div class="timeline-time">20:00</div>
+                <div class="timeline-time">24:00</div>
               </div>
               <div class="timeline-right">
                 
-                <div class="timeline-title">游戏BUG修复中</div>
+                <div class="timeline-title">战斗陀螺X 第二季</div>
               </div>
             </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">尼古喵喵</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">25:28</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">少女怪兽焦糖恋心</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/03">
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -496,6 +299,28 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-right">
                 
                 <div class="timeline-title">画完这个再去死</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">从后面来的神威先生 无修版</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">地狱模式 ～喜欢挑战特殊成就的玩家在废设定的异世界成为无双～2nd Season</div>
               </div>
             </div></div><div class="timeline-content" data-date="07/04">
             <div class="timeline-item">
@@ -574,7 +399,62 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">BLACK TORCH 暗黑灯火</div>
               </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">Grow Up Show ～向日葵马戏团～</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">穹庐下的魔女</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">25:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">鬼的新娘(暂定)</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">27:08</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">才女的侍从 在满是高岭之花的贵族学校暗中照顾（毫无生活自理能力的）学院第一大小姐</div>
+              </div>
             </div></div><div class="timeline-content" data-date="07/05">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:45</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">碧蓝航线 微速前进！2</div>
+              </div>
+            </div>
             <div class="timeline-item">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
@@ -606,17 +486,6 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
               <div class="timeline-right">
                 
                 <div class="timeline-title">黑猫与魔女的教室</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-left">
-                <div class="timeline-cir"></div>
-                <div class="timeline-line"></div>
-                <div class="timeline-time">23:00</div>
-              </div>
-              <div class="timeline-right">
-                
-                <div class="timeline-title">无职转生～到了异世界就拿出真本事～第3季</div>
               </div>
             </div></div><div class="timeline-content" data-date="07/06">
             <div class="timeline-item">
@@ -695,7 +564,139 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
                 
                 <div class="timeline-title">斗球儿弹子</div>
               </div>
-            </div></div><div class="timeline-content" data-date="07/07"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/08"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/09"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/10"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/11"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="07/12"><div class="empty-day">当天无更新</div></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">GRANDBLUE 碧蓝之海3</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/07">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">21:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">拯救替身千金的是冷酷无情冰之王子的爱(暂定)</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">婚姻剧毒</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">复制品的我也会谈恋爱</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/08">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">20:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">Clevatess II-魔兽之王与虚假的勇者传承-</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">21:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">彻底对你成瘾</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">不虐待我的继母与继姊</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">女性向游戏世界对路人角色很不友好 2</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/09">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">22:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">BanG Dream! YUME∞MITA</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/10">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">24:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">擅长逃跑的殿下 S2</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/11">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">25:30</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">花织即使是转生也想打架</div>
+              </div>
+            </div></div><div class="timeline-content" data-date="07/12">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <div class="timeline-cir"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-time">23:00</div>
+              </div>
+              <div class="timeline-right">
+                
+                <div class="timeline-title">无职转生～到了异世界就拿出真本事～第3季</div>
+              </div>
+            </div></div>
 </div>
 
 <div class="footer">

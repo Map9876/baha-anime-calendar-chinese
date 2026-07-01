@@ -140,7 +140,8 @@ def merge_linetv_schedule(schedule):
             new_entry = {
                 'time': entry['time'],
                 'name': anime['title'],
-                'source': 'linetv'
+                'source': 'linetv',
+                'start_date': entry.get('start_date', '')
             }
             # Avoid exact duplicates
             if new_entry not in schedule.get(day_key, []):
@@ -228,11 +229,25 @@ def build_html(schedule, updated):
             h = int(entry['time'].split(':')[0])
             # 30-hour rule: air times before 6:00 belong to previous day
             target_idx = 0  # first matching date
-            if h < 6 and len(matching_dates) > 1:
+            
+            # LINE TV entries have start_date — use it to find correct date
+            start_date_str = entry.get('start_date', '')
+            if start_date_str and entry.get('source') == 'linetv':
+                try:
+                    sd = datetime.strptime(start_date_str, '%Y/%m/%d').date()
+                    # Find the matching date >= start_date
+                    future_dates = [dt for dt in matching_dates if dt.date() >= sd]
+                    if future_dates:
+                        target_idx = matching_dates.index(future_dates[0])
+                    else:
+                        target_idx = -1
+                except ValueError:
+                    target_idx = 0
+            elif h < 6 and len(matching_dates) > 1:
                 target_idx = 0  # prev day's slot is first matching date
             else:
-                # Use the most recent matching date that is not in the past
-                future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=2)]
+                # For Bahamut entries, use the most recent matching date
+                future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=1)]
                 if future_dates:
                     target_idx = matching_dates.index(future_dates[0])
                 else:
@@ -328,11 +343,10 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .header {{ position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#fb7299,#fb5588); padding:6px 12px 4px; }}
 .header h1 {{ font-size:15px; color:#fff; font-weight:600; }}
 .header .meta {{ font-size:10px; color:rgba(255,255,255,.7); }}
+.date-bar-wrap {{ position:relative; }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
-.date-bar::before {{ content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }}
-.date-bar::after {{ content:''; position:absolute; bottom:0; left:0; right:0; height:8px; background:linear-gradient(to top,rgba(0,0,0,.12),transparent); z-index:1; pointer-events:none; }}
-.date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:12px; background:linear-gradient(to right,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }}
-.date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:12px; background:linear-gradient(to left,rgba(0,0,0,.1),transparent); z-index:2; pointer-events:none; }}
+.date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
+.date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar::-webkit-scrollbar {{ display:none; }}
 .date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ }}
@@ -379,10 +393,12 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   <div class="meta">更新: {updated}</div>
 </div>
 
-<div class="date-bar" id="dateBar">
+<div class="date-bar-wrap">
   <div class="date-bar-shadow-l"></div>
   <div class="date-bar-shadow-r"></div>
-  {date_tabs}
+  <div class="date-bar" id="dateBar">
+    {date_tabs}
+  </div>
 </div>
 
 <div class="timeline-pager" id="timelinePager">
