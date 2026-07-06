@@ -31,7 +31,7 @@ jobs:
         run: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
 
       - name: Run gnnscreen
-        run: node gnnscreen.js
+        run: DEBUG=1 node gnnscreen.js
         continue-on-error: true
 
       - name: Commit results

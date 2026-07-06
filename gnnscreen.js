@@ -27,7 +27,7 @@ const TIMEOUT = 60000;
 const results = [];
 let debugIdx = 0;
 
-function log(msg) { console.log(`[$(new Date().toISOString().slice(11,19)}] ${msg}`); }
+function log(msg) { console.log(`[${new Date().toISOString().slice(11,19)}] ${msg}`); }
 function debug(msg) { if (DEBUG !== '0') console.log(`  🔍 ${msg}`); }
 
 function fmtTag(d) {
