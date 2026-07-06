@@ -43,5 +43,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "gnn: screenshot $(date '+%Y-%m-%d')"
+            git pull --rebase
             git push
           fi
