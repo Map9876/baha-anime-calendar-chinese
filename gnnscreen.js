@@ -291,6 +291,12 @@ iframe, .gsc-search-box
         log(`  \u23ed 过滤掉: ${a.title.slice(0, 50)}（无播出时间）`);
         continue;
       }
+      // 保存文章正文到 txt 文件
+      const txtTagDir = path.join(OUT, tag);
+      fs.mkdirSync(txtTagDir, { recursive: true });
+      const txt = articleHtml.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      fs.writeFileSync(path.join(txtTagDir, 'article.txt'), txt, 'utf8');
+      log(`  正文已保存: ${txtTagDir}/article.txt`);
       for (const [vn, vp] of Object.entries(VPS)) {
         await shot(p, articleHtml, a, tag, vn, vp);
       }

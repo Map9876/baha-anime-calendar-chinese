@@ -726,5 +726,57 @@ def main():
     total = sum(len(v) for v in schedule.values())
     print(f"HTML generated: {OUTPUT} ({total} anime)")
 
+def export_api(schedule):
+    """Export schedule as API JSON files for developers."""
+    import shutil
+    api_dir = os.path.join(SCRIPT_DIR, 'api')
+    os.makedirs(api_dir, exist_ok=True)
+    
+    # 1. 完整整合版 (中文名)
+    merged = {'updated': updated, 'total': total, 'schedule': schedule}
+    with open(os.path.join(api_dir, '最新baha和line整合时间表.json'), 'w', encoding='utf-8') as f:
+        json.dump(merged, f, ensure_ascii=False, indent=2)
+    
+    # 2. calendar-newest.json (开发者直链)
+    calendar = {'updated': updated, 'total': total, 'schedule': schedule}
+    with open(os.path.join(api_dir, 'calendar-newest.json'), 'w', encoding='utf-8') as f:
+        json.dump(calendar, f, ensure_ascii=False, indent=2)
+    
+    # 3. Bahamut only
+    baha_path = os.path.join(SCRIPT_DIR, 'linetv_schedule.json')
+    baha_schedule = {}
+    if os.path.exists(baha_path):
+        with open(baha_path, 'r') as f:
+            linetv_data = json.load(f)
+        # Extract Bahamut-only entries
+        for day in DAYS:
+            baha_schedule[day] = [e for e in schedule.get(day, []) if e.get('source') != 'linetv']
+    else:
+        baha_schedule = schedule
+    baha_total = sum(len(v) for v in baha_schedule.values())
+    with open(os.path.join(api_dir, 'baha.json'), 'w', encoding='utf-8') as f:
+        json.dump({'updated': updated, 'total': baha_total, 'schedule': baha_schedule}, f, ensure_ascii=False, indent=2)
+    
+    # 4. LINE TV only
+    linetv_schedule = {}
+    if os.path.exists(baha_path):
+        for day in DAYS:
+            linetv_schedule[day] = [e for e in schedule.get(day, []) if e.get('source') == 'linetv']
+    linetv_total = sum(len(v) for v in linetv_schedule.values())
+    with open(os.path.join(api_dir, 'line_tv.json'), 'w', encoding='utf-8') as f:
+        json.dump({'updated': updated, 'total': linetv_total, 'schedule': linetv_schedule}, f, ensure_ascii=False, indent=2)
+    
+    print(f"API JSONs exported to {api_dir}/")
+    for f in os.listdir(api_dir):
+        sz = os.path.getsize(os.path.join(api_dir, f)) / 1024
+        print(f"  {f}: {sz:.1f} KB")
+
 if __name__ == '__main__':
     main()
+    from datetime import timezone, timedelta
+    tz = timezone(timedelta(hours=8))
+    updated = datetime.now(tz).strftime('%Y-%m-%d %H:%M')
+    schedule = load_schedule()
+    schedule = merge_linetv_schedule(schedule)
+    if schedule:
+        export_api(schedule)

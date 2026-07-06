@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions[Bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add gnn_screenshots/ README.md gnnscreen.js .github/workflows/gnnscreen.yml
+          git add gnn_screenshots/ README.md gnnscreen.js .github/workflows/gnnscreen.yml api/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

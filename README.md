@@ -444,6 +444,52 @@ build.py -> 合并两个数据源 -> 去重 -> 生成 index.html
 - 封面链接换为 EdgeOne CDN 链接
 - LINE TV API 自带 horizontal/vertical 海报链接，可优先使用
 
+
+
+---
+
+## API (开放数据接口)
+
+所有 JSON 文件通过 GitHub Pages 直链访问，可直接用于开发者项目。
+
+### 接口列表
+
+| 文件 | 说明 | 直��� |
+|------|------|------|
+| `calendar-newest.json` | 最新整合时间表（推荐） | [calendar-newest.json](https://map9876.github.io/baha-anime-calendar-chinese/api/calendar-newest.json) |
+| `最新baha和line整合时间表.json` | 同上，中文名 | [最新baha和line整合时间表.json](https://map9876.github.io/baha-anime-calendar-chinese/api/最新baha和line整合时间表.json) |
+| `baha.json` | 仅巴哈姆特动画疯数据 | [baha.json](https://map9876.github.io/baha-anime-calendar-chinese/api/baha.json) |
+| `line_tv.json` | 仅 LINE TV 数据 | [line_tv.json](https://map9876.github.io/baha-anime-calendar-chinese/api/line_tv.json) |
+
+### JSON 格式
+
+```json
+{
+  "updated": "2026-07-07 12:00",
+  "total": 67,
+  "schedule": {
+    "週一": [
+      {
+        "time": "21:00",
+        "name": "动画名称",
+        "source": "linetv",
+        "is_premiere": true
+      }
+    ]
+  }
+}
+```
+
+- `time`: 播出时间 (HH:MM)
+- `name`: 动画名称（简体中文）
+- `source`: `"bahamut" | "linetv"` — 数据来源
+- `is_premiere`: 是否为当季首播
+
+### GNN 季度时间表截图
+
+查看 [gnn_screenshots/](gnn_screenshots/) 目录获取巴哈姆特 GNN 新闻的季度新番时间表截图及文章正文。
+
+
 ---
 
 ## 本地构建

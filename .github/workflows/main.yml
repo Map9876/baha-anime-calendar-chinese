@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions[Bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add source/ schedule.json schedule.txt cover_cache.json index.html
+          git add source/ schedule.json schedule.txt cover_cache.json index.html api/
           git commit -m "Update at $(date '+%Y-%m-%d %H:%M')" || echo "No changes"
           git push
 
