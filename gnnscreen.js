@@ -118,8 +118,22 @@ async function flareFetch(url, label) {
 async function shot(page, html, art, tag, vn, vp) {
   log(`  [${vn}] ${art.title}`);
   await page.setViewport(vp);
-  debug(`[${vn}] 设置 HTML 内容 (${html.length} 字节)`);
-  await page.setContent(html, { waitUntil: 'networkidle0', timeout: TIMEOUT }).catch(e => {
+  // 注入 CSS 隐藏评论区等无关内容
+  const cleanHtml = html.replace('</head>', `<style>
+#forum, .forum, .c_msg, .c留言, .comment, #comment, .comment-list, .BH-footer,
+div[id*="comment" i], div[class*="comment" i],
+div[id*="forum" i], div[class*="forum" i],
+section[id*="comment" i], section[class*="comment" i],
+.BH-menu, .sidenav, .fixed-right, .member-service,
+.event-prj, .bh-banner, .footer__wrap, .footer__copyright,
+div[class*="ad-"], div[id*="ad-"],
+iframe, .gsc-search-box
+{ display:none !important; }
+/* 让正文区域全宽 */
+.GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
+</style></head>`);
+  debug(`[${vn}] 设置 HTML 内容 (${cleanHtml.length} 字节)`);
+  await page.setContent(cleanHtml, { waitUntil: 'networkidle0', timeout: TIMEOUT }).catch(e => {
     log(`  ⚠️ setContent 超时/错误: ${e.message}`);
   });
   debug(`[${vn}] ��待渲染`);
