@@ -244,9 +244,6 @@ def build_html(schedule, updated):
     date_tabs = ""
     for dt in all_dates:
         day_label = weekday_names[dt.weekday()]
-        is_today = (dt.date() == now.date())
-        active_cls = ' active' if is_today else ''
-        dot_html = '<div class="today-dot"></div>' if is_today else ''
         date_str = dt.strftime('%m/%d')
         iso_str = dt.strftime('%Y-%m-%d')
         date_tabs += f'<div class="date-tab" data-date="{iso_str}"><div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
@@ -366,12 +363,12 @@ def build_html(schedule, updated):
 body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }}
 .header {{ position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid #eee; padding:6px 12px 4px; display:flex; justify-content:space-between; align-items:flex-start; }}
 .header-left {{ min-width:0; }}
-.header-left h1 {{ font-size:15px; color:#333; font-weight:600; }}
-.header-left .meta {{ font-size:10px; color:#999; }}
+.header-left h1 {{ font-size:17px; color:#333; font-weight:700; }}
+.header-left .meta {{ font-size:11px; color:#999; }}
 .header-right {{ display:flex; align-items:center; gap:4px; flex-shrink:1; min-width:0; margin-left:12px; padding:4px 4px 0 0; }}
 .header-right a {{ display:flex; align-items:center; gap:4px; text-decoration:none; color:#333; }}
 .github-icon {{ flex-shrink:0; width:16px; height:16px; }}
-.github-badge {{ font-size:11px; color:#57606a; border:1px solid #d0d7de; border-radius:6px; padding:1px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px; }}
+.github-badge {{ font-size:12px; color:#57606a; border:1px solid #d0d7de; border-radius:6px; padding:1px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px; }}
 .github-badge:hover {{ background:#f6f8fa; }}
 .date-bar-wrap {{ position:relative; box-shadow:0 -3px 6px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.08); }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
@@ -381,16 +378,13 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 4px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
-.date-tab.active .date-weekday {{ color:#fb7299; }}
-.date-tab::after {{ content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:18px; height:3px; border-radius:2px; background:transparent; }}
-.date-tab.active::after {{ background:#fb7299; }}
-.today-dot {{ width:4px; height:4px; background:#fb7299; border-radius:50%; position:absolute; top:3px; left:50%; margin-left:-2px; }}
-.date-num {{ font-size:12px; color:#999; margin-bottom:1px; line-height:16px; }}
-.date-weekday {{ font-size:16px; color:#333; line-height:20px; }}
+.date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:50%; width:28px; height:28px; line-height:28px; display:inline-block; text-align:center; }}
+.date-num {{ font-size:14px; color:#999; margin-bottom:2px; line-height:18px; }}
+.date-weekday {{ font-size:18px; color:#333; line-height:24px; }}
 .timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
 .timeline-track {{ display:flex; transition:transform .35s cubic-bezier(.25,.46,.45,.94); will-change:transform; }}
 .timeline-content {{ flex:0 0 100%; min-width:0; padding:0 16px; }}
-.empty-day {{ text-align:center; padding:60px 20px; color:#999; font-size:14px; }}
+.empty-day {{ text-align:center; padding:60px 20px; color:#999; font-size:16px; }}
 .timeline-item {{ display:flex; padding:12px 0; position:relative; }}
 .timeline-item.now-airing {{ background:#fff0f5; margin:0 -16px; padding:12px 16px; border-radius:8px; }}
 .timeline-left {{ flex:0 0 56px; display:flex; flex-direction:column; align-items:center; position:relative; }}
@@ -398,24 +392,24 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .timeline-item.now-airing .timeline-cir {{ width:10px; height:10px; background:#fb7299; box-shadow:0 0 6px rgba(251,114,153,.5); }}
 .timeline-line {{ width:1px; flex:1; background:#e0e0e0; min-height:20px; }}
 .timeline-item:last-child .timeline-line {{ display:none; }}
-.timeline-time {{ font-size:13px; color:#666; margin-top:4px; white-space:nowrap; font-weight:600; }}
+.timeline-time {{ font-size:14px; color:#666; margin-top:4px; white-space:nowrap; font-weight:600; }}
 .timeline-item.now-airing .timeline-time {{ color:#fb7299; font-weight:600; }}
 .timeline-right {{ flex:1; margin-left:12px; padding-bottom:8px; border-bottom:1px solid #f0f0f0; }}
 .timeline-item:last-child .timeline-right {{ border-bottom:none; }}
 .timeline-cover {{ display:block; width:80px; height:auto; border-radius:4px; margin-bottom:6px; }}
-.timeline-title {{ font-size:14px; color:#333; line-height:1.5; }}
+.timeline-title {{ font-size:16px; color:#333; line-height:1.5; }}
 .timeline-item.now-airing .timeline-title {{ color:#fb7299; }}
-.timeline-badge {{ display:inline-block; font-size:10px; color:#fb7299; border:1px solid #fb7299; border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle; line-height:16px; }}
-.footer {{ text-align:center; padding:16px; font-size:11px; color:#999; }}
+.timeline-badge {{ display:inline-block; font-size:11px; color:#fb7299; border:1px solid #fb7299; border-radius:3px; padding:0 4px; margin-left:4px; vertical-align:middle; line-height:16px; }}
+.footer {{ text-align:center; padding:16px; font-size:12px; color:#999; }}
 .footer a {{ color:#999; text-decoration:underline; }}
 .now-label-bar {{ position:relative; margin:8px 0; text-align:center; border-top:1px dashed #fb7299; padding-top:4px; }}
-.now-label-text {{ font-size:11px; color:#fb7299; background:#fff; padding:0 8px; display:inline-block; }}
-.swipe-hint {{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:8px 18px; border-radius:20px; z-index:100; pointer-events:none; transition:opacity .5s; white-space:nowrap; max-width:calc(100vw - 40px); overflow:hidden; text-overflow:ellipsis; }}
+.now-label-text {{ font-size:13px; color:#fb7299; background:#fff; padding:0 8px; display:inline-block; }}
+.swipe-hint {{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; font-size:13px; padding:8px 18px; border-radius:20px; z-index:100; pointer-events:none; transition:opacity .5s; white-space:nowrap; max-width:calc(100vw - 40px); overflow:hidden; text-overflow:ellipsis; }}
 .swipe-hint.hide {{ opacity:0; }}
 @media (max-width:480px) {{
   .timeline-left {{ flex-basis:48px; }}
   .timeline-cover {{ width:64px; }}
-  .timeline-title {{ font-size:13px; }}
+  .timeline-title {{ font-size:15px; }}
 }}
 </style>
 </head>
@@ -510,7 +504,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     
     var label = document.createElement('div');
     label.className = 'now-label-bar';
-    label.innerHTML = '<span class="now-label-text">now ' + nowStr + '</span>';
+    label.innerHTML = '<span class="now-label-text">现在 ' + nowStr + '</span>';
     
     if (insertBefore) {{
       todayContent.insertBefore(label, insertBefore);
@@ -563,9 +557,6 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     if (t.dataset.date === todayStr) {{
       currentPage = i;
       t.classList.add('active');
-      var dot = document.createElement('div');
-      dot.className = 'today-dot';
-      t.insertBefore(dot, t.firstChild);
     }}
   }});
   switchDay(currentPage, false);
