@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // 设置共享库路径（Puppeteer bundled Chromium 需要）
 process.env.LD_LIBRARY_PATH = '/usr/lib/x86_64-linux-gnu';
+try { process.env.PUPPETEER_CHROMIUM_REVISION = '150.0.7871.24'; } catch(e) {}
 /**
  * GNN Search Tag Crawler + Ultra HD Scrolling Screenshot
  *
@@ -16,7 +17,16 @@ process.env.LD_LIBRARY_PATH = '/usr/lib/x86_64-linux-gnu';
  *   年份取当前年份后两位 (2026→26)
  */
 
-const puppeteer = require('puppeteer');
+let puppeteer;
+try {
+  puppeteer = require('puppeteer-extra');
+  const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+  puppeteer.use(StealthPlugin());
+  console.log('Using puppeteer-extra with stealth');
+} catch (e) {
+  puppeteer = require('puppeteer');
+  console.log('Using plain puppeteer (stealth not available)');
+}
 const fs = require('fs');
 const path = require('path');
 
@@ -113,8 +123,24 @@ function updateReadme() {
   for (const tag of tags) {
     console.log(`\n====== ${tag} ======`);
     const url = `https://gnn.gamer.com.tw/search_tag.php?q=${encodeURIComponent(tag)}`;
-    try { await p.goto(url, { waitUntil: 'networkidle0', timeout: TIMEOUT }); }
-    catch (e) { console.error('  nav error:', e.message); continue; }
+    console.log(`  URL: ${url}`);
+    try {
+      await p.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+      // 等待页面内容加载（避开 Cloudflare challenge）
+      await p.waitForSelector('a.GNNG-libit2, .GNNG-libit, #search-result, .article-list', { timeout: 15000 }).catch(() => {});
+      await p.evaluate(() => new Promise(r => setTimeout(r, 1000)));
+    } catch (e) { console.error('  nav error:', e.message); }
+    
+    // 检查是否被 Cloudflare 拦截
+    const pageTitle = await p.title().catch(() => '');
+    const bodyText = await p.evaluate(() => document.body?.innerText?.slice(0, 200) || '').catch(() => '');
+    if (bodyText.includes('challenge') || pageTitle.toLowerCase().includes('just a moment')) {
+      console.error('  BLOCKED by Cloudflare challenge');
+      // 截图保存 CF 拦截页面
+      await p.screenshot({ path: path.join(OUT, tag, 'cf_blocked.png'), fullPage: false }).catch(() => {});
+    }
+    console.log(`  Title: ${pageTitle.slice(0, 80)}`);
+    console.log(`  Body start: ${bodyText.slice(0, 100)}`);
 
     let articles = [];
     try {
