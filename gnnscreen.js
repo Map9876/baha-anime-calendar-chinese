@@ -21,6 +21,8 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT = path.join(__dirname, 'gnn_screenshots');
+const README = path.join(__dirname, 'README.md');
+const MARKER_FILE = path.join(OUT, '.done_quarters'); // 记录已完成季度
 const VPS = {
   desktop: { width: 1920, height: 1080, deviceScaleFactor: 2 },
   mobile:  { width: 390,  height: 844,  deviceScaleFactor: 3 },
@@ -54,8 +56,49 @@ async function shot(page, art, tag, vn, vp) {
   console.log(`    ${f} (${(fs.statSync(f).size/1024/1024).toFixed(1)} MB)`);
 }
 
+const results = [];
+
+function loadDoneQuarters() {
+  try { return new Set(JSON.parse(fs.readFileSync(MARKER_FILE, 'utf8'))); } catch (e) { return new Set(); }
+}
+function saveDoneQuarter(tag) {
+  const done = loadDoneQuarters();
+  done.add(tag);
+  fs.mkdirSync(OUT, { recursive: true });
+  fs.writeFileSync(MARKER_FILE, JSON.stringify([...done]), 'utf8');
+}
+
+function updateReadme() {
+  if (!results.length) return;
+  const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  const tags = [...new Set(results.map(r => r.tag))].join(', ');
+  let section = `# GNN ��图记录 (${now})\n\n已完成季度: ${tags}\n\n`;
+  for (const r of results) {
+    section += `- [${r.tag}] ${r.title} (${r.vn}) — ${r.mb} MB  \`${r.file}\`\n`;
+  }
+  let readme = '';
+  try { readme = fs.readFileSync(README, 'utf8'); } catch (e) { readme = ''; }
+  const re = /^# GNN 截图记录[\s\S]*?(?=\n# |\n$|$)/;
+  if (re.test(readme)) {
+    readme = readme.replace(re, section.trimEnd());
+  } else {
+    readme = section + '\n\n' + readme;
+  }
+  fs.writeFileSync(README, readme, 'utf8');
+  console.log(`\nREADME updated: ${README}`);
+}
+
 (async () => {
   console.log('=== GNN ScreenShot ===\nTags:', tags.join(', '));
+
+  // 检查每个标签是否已经完成
+  const done = loadDoneQuarters();
+  const pending = tags.filter(t => !done.has(t));
+  if (pending.length === 0) {
+    console.log('All quarters already done, skipping.');
+    return;
+  }
+  console.log('Pending tags:', pending.join(', '));
 
   const b = await puppeteer.launch({
     headless: true,
@@ -87,5 +130,8 @@ async function shot(page, art, tag, vn, vp) {
     }
   }
   await b.close();
+  // 标记已完成并更新 README
+  for (const tag of pending) { saveDoneQuarter(tag); results.forEach(r => { if (r.tag === tag) results.push(r); }); }
+  updateReadme();
   console.log(`\n=== Done in ${((Date.now()-t0)/60000).toFixed(1)} min ===`);
 })().catch(e => { console.error(e); process.exit(1); });
