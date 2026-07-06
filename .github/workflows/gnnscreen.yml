@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Chinese fonts
+        run: apt-get install -y fonts-noto-cjk fonts-noto-color-emoji 2>/dev/null || true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

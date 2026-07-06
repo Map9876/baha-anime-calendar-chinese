@@ -41,10 +41,24 @@ function updateReadme() {
   const now = new Date().toISOString().slice(0,19).replace('T',' ');
   const tags = [...new Set(results.map(r=>r.tag))].join(', ');
   let sec = `# GNN 截图记录 (${now})\n\n已完成季度: ${tags}\n\n`;
-  for (const r of results) sec += `- [${r.tag}] ${r.title} (${r.vn}) — ${r.mb} MB  \`${r.file}\`\n`;
+  
+  // 按标签分组
+  const byTag = {};
+  for (const r of results) {
+    if (!byTag[r.tag]) byTag[r.tag] = [];
+    byTag[r.tag].push(r);
+  }
+  for (const [tag, items] of Object.entries(byTag)) {
+    sec += `## ${tag}\n\n`;
+    for (const item of items) {
+      sec += `![${item.vn}](${item.file})\n`;
+      sec += `- ${item.title} (${item.vn}) — ${item.mb} MB\n\n`;
+    }
+  }
+  
   let rm = '';
   try { rm = fs.readFileSync(README,'utf8'); } catch(e) { rm = ''; }
-  const re = /^# GNN ��图记录[\s\S]*?(?=\n# |\n$|$)/;
+  const re = /^# GNN 截图记录[\s\S]*?(?=\n# |\n$|$)/;
   if (re.test(rm)) rm = rm.replace(re, sec.trimEnd());
   else rm = sec + '\n\n' + rm;
   fs.writeFileSync(README, rm, 'utf8');
