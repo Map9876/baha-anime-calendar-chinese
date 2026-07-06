@@ -50,9 +50,11 @@ function updateReadme() {
   }
   for (const [tag, items] of Object.entries(byTag)) {
     sec += `## ${tag}\n\n`;
-    for (const item of items) {
-      sec += `![${item.vn}](${item.file})\n`;
-      sec += `- ${item.title} (${item.vn}) — ${item.mb} MB\n\n`;
+    // 只显示 mobile 截图（桌面版不需要）
+    const mobile = items.find(i => i.vn === 'mobile');
+    if (mobile) {
+      sec += `![${tag} 季度时间表](${mobile.file})\n`;
+      sec += `- ${mobile.title} — ${mobile.mb} MB (mobile)\n\n`;
     }
   }
   
@@ -281,6 +283,12 @@ iframe, .gsc-search-box
         log(`文章 HTML: ${(articleHtml.length / 1024).toFixed(1)} KB`);
       } catch(e) {
         log(`❌ FlareSolverr 获取文章失败: ${e.message}`);
+        continue;
+      }
+      // 过滤：只有正文含播出时间 (xx:xx) 的季度时间表才要
+      const hasTime = /\b\d{1,2}:\d{2}\b/.test(articleHtml);
+      if (!hasTime) {
+        log(`  \u23ed 过滤掉: ${a.title.slice(0, 50)}（无播出时间）`);
         continue;
       }
       for (const [vn, vp] of Object.entries(VPS)) {
