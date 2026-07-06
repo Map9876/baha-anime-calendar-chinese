@@ -1,0 +1,181 @@
+{
+  "updated": "2026-07-07 07:53",
+  "total": 23,
+  "schedule": {
+    "週一": [
+      {
+        "time": "00:45",
+        "name": "碧藍航線 微速前進！2",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
+        "time": "19:05",
+        "name": "北斗之拳 拳王軍雜兵們的輓歌(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
+        "time": "21:00",
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/13",
+        "is_premiere": false
+      },
+      {
+        "time": "23:00",
+        "name": "鬥球兒彈子",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      }
+    ],
+    "週二": [
+      {
+        "time": "21:00",
+        "name": "拯救替身千金的是冷酷無情冰之王子的愛(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/07",
+        "is_premiere": true
+      }
+    ],
+    "週三": [
+      {
+        "time": "20:00",
+        "name": "Clevatess II-魔獸之王與虛假的勇者傳承-",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "21:00",
+        "name": "澈底對你成癮",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "22:30",
+        "name": "不虐待我的繼母與繼姊",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "23:30",
+        "name": "女性向遊戲世界對路人角色很不友好 2",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      }
+    ],
+    "週四": [
+      {
+        "time": "22:00",
+        "name": "BanG Dream! YUME∞MITA",
+        "source": "linetv",
+        "start_date": "2026/07/09",
+        "is_premiere": true
+      }
+    ],
+    "週五": [
+      {
+        "time": "00:00",
+        "name": "科學小飛俠 F",
+        "source": "linetv",
+        "start_date": "2026/06/26",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "(國語)戰鬥陀螺X 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "戰鬥陀螺X 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "(國語)海螺小姐",
+        "source": "linetv",
+        "start_date": null,
+        "is_premiere": true
+      },
+      {
+        "time": "20:00",
+        "name": "遊戲BUG修復中",
+        "source": "linetv",
+        "start_date": "2026/06/19",
+        "is_premiere": true
+      }
+    ],
+    "週六": [
+      {
+        "time": "00:00",
+        "name": "擅長逃跑的殿下 S2",
+        "source": "linetv",
+        "start_date": "2026/07/18",
+        "is_premiere": true
+      },
+      {
+        "time": "00:30",
+        "name": "從後面來的神威先生 無修版",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "is_premiere": true
+      },
+      {
+        "time": "19:00",
+        "name": "無職轉生～到了異世界就拿出真本事～第3季",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "note": "EP1 19:00 EP2 19:30"
+      },
+      {
+        "time": "19:30",
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "note": "首播"
+      }
+    ],
+    "週日": [
+      {
+        "time": "01:00",
+        "name": "鬼的新娘(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
+      {
+        "time": "01:30",
+        "name": "花織即使是轉生也想打架",
+        "source": "linetv",
+        "start_date": "2026/07/12",
+        "is_premiere": true
+      },
+      {
+        "time": "22:00",
+        "name": "超超超超超喜歡你的100個女朋友 S3",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
+      {
+        "time": "23:00",
+        "name": "無職轉生～到了異世界就拿出真本事～第3季",
+        "source": "linetv",
+        "start_date": "2026/07/12",
+        "is_premiere": false
+      }
+    ]
+  }
+}

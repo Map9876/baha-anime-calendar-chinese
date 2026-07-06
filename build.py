@@ -733,12 +733,12 @@ def export_api(schedule):
     os.makedirs(api_dir, exist_ok=True)
     
     # 1. 完整整合版 (中文名)
-    merged = {'updated': updated, 'total': total, 'schedule': schedule}
+    merged = {'updated': updated, 'total': sum(len(v) for v in schedule.values()), 'schedule': schedule}
     with open(os.path.join(api_dir, '最新baha和line整合时间表.json'), 'w', encoding='utf-8') as f:
         json.dump(merged, f, ensure_ascii=False, indent=2)
     
     # 2. calendar-newest.json (开发者直链)
-    calendar = {'updated': updated, 'total': total, 'schedule': schedule}
+    calendar = {'updated': updated, 'total': sum(len(v) for v in schedule.values()), 'schedule': schedule}
     with open(os.path.join(api_dir, 'calendar-newest.json'), 'w', encoding='utf-8') as f:
         json.dump(calendar, f, ensure_ascii=False, indent=2)
     
@@ -755,7 +755,7 @@ def export_api(schedule):
         baha_schedule = schedule
     baha_total = sum(len(v) for v in baha_schedule.values())
     with open(os.path.join(api_dir, 'baha.json'), 'w', encoding='utf-8') as f:
-        json.dump({'updated': updated, 'total': baha_total, 'schedule': baha_schedule}, f, ensure_ascii=False, indent=2)
+        json.dump({'updated': updated, 'total': sum(len(v) for v in baha_schedule.values()), 'schedule': baha_schedule}, f, ensure_ascii=False, indent=2)
     
     # 4. LINE TV only
     linetv_schedule = {}
@@ -764,7 +764,7 @@ def export_api(schedule):
             linetv_schedule[day] = [e for e in schedule.get(day, []) if e.get('source') == 'linetv']
     linetv_total = sum(len(v) for v in linetv_schedule.values())
     with open(os.path.join(api_dir, 'line_tv.json'), 'w', encoding='utf-8') as f:
-        json.dump({'updated': updated, 'total': linetv_total, 'schedule': linetv_schedule}, f, ensure_ascii=False, indent=2)
+        json.dump({'updated': updated, 'total': sum(len(v) for v in linetv_schedule.values()), 'schedule': linetv_schedule}, f, ensure_ascii=False, indent=2)
     
     print(f"API JSONs exported to {api_dir}/")
     for f in os.listdir(api_dir):

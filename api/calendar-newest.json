@@ -1,0 +1,357 @@
+{
+  "updated": "2026-07-07 07:53",
+  "total": 67,
+  "schedule": {
+    "週一": [
+      {
+        "time": "00:45",
+        "name": "碧藍航線 微速前進！2！！"
+      },
+      {
+        "time": "00:45",
+        "name": "碧藍航線 微速前進！2",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
+        "time": "12:00",
+        "name": "MAO 摩緒"
+      },
+      {
+        "time": "19:05",
+        "name": "Animatica「北斗之拳 拳王軍雜兵們的輓歌」"
+      },
+      {
+        "time": "19:05",
+        "name": "北斗之拳 拳王軍雜兵們的輓歌(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
+        "time": "20:30",
+        "name": "與奔馳於透明之夜的你，談一場看不見的戀愛。"
+      },
+      {
+        "time": "21:00",
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/13",
+        "is_premiere": false
+      },
+      {
+        "time": "21:30",
+        "name": "THE WORLD IS DANCING 世界在起舞"
+      },
+      {
+        "time": "22:30",
+        "name": "無用聖女的異世界美食之旅 憑藉隱藏技能召喚露營車"
+      },
+      {
+        "time": "23:00",
+        "name": "鬥球女彈子"
+      },
+      {
+        "time": "23:00",
+        "name": "鬥球兒彈子",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      }
+    ],
+    "週二": [
+      {
+        "time": "00:00",
+        "name": "GRAND BLUE 碧藍之海 3"
+      },
+      {
+        "time": "21:00",
+        "name": "拯救替身千金的是冷酷無情冰之王子的愛(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/07",
+        "is_premiere": true
+      }
+    ],
+    "週三": [
+      {
+        "time": "08:00",
+        "name": "假面騎士 ZEZTZ"
+      },
+      {
+        "time": "19:00",
+        "name": "從前從前有隻貓！世界喵童話"
+      },
+      {
+        "time": "20:00",
+        "name": "Clevatess II-魔獸之王與虛假的勇者傳承-",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "21:00",
+        "name": "澈底對你成癮",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "22:00",
+        "name": "Re：從零開始的異世界生活 第四季"
+      },
+      {
+        "time": "22:30",
+        "name": "不虐待我的繼母與繼姊",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "23:30",
+        "name": "女性向遊戲世界對路人角色很不友好 2",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      }
+    ],
+    "週四": [
+      {
+        "time": "00:00",
+        "name": "CANDY CARIES 蛀在糖糖裡"
+      },
+      {
+        "time": "01:00",
+        "name": "花樣少年少女 第二季"
+      },
+      {
+        "time": "19:00",
+        "name": "無尾熊繪日記"
+      },
+      {
+        "time": "20:30",
+        "name": "令和妖神斑小姐"
+      },
+      {
+        "time": "20:40",
+        "name": "文豪野犬 汪！第二季"
+      },
+      {
+        "time": "22:00",
+        "name": "BanG Dream！YUME∞MITA"
+      },
+      {
+        "time": "22:00",
+        "name": "BanG Dream! YUME∞MITA",
+        "source": "linetv",
+        "start_date": "2026/07/09",
+        "is_premiere": true
+      },
+      {
+        "time": "23:56",
+        "name": "遭到流放的轉生重騎士憑藉遊戲知識大開無雙"
+      }
+    ],
+    "週五": [
+      {
+        "time": "00:00",
+        "name": "尼古喵喵"
+      },
+      {
+        "time": "00:00",
+        "name": "科學小飛俠 F",
+        "source": "linetv",
+        "start_date": "2026/06/26",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "(國語)戰鬥陀螺X 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "戰鬥陀螺X 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "(國語)海螺小姐",
+        "source": "linetv",
+        "start_date": null,
+        "is_premiere": true
+      },
+      {
+        "time": "01:28",
+        "name": "少女怪獸焦糖戀心"
+      },
+      {
+        "time": "20:00",
+        "name": "遊戲BUG修復中",
+        "source": "linetv",
+        "start_date": "2026/06/19",
+        "is_premiere": true
+      },
+      {
+        "time": "21:30",
+        "name": "從 0 位居民開始的邊境領主大人"
+      },
+      {
+        "time": "23:00",
+        "name": "關於我轉生變成史萊姆這檔事 第四季"
+      },
+      {
+        "time": "23:30",
+        "name": "神之雫"
+      },
+      {
+        "time": "23:30",
+        "name": "畫完這個再去死"
+      }
+    ],
+    "週六": [
+      {
+        "time": "00:00",
+        "name": "擅長逃跑的殿下 S2",
+        "source": "linetv",
+        "start_date": "2026/07/18",
+        "is_premiere": true
+      },
+      {
+        "time": "00:30",
+        "name": "我家的弟弟們真是讓您費心了"
+      },
+      {
+        "time": "00:30",
+        "name": "地獄模式 ～喜歡挑戰特殊成就的玩家在廢設定的異世界成為無雙～ 2nd Season"
+      },
+      {
+        "time": "00:30",
+        "name": "從後面來的神威先生 無修版",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "is_premiere": true
+      },
+      {
+        "time": "09:00",
+        "name": "拉拉熊"
+      },
+      {
+        "time": "09:00",
+        "name": "超人力霸王狄奧"
+      },
+      {
+        "time": "17:30",
+        "name": "小書痴的下剋上  為了成為圖書管理員不擇手段！領主的養女"
+      },
+      {
+        "time": "18:55",
+        "name": "入間同學入魔了！第四季"
+      },
+      {
+        "time": "19:00",
+        "name": "無職轉生～到了異世界就拿出真本事～第3季",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "note": "EP1 19:00 EP2 19:30"
+      },
+      {
+        "time": "19:30",
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "note": "首播"
+      },
+      {
+        "time": "21:00",
+        "name": "貓與龍"
+      },
+      {
+        "time": "21:00",
+        "name": "BLACK TORCH 闇黑燈火"
+      },
+      {
+        "time": "22:00",
+        "name": "岩元前輩的推薦"
+      }
+    ],
+    "週日": [
+      {
+        "time": "00:00",
+        "name": "黃泉使者"
+      },
+      {
+        "time": "00:00",
+        "name": "Grow Up Show ～向日葵馬戲團～"
+      },
+      {
+        "time": "00:00",
+        "name": "穹廬下的魔女"
+      },
+      {
+        "time": "01:00",
+        "name": "鬼的新娘"
+      },
+      {
+        "time": "01:00",
+        "name": "魔法少女奈葉 EXCEEDS Gun Blaze Vengeance"
+      },
+      {
+        "time": "01:00",
+        "name": "鬼的新娘(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
+      {
+        "time": "01:30",
+        "name": "花織即使是轉生也想打架",
+        "source": "linetv",
+        "start_date": "2026/07/12",
+        "is_premiere": true
+      },
+      {
+        "time": "03:08",
+        "name": "才女的侍從 在滿是高嶺之花的貴族學校暗中照顧（毫無生活自理能力的）學院第一大小姐"
+      },
+      {
+        "time": "16:30",
+        "name": "相反的你和我 第二季"
+      },
+      {
+        "time": "21:00",
+        "name": "世界最強後衛 ～迷宮國的新人探索者～"
+      },
+      {
+        "time": "22:00",
+        "name": "超超超超超喜歡你的 100 個女朋友"
+      },
+      {
+        "time": "22:00",
+        "name": "超超超超超喜歡你的100個女朋友 S3",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
+      {
+        "time": "23:00",
+        "name": "黑貓與魔女的教室"
+      },
+      {
+        "time": "23:00",
+        "name": "無職轉生～到了異世界就拿出真本事～第3季",
+        "source": "linetv",
+        "start_date": "2026/07/12",
+        "is_premiere": false
+      },
+      {
+        "time": "23:30",
+        "name": "再見菈菈"
+      }
+    ]
+  }
+}
