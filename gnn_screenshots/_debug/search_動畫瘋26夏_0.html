@@ -1,0 +1,973 @@
+<html lang="zh-Hant-TW"><head><meta charset="UTF-8">
+<title>搜尋 - 巴哈姆特</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta property="og:site_name" content="巴哈姆特電玩資訊站">
+<meta name="description" content="">
+<meta property="og:description" content="">
+<style data-tippy-stylesheet="">.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style><link href="https://i2.bahamut.com.tw/css/basic.css?v=1781149527" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/search.css" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/index_top.css?v=1663318940" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/plugins/tippy.css" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/plugins/tippy-theme-light-6.2.7.css?v=1610514513" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/plugins/toastr.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400|Material+Icons+Round|Material+Icons">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/dailybonus.css?v=1694422001" rel="stylesheet" type="text/css">
+<link href="https://i2.bahamut.com.tw/css/plugins/driver-0.9.8.min.css?v=1611287218" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.3.0/simplebar.min.css" integrity="sha512-rptDreZF629VL73El0GaBEH9tlYEKDJFUr+ysb+9whgSGbwYfGGA61dVtQFL0qC8/SZv/EQFW5JtwEFf+8zKYg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link href="https://i2.bahamut.com.tw/css/global-nav.css?v=1782460912" rel="stylesheet" type="text/css">
+
+<link rel="icon" href="https://i2.bahamut.com.tw/favicon.svg?v=1689129528" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://i2.bahamut.com.tw/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://i2.bahamut.com.tw/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://i2.bahamut.com.tw/apple-touch-icon-144x144.png">
+
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-2Q21791Y9D&amp;cx=c&amp;gtm=4e6711"></script><script type="text/javascript" async="" src="https://cse.google.com/cse.js?cx=partner-pub-9012069346306566:kd3hd85io9c"></script><script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-KDKMGT"></script><script src="https://i2.bahamut.com.tw/js/sys.js?v=1602574456"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://i2.bahamut.com.tw/js/BAHA_EGG.js"></script>
+<script src="https://i2.bahamut.com.tw/js/rsearch.js"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/js.cookie-2.1.4.js"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/ResizeSensor.js?v=1667200186"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/dialogify.min.js?v=1708584729"></script><style type="text/css" id="dialogifyCss">@charset "UTF-8";.dialogify{display:none;position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);margin:auto;max-width:1100px;min-width:300px;max-height:100vh;background-color:#fff;font-size:14px;color:#464646;border:none;border-radius:4px;overflow:auto;box-shadow:0 3px 4px #0000001a,0 1px 8px #0000000d,0 2px 20px #0000001a;z-index:2;padding:0;line-height:100%;font-family:Helvetica Neue,Helvetica,Roboto,Arial,Lucida Grande,PingFang TC,\860b\679c\5137\4e2d\9ed1,\5fae\8edf\6b63\9ed1\9ad4,Microsoft JhengHei,\9ed1\9ad4-\7e41,sans-serif}.dialogify[open]{display:block}.dialogify.fixed{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}.dialogify p{line-height:1.5}.dialogify>div{background-repeat:no-repeat;background-position:right bottom}.dialogify>div:after{content:"";position:absolute;bottom:0;left:0;width:20px;height:21px;transform:rotate(90deg);background-size:20px;background-repeat:no-repeat;opacity:.7}.dialogify>div hr{border:none;height:1px;background:#E0E6E8}.dialogify .dialogify__body{min-height:40px;zoom:1}.dialogify .dialogify__body:after{clear:both;content:".";display:block;width:0;height:0;visibility:hidden}.dialogify .dialogify__body a{color:#117e96}.dialogify .dialogify__body a:hover{color:#126e7d}.dialogify .dialogify__content{padding:22px 28px 20px 24px;box-sizing:border-box}.dialogify .dialogify__content-box{margin:20px auto}.dialogify .dialogify__maxheight{max-height:400px;overflow-y:scroll;overflow-x:hidden}.dialogify .dialogify__autowidth{max-width:1100px;min-width:560px}.dialogify .dialogify__fixedwidth{max-width:560px}.dialogify .dialog__maxheight{max-height:400px;overflow-y:auto}.dialogify .dialogify__close{position:absolute;top:8px;right:8px;color:#00555f}.dialogify .dialogify__close img{width:16px;height:16px;opacity:.85}.dialogify .dialogify__close:hover{cursor:pointer}.dialogify .dialogify__close:hover img{opacity:1}.dialogify img.dialogify-ajax-loading{position:absolute;left:50%;top:50%;width:24px;height:24px;transform:translate(-50%)}.dialogify a:focus{outline:none;text-decoration:none}.dialogify .btn-danger-shadow{box-shadow:0 16px 26px -10px #f443368f,0 4px 25px #0000001f,0 8px 10px -5px #f4433633}.dialogify .btn-box{margin-top:20px;clear:both}.dialogify .btn-box .btn-insert{margin-left:8px;margin-right:3px}.dialogify .btn-box .check-group{float:left;margin-top:8px}.dialogify .btn-box .check-group input[type=checkbox]+label h6{font-size:13px;color:#a6a6a6}.dialogify .btn-box .check-group input[type=checkbox]+label a{color:#117e96}.dialogify .btn-box .check-group input[type=checkbox]+label a:hover{color:#126e7d;text-decoration:none;transition:all .3s}.dialogify .btn-box .float-left,.dialogify .btn-box .float-left a{margin-left:0}.dialogify .btn-box .post__text-small{font-weight:400}.dialogify .btn-box .link-text{color:#117e96}.dialogify .link-form__actions{margin-top:10px;float:right;width:100%}.dialogify .btn{display:inline-block;border:1px solid transparent;border-radius:3px;padding:5px 12px;height:auto;font-size:14px;line-height:1.5;letter-spacing:1px;cursor:pointer;background-color:#e5e5e5;color:#a6a6a6;outline:none;text-decoration:none}.dialogify .btn:hover{background:#dcdcdc;color:#a6a6a6}.dialogify .btn.is-disabled{cursor:not-allowed!important}.dialogify .btn.is-disabled{opacity:.5;box-shadow:inset 0 1px 1px #0003}.dialogify .btn.is-disabled:hover{animation:.3s shake}@keyframes shake{0%{transform:rotate(1.5deg)}50%{transform:rotate(-2deg)}70%{transform:rotate(1.5deg)}to{transform:rotate(0)}}.dialogify .btn.btn-primary{background-color:#117e96;color:#fff}.dialogify .btn.btn-primary:hover{background-color:#126e7d}.dialogify .btn.btn-danger{background-color:#f44336;color:#fff}.dialogify .btn.btn-danger:hover{background:#DE2427}.dialogify .btn.btn-danger.is-disabled:hover{background-color:#f44336}.dialogify h5.dialogify_title{font-size:18px;color:#00555f;line-height:1;margin:0 0 18px;font-family:Helvetica Neue,Helvetica,Roboto,Arial,Lucida Grande,PingFang TC,\860b\679c\5137\4e2d\9ed1,Apple LiGothic Medium,\5fae\8edf\6b63\9ed1\9ad4,sans-serif;font-weight:400}.dialogify h5.dialogify_title img{width:12px;height:10px;position:relative;top:-2px;margin-right:3px}.dialogify h5.dialogify_title .post__text-small img{width:12px;height:12px;top:-1px}.dialogify hr{background:#E0E6E8;border:none;height:1px;width:100%;margin-bottom:15px}.dialogify .text-right{text-align:right}.dialogify .text-center{text-align:center}.dialogify .text-left{text-align:left}.dialogify .text-field{margin:10px 0;border:1px solid #D9D9D9;border-radius:3px;padding:8px;box-sizing:border-box;width:100%;background-color:#fff;font-size:14px;color:#00555f}.dialogify .text-field:hover,.dialogify .text-field:focus{outline:none;border-color:#117e96}.dialogify .text-field::-webkit-input-placeholder,.dialogify .text-field:-moz-placeholder,.dialogify .text-field:-ms-input-placeholder,.dialogify .text-field::-moz-placeholder{color:#b3b3b3!important}.dialogify .text-field.is-error{border-color:#de2427;color:#de2427}.dialogify textarea.text-field{resize:none;min-height:100px;line-height:1.5;font-size:14px;overflow:auto}dialog::backdrop{background:#000;opacity:.7}dialog+.backdrop{position:fixed;inset:0;background:#000;opacity:.7}</style>
+<script src="https://i2.bahamut.com.tw/js/user_login.js?v=1752631860"></script>
+<script src="https://i2.bahamut.com.tw/js/notification_notice.js?v=1733301248" defer=""></script>
+<script src="https://i2.bahamut.com.tw/js/BH_topBar_noegg.js?v=1757649430" defer=""></script>
+<script src="https://i2.bahamut.com.tw/js/BH_mainmenu.js?v=1779942569" defer=""></script>
+<script src="https://i2.bahamut.com.tw/js/changeText.js?v=1730689548"></script>
+<script src="https://i2.bahamut.com.tw/js/util.js?v=1777257096"></script>
+<script src="https://i2.bahamut.com.tw/js/dfp.js"></script>
+<script src="https://i2.bahamut.com.tw/js/csrf.js?v=1736223395"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/3.2.4/nunjucks-slim.min.js" integrity="sha512-GX0AGYK4bexRYw4fZdGhGMfFFaFEgPHUGtgv855RXzxwMwV3cqRyrOvu1xxjwiNfspdX6uM2Q+yjJS5R1JoyVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://i2.bahamut.com.tw/build/template/signin.min.js?v=1772607806"></script>
+<script src="https://i2.bahamut.com.tw/js/signin.js?v=1742525218"></script>
+<script src="https://i2.bahamut.com.tw/js/signin_ad.js?v=1753862949"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.3.0/simplebar.min.js" integrity="sha512-YumGHjm0sYk55Xdh6t6Uo/mHqBhDBNrW46HZKSBwkjq3X1Knnj7e3UUom2SE9zPpfjlTyJqSHnd4No1ca156cQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://i2.bahamut.com.tw/build/template/lite.js?v=1782699778" defer=""></script>
+<script type="text/javascript" src="https://i2.bahamut.com.tw/js/lite.js?v=1779779366" defer=""></script>
+<script type="text/javascript" src="https://i2.bahamut.com.tw/js/plugins/driver-0.9.8.min.js?v=1611287218" defer=""></script>
+<script src="https://i2.bahamut.com.tw/build/template/navigation.js?v=1782800153"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/popper_core-2.5.4.min.js?v=1610513978"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/tippy-6.3.7.min.js?v=1663218249"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/toastr-2.1.3.min.js"></script>
+<script src="https://i2.bahamut.com.tw/js/navigation.js?v=1782800154"></script>
+
+<script>
+jQuery(document).ready(function($) {
+if (typeof BH_AlkasooD === 'function') {
+BH_AlkasooD($);
+}
+});
+
+// anti adblock
+var AntiAd = AntiAd || {};
+(function(AntiAd) {
+'use strict';
+
+AntiAd.flag = false;
+AntiAd.whiteList = [];
+
+AntiAd.verifyLink = function (link) {}
+AntiAd.block = function() {}
+AntiAd.check = function(element) {}
+})(AntiAd);
+</script>
+<link href="https://i2.bahamut.com.tw/css/plugins/slick.css?v=1610514513" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="https://i2.bahamut.com.tw/css/gnn.css?v=1783306604">
+<link rel="stylesheet" type="text/css" href="https://i2.bahamut.com.tw/css/grids-img.css">
+<link rel="stylesheet" type="text/css" href="https://i2.bahamut.com.tw/css/wide1250.css?v=1778725089">
+<link rel="stylesheet" type="text/css" href="https://i2.bahamut.com.tw/css/plugins/toastr.min.css">
+<link rel="alternate" type="application/rss+xml" title="巴哈姆特 GNN 新聞網" href="https://gnn.gamer.com.tw/rss_utf8.xml">
+<script type="text/javascript" src="https://i2.bahamut.com.tw/js/gnn_new.js?v=1778729194"></script>
+<script type="text/javascript" src="https://i2.bahamut.com.tw/build/template/gnn.js?v=1751965148"></script>
+<script src="https://i2.bahamut.com.tw/js/plugins/slick-1.9.0.min.js?v=1608603448"></script><script src="https://i2.bahamut.com.tw/js/plugins/toastr-2.1.3.min.js"></script><script>
+if (Util.Theme.Dark.applying()) {
+document.write('<link href="https://i2.bahamut.com.tw/css/gnn_dark.css?v=1736837589" rel="stylesheet">');
+}
+</script><link type="text/css" href="https://i2.bahamut.com.tw/css/wide1250.css?v=1778725089" rel="stylesheet">
+<style>
+a {
+color: #464646;
+text-decoration: none;
+}
+</style>
+<script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+if (window.Cookies) {
+bahalv = Cookies.get('BAHALV') || "";
+} else if (window.getCookie) {
+bahalv = getCookie( 'BAHALV' );
+} else if (window.jQuery && jQuery.cookie) {
+bahalv = jQuery.cookie('BAHALV') || "";
+} else {
+bahalv = "";
+}
+
+bahalv = (bahalv) ? bahalv : 0;
+
+var fparam = location.search;
+var bsnary = fparam.match(/\d+/g);
+var gpt_bsn = (bsnary === null) ? 0 : bsnary[0];
+
+googletag.cmd.push(function() {
+googletag.defineSlot('/1017768/B300', [[300, 250], [300, 600], 'fluid'], 'div-gpt-ad-1489070677458-0').addService(googletag.pubads());googletag.pubads().setTargeting("LV", bahalv);
+googletag.pubads().setTargeting("bsn", gpt_bsn);
+googletag.pubads().setTargeting("service","gnn");
+googletag.pubads().enableSingleRequest();
+googletag.pubads().collapseEmptyDivs();
+googletag.enableServices();
+});
+</script>
+<meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202606260101/pubads_impl.js?cb=31099460" async=""></script><link href="https://securepubads.g.doubleclick.net/pagead/managed/dict/m202606180101/gpt" rel="compression-dictionary"><script async="" src="https://fundingchoicesmessages.google.com/i/1017768?ers=3"></script><script src="https://www.google.com/cse/static/element/d4d17fc91fc77275/cse_element__zh_tw.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/d4d17fc91fc77275/default_v6+zh_TW.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v6/default.css" rel="stylesheet"><script async="" src="https://fundingchoicesmessages.google.com/f/AGSKWxUOzsQX0owK0h18CXdut-6gc3Bd51qFrwgEgF2aMS5_EyOKegsJ-w4LbkKU4pN8-J73nITnaoWCwSrUEsUvShT0NOTUCvqfdG4Jcx9Dqd6o-hrehNO4nysz5v0ncGu_0ZdG8z2-bQ==?fccs=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLFsxNzgzMzc1NDE2LDU3NTAwMDAwMF0sbnVsbCxudWxsLG51bGwsW251bGwsWzddXSwiaHR0cHM6Ly9nbm4uZ2FtZXIuY29tLnR3L3NlYXJjaF90YWcucGhwIixudWxsLFtbOCwiYzh2VE9TN3NXWm8iXSxbOSwiZW4tVVMiXSxbMTgsIltbW251bGwsMTAwOV1dXSJdLFszNSwiMTc4MzM3NTQxNiJdLFsxOSwiMiJdLFsxNywiWzBdIl0sWzI0LCIiXSxbMjksImZhbHNlIl1dXQ"></script><script esp-signal="true" src="https://invstatic101.creativecdn.com/encrypted-signals/encrypted-tag-g.js"></script><script esp-signal="true" src="https://static.criteo.net/js/ld/publishertag.ids.js"></script><script async="" src="https://fundingchoicesmessages.google.com/f/AGSKWxUJVtOvh2g-ejQIozapGrChPYhBlyxsDooVoIqA9bG7qk0esI1zVOL_X4vqedJRovcus8X6bqNMn9XHyC11smEQyobtkUSmfN6W7FAobgCeSYZrtlpppGHMH290bDAZlw_iH81Jvw==?fccs=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLFsxNzgzMzc1NDE2LDY4NTAwMDAwMF0sbnVsbCxudWxsLG51bGwsW251bGwsWzcsOV0sbnVsbCwyLG51bGwsImVuIl0sImh0dHBzOi8vZ25uLmdhbWVyLmNvbS50dy9zZWFyY2hfdGFnLnBocCIsbnVsbCxbWzgsImM4dlRPUzdzV1pvIl0sWzksImVuLVVTIl0sWzE4LCJbW1tudWxsLDEwMDldXV0iXSxbMzUsIjE3ODMzNzU0MTYiXSxbMTksIjIiXSxbMTcsIlswXSJdLFsyNCwiIl0sWzI5LCJmYWxzZSJdXV0"></script><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-results-wrapper-overlay{background-color:#FFFFFF}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#D9D9D9}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#2F5BB7;background-color:#357AE8;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#CCCCCC;border-color:#CCCCCC;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#CCCCCC;border-color:#CCCCCC;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#0066CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#800080}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#0066CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#0066CC}.gsc-cursor-page{color:#0066CC}a.gsc-trailing-more-results:link{color:#0066CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#4D5156}.gs-webResult div.gs-visibleUrl{color:#202124}.gs-webResult div.gs-visibleUrl-short{color:#202124}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#CCCCCC;background-color:#FFFFFF;color:#CCCCCC}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#CCCCCC;background-color:#FFFFFF;color:#CCCCCC}.gsc-webResult.gsc-result.gsc-promotion{border-color:#F6F6F6;background-color:#F6F6F6}.gsc-completion-container{border-color:#D9D9D9}.gsc-completion-title{color:#0066CC}.gsc-completion-snippet{color:#4D5156}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1A0DAB}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1A0DAB}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1A0DAB}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1A0DAB}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#4D5156}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#202124}.gcsc-find-more-on-google{color:#0066CC}.gcsc-find-more-on-google-magnifier{fill:#0066CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:8px 16px}.gsib_a{padding:4px 10px 4px 56px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}.gssb_a,.gssb_a td{line-height:24px}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:8px 16px}.gsib_a{padding:4px 10px 4px 56px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}.gssb_a,.gssb_a td{line-height:24px}</style></head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KDKMGT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KDKMGT');</script>
+<!-- End Google Tag Manager --><div class="global-container"><div class="main-sidebar__backdrop"></div>
+<template id="boardSettingDialogContent">
+    <div class="lightbox__content">
+        <div class="form-check__item">
+            <input id="boardSettingHistory" class="form-check__input" type="checkbox">
+            <label for="boardSettingHistory" class="form-check__label">
+                <span class="form-check__check"></span>
+                <p>最近閱覽</p>
+            </label>
+        </div>
+        <div class="form-check__item">
+            <input id="boardSettingFavorite" class="form-check__input" type="checkbox">
+            <label for="boardSettingFavorite" class="form-check__label">
+                <span class="form-check__check"></span>
+                <p>我的哈啦板 <a href="https://home.gamer.com.tw/setting/forum_edit_board.php" title="編輯追蹤看板" target="_blank"><i class="fa-regular fa-pen-to-square"></i></a></p>
+            </label>
+        </div>
+    </div>
+</template>    <nav class="main-nav main-nav-primary-color">
+    <div class="main-nav__left">
+        <div class="main-nav__toggle">
+            <a class="main-sidebar__control" href="javascript:;">
+                <div class="service__icon sidenav__icon icon-menu"></div>
+            </a>
+        </div>
+        <a href="https://www.gamer.com.tw" class="main-nav__logo"></a>
+    </div>
+
+    <div class="main-nav__form">
+        <div id="___gcse_0"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-zh-TW" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="搜尋" aria-label="搜尋" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; margin: 0px; height: auto; background: rgb(255, 255, 255); outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="清除搜尋框" role="button" style=""><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>搜尋</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="清除結果">&nbsp;</div></td></tr></tbody></table></form></div></div>
+    </div>
+
+    <ul class="main-nav__row">
+        <li class="main-nav__item search-padding">
+            <button class="tool__icon icon-search"></button>
+        </li>
+        <li class="main-nav__item notification" style="display:none;">
+            <button class="main-nav__btn">
+                <div class="tool__icon icon-notice"></div>
+                <div class="text-tooltip">通知</div>
+                <data style="display:none;" class="notification-badge nav-notification-badge"></data>
+            </button>
+        </li>
+        <li class="main-nav__item bahamut-now" style="display:none;">
+            <button class="main-nav__btn">
+                <div class="tool__icon icon-im"></div>
+                <span class="text-tooltip">聊天</span>
+                <data style="display:none;" class="notification-badge nav-notification-badge">N</data>
+            </button>
+        </li>
+        <li class="main-nav__item member__item">
+            <a class="main-nav__link" href="https://user.gamer.com.tw/register.php?service_name=gnn_search_tag">註冊</a>
+        </li>
+        <li class="main-nav__item member__item">
+            <a class="main-nav__link" href="javascript:;" onclick="User.Login.requireLoginIframe();">登入</a>
+        </li>
+        <li class="main-nav__item member__content">
+            <a class="main-nav__link" href="javascript:;">
+                <div class="main-nav__member">
+                    <img class="main-nav__profile" src="https://i2.bahamut.com.tw/none.gif">
+                </div>
+                <span class="text-tooltip">我的小屋</span>
+            </a>
+            <a class="main-nav__dropdown" href="javascript:;" style="display:none;">
+                <span class="text-tooltip">個人捷徑</span>
+                <i class="fa fa-angle-down"></i>
+            <data id="signinIcon" class="notification-badge nav-notification-badge signin" value="2">簽</data></a>
+        </li>
+    </ul>
+
+    <!-- 新版勇者捷徑 -->
+    <div class="member-popover member-service" style="display: none;">
+                <div class="member-popover__wrap">
+            <div class="member-popover__row">
+                <a class="member-popover__info" href="javascript:;" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="勇者">
+                    <div class="member-popover__profile">
+                        <div class="member-popover__profile-content">
+                            <img src="https://i2.bahamut.com.tw/none.gif">
+                        </div>
+                        <div class="member-popover__level"></div>
+                    </div>
+                    <div class="member-popover__user">
+                        <p class="member-popover__name fw-bold"></p>
+                        <div class="member-popover__account"></div>
+                    </div>
+                </a>
+                <div class="member-popover__stats">
+                    <div class="member-popover__metric">
+                        <span class="member-popover__value" id="userGP">0</span><span class="member-popover__unit">GP</span>
+                    </div>
+                    <div class="member-popover__metric">
+                        <span class="member-popover__value" id="userCoin">0</span><span class="member-popover__unit">巴幣</span>
+                    </div>
+                    <div class="member-popover__metric">
+                        <span class="member-popover__value" id="userDonate">0</span><span class="member-popover__unit">贊助</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="member-popover__wrap">
+            <ul class="member-popover__row">
+                <li class="member-popover__item">
+                    <a id="signin-btn" href="javascript:;" class="member-popover__link" onclick="Signin.start(this);" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="每日簽到">
+                        <div class="tool__icon icon-date member-popover__icon"></div>
+                        <span class="member-popover__link-text">每日簽到<span class="member-popover__finished signed-in-no">未簽到</span></span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://home.gamer.com.tw/profile/collection.php" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="我的收藏">
+                        <div class="tool__icon icon-mark member-popover__icon"></div>
+                        <span class="member-popover__link-text">我的收藏</span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://home.gamer.com.tw/profile/my_guild.php" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="我的公會">
+                        <div class="tool__icon icon-guild member-popover__icon"></div>
+                        <span class="member-popover__link-text">我的公會</span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://mailbox.gamer.com.tw/" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="我的信箱">
+                        <div class="tool__icon icon-mail member-popover__icon"></div>
+                        <span class="member-popover__link-text">我的信箱</span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://avatar1.gamer.com.tw/wardrobe.php" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="更換造型">
+                        <div class="tool__icon icon-skin member-popover__icon"></div>
+                        <span class="member-popover__link-text">更換造型</span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://home.gamer.com.tw/creation/dashboard.php" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="創作者後台">
+                        <div class="tool__icon icon-create member-popover__icon"></div>
+                        <span class="member-popover__link-text">創作者後台</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="member-popover__wrap">
+            <ul class="member-popover__row">
+                <li class="member-popover__item">
+                    <a id="darkSwitch" href="javascript:;" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="切換闇黑模式">
+                        <label class="member-popover__toggle-label">
+                            <input type="checkbox" class="member-popover__checkbox">
+                            <div class="tool__icon icon-mode member-popover__icon"></div>
+                            <span class="member-popover__link-text">闇黑模式</span>
+                            <span class="member-popover__btn-box">
+                                <span class="member-popover__btn"></span>
+                            </span>
+                        </label>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://home.gamer.com.tw/setting/" class="member-popover__link" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_勇者選單" data-gtm-type="設定">
+                        <div class="tool__icon icon-setting member-popover__icon"></div>
+                        <span class="member-popover__link-text">設定</span>
+                    </a>
+                </li>
+                <li class="member-popover__item">
+                    <a href="https://user.gamer.com.tw/logout.php" class="member-popover__link">
+                        <div class="tool__icon icon-logout member-popover__icon"></div>
+                        <span class="member-popover__link-text">登出</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 新版通知 -->
+    <div class="notice-popover member-service" style="display: none;">
+        <div class="notice-popover__row">
+            <div class="notice-popover__item" data-target="#notificationTab">
+                <div class="notice-popover__tab">通知<data class="notification-badge" style="display: none;"></data>
+                </div>
+            </div>
+            <div class="notice-popover__item" data-target="#subscribeTab">
+                <div class="notice-popover__tab">訂閱<data class="notification-badge" style="display: none;"></data>
+                </div>
+            </div>
+            <div style="width:60px;" class="tab__line"></div>
+        </div>
+                <div class="member-service__container" id="notificationTab" style="display: none;">
+            <ul class="member-service__wrapper notice-content"></ul>
+            <a href="https://home.gamer.com.tw/notifylist.php?t=A" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_通知選單" data-gtm-type="查看全部" target="_blank" class="member-service__link">查看全部</a>
+        </div>
+
+        <div class="member-service__container" id="subscribeTab" style="display: none;">
+            <ul class="member-service__wrapper subscribe-content"></ul>
+            <a href="https://home.gamer.com.tw/notifylist.php?t=B" data-gtm-page="新首頁" data-gtm-link-click="點擊項目" data-gtm-area="天_通知選單" data-gtm-type="查看全部" target="_blank" class="member-service__link">查看全部</a>
+        </div>
+    </div>
+    <!-- 新版聊天 NOW -->
+    <div class="chat-popover member-service" style="display: none;">
+        <p class="member-service__heading">巴哈姆特 Now! - 我的聊天列表</p>
+        <!-- loading 狀態 -->
+        <div class="system-loading">
+            <img src="https://i2.bahamut.com.tw/now/loading-pixeltext.gif">
+        </div>
+        <!-- 聊天訊息內容 -->
+        <div class="member-service__wrapper">
+            <ul class="member-service__row column"></ul>
+        </div>
+        <div class="btn__group text-center">
+            <a class="btn btn-xl link__between btn-outline" href="https://home.gamer.com.tw/profile/friend_list.php" target="_blank">好友</a>
+            <a class="btn btn-xl link__between btn-primary" href="https://now.gamer.com.tw/" target="_blank">下載Now! APP</a>
+        </div>
+    </div>
+
+</nav>
+<div class="main-container"><div data-simplebar="init" class="main-sidebar__left" data-gtm-page="GNN標籤搜尋"><div class="simplebar-wrapper" style="margin: -16px 0px 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden;"><div class="simplebar-content" style="padding: 16px 0px 0px;">
+    <div class="sidenav-section">
+        <div class="sidenav-section__container">
+                                    <div class="sidenav-section__row sidenav-section__menu-icon">
+                <button class="sidenav-section__item">
+                    <a class="main-sidebar__control" href="javascript:;">
+                        <div class="service__icon sidenav__icon icon-menu"></div>
+                    </a>
+                </button>
+            </div>
+                        <div class="sidenav-section__row sidenav-section__top">
+                <ul>
+                    <li class="sidenav-section__item">
+                        <a class="sidenav-section__link" href="https://www.gamer.com.tw" data-collapse-tippy="首頁" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_首頁" data-gtm-link-click="點擊回首頁">
+                            <div class="sidenav__icon service__icon icon-home"></div>
+                            <p class="sidenav-section__title">首頁</p>
+                        </a>
+                    </li>
+                    <li class="sidenav-section__item" style="display:none;">
+                        <a class="sidenav-section__link" href="https://www.gamer.com.tw/index.php#subscribe" data-collapse-tippy="追蹤內容" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_追蹤" data-gtm-link-click="點擊回首頁">
+                            <div class="sidenav__icon service__icon icon-subscribe"></div>
+                            <p class="sidenav-section__title">追蹤內容</p>
+                        </a>
+                    </li>
+                    <li class="sidenav-section__item">
+                        <a class="sidenav-section__link" href="https://prj.gamer.com.tw/30y/" data-collapse-tippy="巴哈姆特30週年" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_巴哈姆特30週年" data-gtm-link-click="點擊活動" target="_blank">
+                                                            <img class="event-prj__button" src="https://i2.bahamut.com.tw/icon/baha30-entry_btn.png">
+                                                        <p class="sidenav-section__title">巴哈姆特30週年</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidenav-section__row sidenav-section__shortcut" style="display: none;">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger shortcutTrigger">自訂捷徑<i class="fa fa-angle-down rotate"></i></div>
+                    <div class="tooltip" data-tooltip="編輯捷徑" style="display:none;">
+                        <a href="https://home.gamer.com.tw/setting/navigation.php" target="_blank" class="service__icon section-icon icon-edit-shortcut" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_捷徑" data-gtm-link-click="點擊編輯"></a>
+                    </div>
+                </div>
+                <div class="sidenav-section__inner">
+                    <a class="sidenav-shortcut__btn" href="https://home.gamer.com.tw/setting/navigation.php" target="_blank">
+                        <span class="material-icons-round icon-add-shortcut">add_circle</span>新增捷徑
+                    </a>
+                    <!-- 自訂捷徑區塊 -->
+                    <ul class="sidenav-shortcut__row shortcutList">
+                                            </ul>
+                </div>
+            </div>
+
+            <ul class="sidenav-section__row">
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://gnn.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="GNN新聞" data-gtm-type="GNN新聞">
+                        <div class="sidenav__icon service__icon icon-news"></div>
+                        <p class="sidenav-section__title">GNN新聞</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://forum.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="哈啦區" data-gtm-type="哈啦區">
+                        <div class="sidenav__icon service__icon icon-forum"></div>
+                        <p class="sidenav-section__title">哈啦區</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://ani.gamer.com.tw" target="_blank" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="動畫瘋" data-gtm-type="動畫瘋">
+                        <div class="sidenav__icon service__icon icon-ani"></div>
+                        <p class="sidenav-section__title">動畫瘋</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="//buy.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="巴哈商城" data-gtm-type="巴哈商城">
+                        <div class="sidenav__icon service__icon icon-ec"></div>
+                        <p class="sidenav-section__title">巴哈商城</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <ul class="sidenav-section__row sidenav-secondary" style="display:none;">
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="javascript:LiteTop.openChat();" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="Now!" data-gtm-type="NOW">
+                                <div class="sidenav__icon service__icon icon-now"></div>
+                                <p class="sidenav-section__title">NOW！</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://gnn.gamer.com.tw/gamecrazy.php" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="電玩瘋" data-gtm-type="電玩瘋">
+                                <div class="sidenav__icon service__icon icon-gamecrazy"></div>
+                                <p class="sidenav-section__title">電玩瘋</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="創作大廳" data-gtm-type="創作大廳">
+                                <div class="sidenav__icon service__icon icon-create"></div>
+                                <p class="sidenav-section__title">創作大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://guild.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="公會大廳" data-gtm-type="公會大廳">
+                                <div class="sidenav__icon service__icon icon-guild"></div>
+                                <p class="sidenav-section__title">公會大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw/liveindex.php" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="實況大廳" data-gtm-type="實況大廳">
+                                <div class="sidenav__icon service__icon icon-live"></div>
+                                <p class="sidenav-section__title">實況大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://avatar1.gamer.com.tw/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="勇者造型" data-gtm-type="勇者造型">
+                                <div class="sidenav__icon service__icon icon-skin"></div>
+                                <p class="sidenav-section__title">勇者造型</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://fuli.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="勇者福利社" data-gtm-type="勇者福利社">
+                                <div class="sidenav__icon service__icon icon-fuli"></div>
+                                <p class="sidenav-section__title">勇者福利社</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://hd.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="巴哈電硬館" data-gtm-type="巴哈電硬館">
+                                <div class="sidenav__icon service__icon icon-hardware"></div>
+                                <p class="sidenav-section__title">巴哈電硬館</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw/sticker/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="貼圖商店" data-gtm-type="貼圖商店">
+                                <div class="sidenav__icon service__icon icon-sticker"></div>
+                                <p class="sidenav-section__title">貼圖商店</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://wall.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="動態牆" data-gtm-type="動態牆">
+                                <div class="sidenav__icon service__icon icon-wall"></div>
+                                <p class="sidenav-section__title">動態牆</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item acgDetail" aria-expanded="false">
+                            <a class="sidenav-section__link sidenav-tippy" href="javascript:;" data-collapse-tippy="ACG資料庫">
+                                <div class="sidenav__icon service__icon icon-data"></div>
+                                <p class="sidenav-section__title">ACG資料庫</p>
+                            </a>
+                        
+
+
+<ul class="sidenav-tippy-content mobile">
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/android" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Android">Android</a>
+            
+                <a href="https://acg.gamer.com.tw/ios" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="iOS">iOS</a>
+            
+                <a href="https://acg.gamer.com.tw/online" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PC線上">PC 線上</a>
+            
+                <a href="https://acg.gamer.com.tw/pc" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PC單機">PC 單機</a>
+            
+                <a href="https://acg.gamer.com.tw/web" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="WebGame">Web Game</a>
+            
+        </li>
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/ps5" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PS5">PS5</a>
+            
+                <a href="https://acg.gamer.com.tw/ps4" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PS4">PS4</a>
+            
+                <a href="https://acg.gamer.com.tw/switch2" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Switch2">Switch 2</a>
+            
+                <a href="https://acg.gamer.com.tw/switch" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Switch">Switch</a>
+            
+                <a href="https://acg.gamer.com.tw/xboxsx" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="XboxSX">Xbox Series X</a>
+            
+                <a href="https://acg.gamer.com.tw/news.php?p=xbone" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="XboxOne">Xbox One</a>
+            
+        </li>
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/anime" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="動畫">動畫</a>
+            
+                <a href="https://acg.gamer.com.tw/comic" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="漫畫">漫畫</a>
+            
+                <a href="https://acg.gamer.com.tw/lightnovel" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="輕小說">輕小說</a>
+            
+        </li>
+    
+</ul></li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://prj.gamer.com.tw/acgaward/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="ACG創作大賽" data-gtm-type="ACG創作大賽">
+                                <div class="sidenav__icon service__icon icon-acg"></div>
+                                <p class="sidenav-section__title">ACG創作大賽</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://user.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="會員中心" data-gtm-type="會員中心">
+                                <div class="sidenav__icon service__icon icon-member"></div>
+                                <p class="sidenav-section__title">會員中心</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="sidenav-section__link navMore" href="javascript:;">
+                        <div class="sidenav__icon service__icon icon-arrow"></div>
+                        <span class="sidenav-section__title">顯示更多</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidenav-section__row is-empty">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger historyTrigger">最近閱覽<i class="fa fa-angle-down rotate"></i></div>
+                </div>
+                <ul class="sidenav-section__inner boardHistory">
+<li class="sidenav-section__item">
+    <a href="https://forum.gamer.com.tw/" class="sidenav-section__link link-item__text">暫無內容，快去探索哈啦板吧</a>
+</li>
+
+</ul>
+            </div>
+            <div class="sidenav-section__row is-empty" style="display: none;">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger boardTrigger">我的哈啦板<i class="fa fa-angle-down rotate"></i></div>
+                    <div class="tooltip myBoardDialog" data-tooltip="所有追蹤看板" data-collapse-tippy="所有追蹤看板">
+                        <button class="service__icon section-icon icon-editboard" aria-expanded="false"></button>
+                    </div>
+                </div>
+                <ul class="sidenav-section__inner favoriteBoard">
+<li class="sidenav-section__item">
+    <a href="https://forum.gamer.com.tw/" class="sidenav-section__link link-item__text">暫無內容，快去追蹤哈啦板吧</a>
+</li>
+
+</ul>
+            </div>
+            <div class="sidenav-section__row is-empty" style="display:none;">
+                <a class="sidenav-section__setting" href="https://home.gamer.com.tw/setting/navigation.php" target="_blank" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_捷徑" data-gtm-link-click="點擊設定">
+                    <div class="service__icon section-icon icon-setting"></div>
+                    <span class="sidenav-section__setting-text">導航捷徑設定</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div></div></div></div><div class="simplebar-placeholder" style="width: 240px; height: 470px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+<div data-simplebar="init" class="main-sidebar__brief" data-gtm-page="GNN標籤搜尋"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: auto; overflow: hidden;"><div class="simplebar-content" style="padding: 0px;">
+    <div class="sidenav-section">
+        <div class="sidenav-section__container">
+                                    <div class="sidenav-section__row sidenav-section__top">
+                <ul>
+                    <li class="sidenav-section__item">
+                        <a class="sidenav-section__link" href="https://www.gamer.com.tw" data-collapse-tippy="首頁" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_首頁" data-gtm-link-click="點擊回首頁">
+                            <div class="sidenav__icon service__icon icon-home"></div>
+                            <p class="sidenav-section__title">首頁</p>
+                        </a>
+                    </li>
+                    <li class="sidenav-section__item" style="display:none;">
+                        <a class="sidenav-section__link" href="https://www.gamer.com.tw/index.php#subscribe" data-collapse-tippy="追蹤內容" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_追蹤" data-gtm-link-click="點擊回首頁">
+                            <div class="sidenav__icon service__icon icon-subscribe"></div>
+                            <p class="sidenav-section__title">追蹤內容</p>
+                        </a>
+                    </li>
+                    <li class="sidenav-section__item">
+                        <a class="sidenav-section__link" href="https://prj.gamer.com.tw/30y/" data-collapse-tippy="巴哈姆特30週年" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_巴哈姆特30週年" data-gtm-link-click="點擊活動" target="_blank">
+                                                            <img class="event-prj__button" src="https://i2.bahamut.com.tw/icon/baha30-entry_btn_sm.png">
+                                                        <p class="sidenav-section__title">巴哈姆特30週年</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidenav-section__row sidenav-section__shortcut" style="display: none;">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger shortcutTrigger">自訂捷徑<i class="fa fa-angle-down rotate"></i></div>
+                    <div class="tooltip" data-tooltip="編輯捷徑" style="display:none;">
+                        <a href="https://home.gamer.com.tw/setting/navigation.php" target="_blank" class="service__icon section-icon icon-edit-shortcut" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_捷徑" data-gtm-link-click="點擊編輯"></a>
+                    </div>
+                </div>
+                <div class="sidenav-section__inner">
+                    <a class="sidenav-shortcut__btn" href="https://home.gamer.com.tw/setting/navigation.php" target="_blank">
+                        <span class="material-icons-round icon-add-shortcut">add_circle</span>
+                    </a>
+                    <!-- 自訂捷徑區塊 -->
+                    <ul class="sidenav-shortcut__row shortcutList">
+                                            </ul>
+                </div>
+            </div>
+
+            <ul class="sidenav-section__row">
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://gnn.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="GNN新聞" data-gtm-type="GNN新聞">
+                        <div class="sidenav__icon service__icon icon-news"></div>
+                        <p class="sidenav-section__title">GNN新聞</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://forum.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="哈啦區" data-gtm-type="哈啦區">
+                        <div class="sidenav__icon service__icon icon-forum"></div>
+                        <p class="sidenav-section__title">哈啦區</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="https://ani.gamer.com.tw" target="_blank" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="動畫瘋" data-gtm-type="動畫瘋">
+                        <div class="sidenav__icon service__icon icon-ani"></div>
+                        <p class="sidenav-section__title">動畫瘋</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <a class="sidenav-section__link" href="//buy.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="巴哈商城" data-gtm-type="巴哈商城">
+                        <div class="sidenav__icon service__icon icon-ec"></div>
+                        <p class="sidenav-section__title">巴哈商城</p>
+                    </a>
+                </li>
+                <li class="sidenav-section__item">
+                    <ul class="sidenav-section__row sidenav-secondary" style="display:none;">
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="javascript:LiteTop.openChat();" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="Now!" data-gtm-type="NOW">
+                                <div class="sidenav__icon service__icon icon-now"></div>
+                                <p class="sidenav-section__title">NOW！</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://gnn.gamer.com.tw/gamecrazy.php" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="電玩瘋" data-gtm-type="電玩瘋">
+                                <div class="sidenav__icon service__icon icon-gamecrazy"></div>
+                                <p class="sidenav-section__title">電玩瘋</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="創作大廳" data-gtm-type="創作大廳">
+                                <div class="sidenav__icon service__icon icon-create"></div>
+                                <p class="sidenav-section__title">創作大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://guild.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="公會大廳" data-gtm-type="公會大廳">
+                                <div class="sidenav__icon service__icon icon-guild"></div>
+                                <p class="sidenav-section__title">公會大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw/liveindex.php" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="實況大廳" data-gtm-type="實況大廳">
+                                <div class="sidenav__icon service__icon icon-live"></div>
+                                <p class="sidenav-section__title">實況大廳</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://avatar1.gamer.com.tw/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="勇者造型" data-gtm-type="勇者造型">
+                                <div class="sidenav__icon service__icon icon-skin"></div>
+                                <p class="sidenav-section__title">勇者造型</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://fuli.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="勇者福利社" data-gtm-type="勇者福利社">
+                                <div class="sidenav__icon service__icon icon-fuli"></div>
+                                <p class="sidenav-section__title">勇者福利社</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://hd.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="巴哈電硬館" data-gtm-type="巴哈電硬館">
+                                <div class="sidenav__icon service__icon icon-hardware"></div>
+                                <p class="sidenav-section__title">巴哈電硬館</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://home.gamer.com.tw/sticker/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="貼圖商店" data-gtm-type="貼圖商店">
+                                <div class="sidenav__icon service__icon icon-sticker"></div>
+                                <p class="sidenav-section__title">貼圖商店</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://wall.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="動態牆" data-gtm-type="動態牆">
+                                <div class="sidenav__icon service__icon icon-wall"></div>
+                                <p class="sidenav-section__title">動態牆</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item acgDetail" aria-expanded="false">
+                            <a class="sidenav-section__link sidenav-tippy" href="javascript:;" data-collapse-tippy="ACG資料庫">
+                                <div class="sidenav__icon service__icon icon-data"></div>
+                                <p class="sidenav-section__title">ACG資料庫</p>
+                            </a>
+                        
+
+
+<ul class="sidenav-tippy-content mobile">
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/android" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Android">Android</a>
+            
+                <a href="https://acg.gamer.com.tw/ios" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="iOS">iOS</a>
+            
+                <a href="https://acg.gamer.com.tw/online" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PC線上">PC 線上</a>
+            
+                <a href="https://acg.gamer.com.tw/pc" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PC單機">PC 單機</a>
+            
+                <a href="https://acg.gamer.com.tw/web" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="WebGame">Web Game</a>
+            
+        </li>
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/ps5" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PS5">PS5</a>
+            
+                <a href="https://acg.gamer.com.tw/ps4" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="PS4">PS4</a>
+            
+                <a href="https://acg.gamer.com.tw/switch2" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Switch2">Switch 2</a>
+            
+                <a href="https://acg.gamer.com.tw/switch" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="Switch">Switch</a>
+            
+                <a href="https://acg.gamer.com.tw/xboxsx" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="XboxSX">Xbox Series X</a>
+            
+                <a href="https://acg.gamer.com.tw/news.php?p=xbone" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="XboxOne">Xbox One</a>
+            
+        </li>
+    
+        <li class="sidenav-tippy__item">
+            
+                <a href="https://acg.gamer.com.tw/anime" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="動畫">動畫</a>
+            
+                <a href="https://acg.gamer.com.tw/comic" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="漫畫">漫畫</a>
+            
+                <a href="https://acg.gamer.com.tw/lightnovel" class="sidenav-section__link" data-gtm-page="新首頁" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-gtm-type="輕小說">輕小說</a>
+            
+        </li>
+    
+</ul></li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://prj.gamer.com.tw/acgaward/" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="ACG創作大賽" data-gtm-type="ACG創作大賽">
+                                <div class="sidenav__icon service__icon icon-acg"></div>
+                                <p class="sidenav-section__title">ACG創作大賽</p>
+                            </a>
+                        </li>
+                        <li class="sidenav-section__item">
+                            <a class="sidenav-section__link" href="https://user.gamer.com.tw" data-gtm-page="GNN標籤搜尋" data-gtm-link-click="點擊服務" data-gtm-area="左側欄_服務入口" data-collapse-tippy="會員中心" data-gtm-type="會員中心">
+                                <div class="sidenav__icon service__icon icon-member"></div>
+                                <p class="sidenav-section__title">會員中心</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="sidenav-section__link navMore" href="javascript:;">
+                        <div class="sidenav__icon service__icon icon-arrow"></div>
+                        <span class="sidenav-section__title">顯示更多</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidenav-section__row is-empty" style="display: none;">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger historyTrigger">最近閱覽<i class="fa fa-angle-down rotate"></i></div>
+                </div>
+                <ul class="sidenav-section__inner boardHistory">
+<li class="sidenav-section__item">
+    <a href="https://forum.gamer.com.tw/" class="sidenav-section__link link-item__text">暫無內容，快去探索哈啦板吧</a>
+</li>
+
+</ul>
+            </div>
+            <div class="sidenav-section__row is-empty" style="display: none;">
+                <div class="sidenav-section__heading">
+                    <div class="toggle__trigger boardTrigger">我的哈啦板<i class="fa fa-angle-down rotate"></i></div>
+                    <div class="myBoardDialog" data-tooltip="所有追蹤看板" data-collapse-tippy="所有追蹤看板">
+                        <button class="service__icon section-icon icon-editboard" aria-expanded="false"></button>
+                    </div>
+                </div>
+                <ul class="sidenav-section__inner favoriteBoard"></ul>
+            </div>
+            <div class="sidenav-section__row is-empty" style="display:none;">
+                <a class="sidenav-section__setting" href="https://home.gamer.com.tw/setting/navigation.php" target="_blank" data-gtm-page="GNN標籤搜尋" data-gtm-area="左側欄_捷徑" data-gtm-link-click="點擊設定">
+                    <div class="service__icon section-icon icon-setting"></div>
+                    <span class="sidenav-section__setting-text">導航捷徑設定</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div></div>
+<div class="search-mobile" style="display:none;">
+    <div class="main-nav__form">
+        <div id="___gcse_1"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-zh-TW" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id2"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id51" class="gstl_51 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti51" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="搜尋" aria-label="搜尋" id="gsc-i-id2" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; margin: 0px; height: auto; background: rgb(255, 255, 255); outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st51" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="清除搜尋框" role="button" style=""><span class="gscb_a" id="gs_cb51" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>搜尋</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="清除結果">&nbsp;</div></td></tr></tbody></table></form></div></div>
+        <button class="search-mobile__closed">關閉</button>
+    </div>
+</div><div class="main-container__content">
+<div class="main-container__wrap">
+<div class="main-container__main">
+
+<!--全站主選單-->
+<div id="BH-menu-fill">&nbsp;</div>
+<div id="BH-menu-path" class="BH-menu rwd-menu">
+        <ul class="BH-menuE rwd-nav">
+            <li><a class="now" href="javascript:BH_Menu_Page_Back();">回上頁</a></li>
+            <ul class="BH-menuE rwd-nav rwd-nav-main-items">
+                
+            </ul>
+            <div class="fill-empty"></div>
+            <ul data-rightmenu="BH-menu" class="rwd-nav-right">
+                
+            </ul>
+            <div id="navBarHover" style="opacity: 0;"></div>
+        </ul></div>
+<!--全站主選單結束-->
+<div id="bh-banner" class="bh-banner ">
+<div id="BH-bigbanner"></div></div>
+
+
+<main class="main-container__row">
+<div class="main-container__center">
+<h4><img src="https://i2.bahamut.com.tw/h1_img.gif">巴哈搜尋</h4>
+<div class="BH-lbox GU-lbox9" style="padding:10px;">
+<!--區塊1開始-->
+<h2 class="gnn-searchlist-tag" align="center">#動畫瘋26夏</h2><h3 class="gnn-searchlist-tag-info" align="center">搜尋結果：共有 <span class="txtcolor2">1</span> 筆資料符合 #動畫瘋26夏</h3><br><div class="GN-lbox2B">
+<div class="GN-lbox2E">
+<a href="//gnn.gamer.com.tw/detail.php?sn=307681"><img src="https://p2.bahamut.com.tw/B/2KU/59/30a9b61405e98079bc44db884f1za675.JPG" srcset="https://p2.bahamut.com.tw/B/2KU/59/30a9b61405e98079bc44db884f1za675.JPG?w=600 1x,https://p2.bahamut.com.tw/B/2KU/59/30a9b61405e98079bc44db884f1za675.JPG 2x" loading="lazy"></a>
+</div>
+<div>
+<h1 class="GN-lbox2D">
+<div class="platform-tag_list platform-acg">動漫</div>
+<a href="//gnn.gamer.com.tw/detail.php?sn=307681">動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作</a>
+<span> 229 人推！</span>
+</h1>
+<p class="GN-lbox2C">
+由巴哈姆特推出的正版線上動畫平台「動畫瘋」，正式發表了確定將與日本同期推出的 2026 年 7 月新番動畫。&nbsp;&nbsp;新作部分（以下為首集預定播出時間，實際狀況以當天更新為主。）&nbsp;06/27 （週六）21:00《貓與...
+<a href="//gnn.gamer.com.tw/detail.php?sn=307681">繼續閱讀</a>
+</p>
+</div>
+</div>
+
+</div><!--區塊1結束--><div id="BH-pagebtn" onkeydown="chpagehotkey(event.keyCode)">
+<a title="上一頁快速鍵：F7" class="prev no">◄</a><a title="下一頁快速鍵：F8" class="next no">►</a><p class="BH-pagebtnA">
+<a class="pagenow">1</a></p>
+</div>
+<script>
+function chpagehotkey(code, e){
+if (code === 119) {
+location.href = "search_tag.php?page=2&q=%E5%8B%95%E7%95%AB%E7%98%8B26%E5%A4%8F";
+e && e.preventDefault();
+} else if(code === 118) {
+location.href = "search_tag.php?page=0&q=%E5%8B%95%E7%95%AB%E7%98%8B26%E5%A4%8F";
+e && e.preventDefault();
+}
+}
+</script>
+</div><div class="main-container__right" id="BH-slave"><div id="flySalve">
+<!-- /1017768/B300 -->
+<div id="div-gpt-ad-1489070677458-0" data-google-query-id="CPCq2ZGHv5UDFRrQuAgdnygPzQ">
+
+<div id="google_ads_iframe_/1017768/B300_0__container__" style="border: 0pt; display: inline-block; width: 100%; height: auto;"><iframe frameborder="0" src="https://912a765cea75ce9208c3482e9c649b64.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/1017768/B300_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="0" height="604" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting" aria-label="Advertisement" tabindex="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom; min-width: 100%;" data-load-complete="true"></iframe></div></div>
+</div>
+<script>
+(function(window, $) {
+$(function() {
+// ResizeSensor 在 dialogify.min.js 中
+new ResizeSensor($('#BH-master'), function() {
+$('#BH-slave').css('min-height', $('#BH-master').height());
+});
+});
+})(window, jQuery);
+</script>
+<style type="text/css">
+#flySalve {
+position: -webkit-sticky; /* for Safari */
+position: sticky;
+top: 76px;
+}
+</style>
+</div></main></div></div><footer class="main-container__footer">
+    <div class="footer__wrap">
+        <div class="footer__row main-index__content row">
+                        <div class="footer__copyright">
+                <p class="text-sm text-center">旺普網路資訊股份有限公司 © All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</div></div></div><div class="fixed-right">
+        <a href="javascript:;" class="fixed-right__link fixed-right__gotop"><i class="fa fa-angle-up"></i>TOP</a>
+</div><div class="open-app">
+    <div class="open-app__content">
+        <a href="javascript:;" class="open-app__link">開啟 APP</a>
+        <div class="open-app__container">
+            <div class="open-app__head">
+                <div class="open-app__row">
+                    <button type="button" class="tool__icon icon-closed"></button>
+                    <img src="https://i2.bahamut.com.tw/downloadapp_logo.png" alt="" class="open-app__logo">
+                    <p class="open-app__heading">巴哈姆特 APP<br>最舒適便利的瀏覽體驗</p>
+                </div>
+                <a href="javascript:;" class="open-app__link">開啟巴哈姆特 APP</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+const navigation = window.Bahamut.Navigation.getInstance();
+navigation.setupGcse();
+
+jQuery(".a-mercy-d").click(function() {
+var url = this.href;
+var goRedirect = false;
+var openNew = (this.target) ? true : false;
+
+if (url) {
+jQuery.get("/ajax/baha_lkasoo.php", {id: jQuery(this).data('ssn')})
+.done(function() {
+goRedirect = true;
+if (!openNew) {
+document.location = url;
+}
+});
+
+setTimeout(function() {
+if (!goRedirect) {
+if (!openNew) {
+document.location = url;
+}
+}
+}, 1500);
+}
+
+if (!openNew) {
+return false;
+}
+});
+
+if (typeof(chpagehotkey) == 'function') {
+document.onkeydown = function (evt){
+evt = window.event || evt;
+chpagehotkey(evt.keyCode, evt);
+};
+}
+</script>
+
+
+<div id="div_bk" style="text-align:center;vertical-align:middle;background:#000000;filter:alpha(opacity=60);-moz-opacity:0.6;position:absolute;top:-100;left:0;width:120%;display:none"></div>
+<div id="div_bf" style="width:800px;height:300px;position:absolute;display:none"></div>
+<iframe name="googlefcPresent" style="display: none; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="__tcfapiLocator" src="about:blank" style="display: none; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcInactive" src="about:blank" style="display: none; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcLoaded" src="about:blank" style="display: none; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; z-index: -1000; left: -1000px; top: -1000px;"></iframe><table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 438px; display: none; top: 32px; left: 734px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><table cellspacing="0" cellpadding="0" role="presentation" class="gstl_51 gssb_c" style="width: 2px; display: none; top: 0px; left: -1px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><div class="widget-ami-zergnet topadtara mod-google-ads-container Accordion_ad ads486x100-1" style="width: 1px; height: 1px; position: absolute; left: -10000px; top: -10004px;"></div><iframe src="https://gum.criteo.com/syncframe?origin=publishertagids&amp;topUrl=gnn.gamer.com.tw&amp;gdpr=0&amp;gdpr_consent=#{&quot;bundle&quot;:{&quot;origin&quot;:0},&quot;optout&quot;:{&quot;value&quot;:false,&quot;origin&quot;:0},&quot;tld&quot;:&quot;gamer.com.tw&quot;,&quot;topUrl&quot;:&quot;gnn.gamer.com.tw&quot;,&quot;version&quot;:107747,&quot;origin&quot;:&quot;publishertagids&quot;,&quot;requestId&quot;:&quot;0.16087098092181218&quot;}" width="0" height="0" frameborder="0" sandbox="allow-scripts allow-same-origin" aria-hidden="true" tabindex="-1" title="Criteo GUM iframe" style="border-width: 0px; margin: 0px; display: none;"></iframe><iframe name="google_ads_top_frame" id="google_ads_top_frame" style="display: none; position: fixed; left: -999px; top: -999px; width: 0px; height: 0px;"></iframe><script type="text/javascript" src="https://ep2.adtrafficquality.google/sodar/sodar2.js"></script></body><iframe id="goog_plcm_frame" src="https://cm.g.doubleclick.net/partnerpixels?gdpr=0&amp;url=https%3A%2F%2Fgnn.gamer.com.tw%2Fsearch_tag.php%3Fq%3D%25E5%258B%2595%25E7%2595%25AB%25E7%2598%258B26%25E5%25A4%258F" style="display: none;"></iframe></html>
