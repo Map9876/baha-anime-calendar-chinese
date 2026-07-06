@@ -157,7 +157,11 @@ function updateReadme() {
   }
   await b.close();
   // 标记已完成并更新 README
-  for (const tag of pending) saveDoneQuarter(tag);
-  updateReadme();
+  if (results.length > 0) {
+    for (const tag of pending) saveDoneQuarter(tag);
+    updateReadme();
+  } else {
+    console.log("No screenshots taken, will retry next run.");
+  }
   console.log(`\n=== Done in ${((Date.now()-t0)/60000).toFixed(1)} min ===`);
 })().catch(e => { console.error(e); process.exit(1); });
