@@ -131,7 +131,7 @@ function updateReadme() {
   }
   await b.close();
   // 标记已完成并更新 README
-  for (const tag of pending) { saveDoneQuarter(tag); results.forEach(r => { if (r.tag === tag) results.push(r); }); }
+  for (const tag of pending) saveDoneQuarter(tag);
   updateReadme();
   console.log(`\n=== Done in ${((Date.now()-t0)/60000).toFixed(1)} min ===`);
 })().catch(e => { console.error(e); process.exit(1); });

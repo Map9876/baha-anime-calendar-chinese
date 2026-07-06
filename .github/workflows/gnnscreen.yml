@@ -2,7 +2,7 @@ name: GNN Screenshot
 
 on:
   schedule:
-    - cron: "0 0 1 1,4,7,10 *"   # 每季度第一天 00:00 UTC
+    - cron: "0 2 * * *"          # 每天 02:00 UTC = 10:00 台北
   workflow_dispatch:               # 手动触发
 
 env:
@@ -34,5 +34,5 @@ jobs:
           git config user.name "GitHub Actions[Bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add gnn_screenshots/ README.md gnnscreen.js
-          git commit -m "gnn: quarterly screenshot $(date '+%Y-%m-%d')" || echo "No changes"
+          git commit -m "gnn: screenshot $(date '+%Y-%m-%d')" || echo "No changes"
           git push
