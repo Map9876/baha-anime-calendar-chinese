@@ -185,31 +185,31 @@ async function shot(page, html, art, tag, vn, vp) {
     log('解析文章列表...');
     const articles = [];
     
-    // 方法1: a.GNNG-libit2
-    const re1 = /<a[^>]+href="([^"]+)"[^>]*class="GNNG-libit2"[^>]*>([\s\S]*?)<\/a>/g;
+    // 方法1: GN-lbox2D 内的文章链接 (GNN 正确结构)
+    const re1 = /<h1 class="GN-lbox2D"[^>]*>\s*<a href="(\/\/gnn\.gamer\.com\.tw\/detail\.php\?sn=\d+)"[^>]*>([\s\S]*?)<\/a>\s*<\/h1>/gi;
     let m1;
     while ((m1 = re1.exec(html)) !== null) {
       const title = m1[2].replace(/<[^>]+>/g, '').trim();
-      let href = m1[1];
-      if (href.startsWith('//')) href = 'https:' + href;
-      else if (href.startsWith('/')) href = 'https://gnn.gamer.com.tw' + href;
-      if (title) articles.push({ title, href, method: 'GNNG-libit2' });
+      const href = 'https:' + m1[1];
+      if (title) articles.push({ title, href, method: 'GN-lbox2D' });
     }
-    log(`  方法1 (GNNG-libit2): 找到 ${articles.filter(a => a.method === 'GNNG-libit2').length} 个`);
+    log(`  方法1 (GN-lbox2D): ${articles.filter(a => a.method === 'GN-lbox2D').length} 个`);
     
-    // 方法2: 通用文章链接
-    const re2 = /<a[^>]+href="(\/detail\.php\?sn=\d+)"[^>]*>([\s\S]*?)<\/a>/g;
+    // 方法2: 任意 detail.php?sn= 链接 (协议相对)
+    const re2 = /<a[^>]+href="(?:https:)?(?:\/\/gnn\.gamer\.com\.tw)?\/detail\.php\?sn=\d+"[^>]*>([\s\S]*?)<\/a>/gi;
     let m2;
     while ((m2 = re2.exec(html)) !== null) {
-      const title = m2[2].replace(/<[^>]+>/g, '').trim();
-      const href = 'https://gnn.gamer.com.tw' + m2[1];
-      if (title && !articles.find(a => a.href === href)) {
+      const title = m2[1].replace(/<[^>]+>/g, '').trim();
+      const hrefMatch = m2[0].match(/href="([^"]+)"/);
+      if (!hrefMatch || !title) continue;
+      let href = hrefMatch[1];
+      if (href.startsWith('//')) href = 'https:' + href;
+      if (!articles.find(a => a.href === href)) {
         articles.push({ title, href, method: 'detail.php' });
       }
     }
-    log(`  方法2 (detail.php): 找到 ${articles.filter(a => a.method === 'detail.php').length} 个`);
-    log(`  去重后总数: ${articles.length}`);
-    
+    log(`  方法2 (detail.php): ${articles.filter(a => a.method === 'detail.php').length} 个`);
+    log(`  去重后总数: ${articles.length}`);    
     if (articles.length === 0) {
       log('⚠️ 没有找到任何文章，尝试保存调试信息');
       // 保存一份原始 HTML 的预览
