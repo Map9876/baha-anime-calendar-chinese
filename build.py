@@ -13,6 +13,17 @@ DAYS = ['週一','週二','週三','週四','週五','週六','週日']
 DAYS_SIMPLE = ['一','二','三','四','五','六','日']
 COVER_CACHE = os.path.join(SCRIPT_DIR, 'cover_cache.json')
 
+def normalize_title(t):
+    return re.sub(r'[\s　]+', '', t).strip().lower()
+
+def title_exists(titles, name):
+    """Check if name already exists in a list of entries (fuzzy)."""
+    n = normalize_title(name)
+    for e in titles:
+        if normalize_title(e.get('name','')) == n:
+            return True
+    return False
+
 def to_simple_chinese(text):
     return zhconv_convert(text, 'zh-cn')
 
@@ -157,7 +168,7 @@ def merge_linetv_schedule(schedule):
                         'start_date': start_date_str,
                         'note': entry.get('detail', '首播')
                     }
-                    if new_entry not in schedule.get(day_key, []):
+                    if not title_exists(schedule.get(day_key, []), new_entry['name']):
                         schedule.setdefault(day_key, []).append(new_entry)
                         added += 1
                 continue
@@ -179,8 +190,8 @@ def merge_linetv_schedule(schedule):
                 'start_date': entry.get('start_date', ''),
                 'is_premiere': is_premiere
             }
-            # Avoid exact duplicates
-            if new_entry not in schedule.get(day_key, []):
+            # Avoid duplicates (use fuzzy title match)
+            if not title_exists(schedule.get(day_key, []), new_entry['name']):
                 schedule.setdefault(day_key, []).append(new_entry)
                 added += 1
     
@@ -237,12 +248,13 @@ def build_html(schedule, updated):
         active_cls = ' active' if is_today else ''
         dot_html = '<div class="today-dot"></div>' if is_today else ''
         date_str = dt.strftime('%m/%d')
-        date_tabs += f'<div class="date-tab{active_cls}" data-date="{date_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
+        iso_str = dt.strftime('%Y-%m-%d')
+        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
     # Map anime entries to dates by weekday
     date_entries = {}
     for dt in all_dates:
-        date_entries[dt.strftime('%m/%d')] = []
+        date_entries[dt.strftime('%Y-%m-%d')] = []
     
     for i, day in enumerate(DAYS):
         entries = schedule.get(day, [])
@@ -253,81 +265,74 @@ def build_html(schedule, updated):
         if not matching_dates:
             continue
         for entry in entries:
-            # LINE TV entries have start_date — use it to find correct date
             start_date_str = entry.get('start_date', '')
-            if start_date_str and entry.get('source') == 'linetv':
-                try:
-                    sd = datetime.strptime(start_date_str, '%Y/%m/%d').date()
-                    future_dates = [dt for dt in matching_dates if dt.date() >= sd]
-                    if future_dates:
-                        target_idx = matching_dates.index(future_dates[0])
-                    else:
-                        target_idx = -1
-                except ValueError:
-                    target_idx = 0
-            else:
-                # For Bahamut entries, use the most recent matching date
-                future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=1)]
-                if future_dates:
-                    target_idx = matching_dates.index(future_dates[0])
-                else:
-                    target_idx = -1
-            if target_idx < 0:
-                target_idx = len(matching_dates) - 1
+            is_one_time = bool(entry.get('note'))
             
-            target_date = matching_dates[target_idx]
-            key = target_date.strftime('%m/%d')
-            if key in date_entries:
-                date_entries[key].append(entry)
+            if is_one_time:
+                # One-time entries (special premieres): only show on the first matching date
+                if start_date_str and entry.get('source') == 'linetv':
+                    try:
+                        sd = datetime.strptime(start_date_str, '%Y/%m/%d').date()
+                        future_dates = [dt for dt in matching_dates if dt.date() >= sd]
+                        target_idx = matching_dates.index(future_dates[0]) if future_dates else -1
+                    except ValueError:
+                        target_idx = 0
+                else:
+                    future_dates = [dt for dt in matching_dates if dt.date() >= now.date() - timedelta(days=1)]
+                    target_idx = matching_dates.index(future_dates[0]) if future_dates else -1
+                if target_idx < 0:
+                    target_idx = len(matching_dates) - 1
+                target_date = matching_dates[target_idx]
+                key = target_date.strftime('%Y-%m-%d')
+                if key in date_entries:
+                    date_entries[key].append(entry)
+            else:
+                # Weekly entries: repeat on ALL matching dates >= start_date
+                start_date = None
+                if start_date_str and entry.get('source') == 'linetv':
+                    try:
+                        start_date = datetime.strptime(start_date_str, '%Y/%m/%d').date()
+                    except ValueError:
+                        pass
+                
+                first_added = False
+                for dt in matching_dates:
+                    if start_date and dt.date() < start_date:
+                        continue
+                    # Bahamut entries (no start_date): show from today onwards
+                    if not start_date and dt.date() < now.date() - timedelta(days=1):
+                        continue
+                    key = dt.strftime('%Y-%m-%d')
+                    if key in date_entries:
+                        # Copy entry for each date to allow per-date flag modification
+                        new_entry = dict(entry)
+                        # Only show premiere badge on the first occurrence
+                        if first_added:
+                            new_entry['is_premiere'] = False
+                            new_entry.pop('note', None)
+                        first_added = True
+                        date_entries[key].append(new_entry)
     
     # Generate timeline content for each date
     timelines = {}
     for dt in all_dates:
-        key = dt.strftime('%m/%d')
+        key = dt.strftime('%Y-%m-%d')
         entries = date_entries.get(key, [])
         if not entries:
             timelines[key] = '<div class="empty-day">当天无更新</div>'
             continue
         html = ""
-        is_today = (dt.date() == now.date())
-        now_indicator_added = False
-        # For today: find the first entry past current time
-        if is_today and entries:
-            first_future_idx = None
-            for idx, entry in enumerate(entries):
-                h = int(entry['time'].split(':')[0])
-                m = int(entry['time'].split(':')[1])
-                entry_min = h * 60 + m
-                if entry_min > now_min:
-                    first_future_idx = idx
-                    break
-            # All entries are past → now at the beginning
-            # All entries are future → now at the beginning too
-            if first_future_idx == 0 or first_future_idx is None:
-                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
-                now_indicator_added = True
         for entry in entries:
             name_simple = to_simple_chinese(entry['name'])
             time_str = entry['time']
-            hour, minute = time_str.split(':')
-            h = int(hour)
-            # Check if near current time
-            entry_min = h * 60 + int(minute)
-            is_now = abs(entry_min - now_min) <= 15 and is_today
-            # Insert "now" indicator before the first entry that is past current time
-            if is_today and not now_indicator_added and entry_min > now_min:
-                html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
-                now_indicator_added = True
             cover = covers.get(entry['name'], '')
             cover_html = f'<img src="{cover}" class="timeline-cover" onerror="this.style.display=\'none\'">' if cover else ''
-            now_cls = ' now-airing' if is_now else ''
-            # Show premiere badge: LINE TV entries on their start date
-            sd = entry.get('start_date', '')
             # Show premiere badge: special entries or regular entries with is_premiere flag
+            sd = entry.get('start_date', '')
             is_premiere = bool(entry.get('note')) or (entry.get('is_premiere') and sd and entry.get('source') == 'linetv')
             badge = '<span class="timeline-badge">首播</span>' if is_premiere else ''
             html += f'''
-            <div class="timeline-item{now_cls}">
+            <div class="timeline-item" data-time="{time_str}">
               <div class="timeline-left">
                 <div class="timeline-cir"></div>
                 <div class="timeline-line"></div>
@@ -338,15 +343,12 @@ def build_html(schedule, updated):
                 <div class="timeline-title">{name_simple}{badge}</div>
               </div>
             </div>'''
-        # Add "now" indicator at the end if no entries are past current time
-        if is_today and not now_indicator_added:
-            html += f'<div class="now-label-bar"><span class="now-label-text">now {now_str}</span></div>'
         timelines[key] = html
     
     # Content divs
     content_divs = ""
     for dt in all_dates:
-        key = dt.strftime('%m/%d')
+        key = dt.strftime('%Y-%m-%d')
         is_today = (dt.date() == now.date())
         active_cls = ' active' if is_today else ''
         content_divs += f'<div class="timeline-content{active_cls}" data-date="{key}">{timelines[key]}</div>'
@@ -354,11 +356,13 @@ def build_html(schedule, updated):
     total = sum(len(v) for v in schedule.values())
     
     html_out = f'''<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>新番时间表</title>
+<meta name="description" content="巴哈姆特动画疯 &amp; LINE TV 新番时间表 - 每周动漫日历/周历，收录当前季度最新番剧更新时间，支持左右滑动切换日期">
+<meta name="keywords" content="巴哈姆特动画疯,巴哈姆特動畫瘋,番剧,新番,动漫,日历,周历,新番表,时间表,新番時間表,更新,季度,LINE TV,anime schedule">
+<title>新番时间表 - 巴哈姆特动画疯 &amp; LINE TV 动漫日历</title>
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }}
@@ -371,9 +375,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .github-icon {{ flex-shrink:0; width:16px; height:16px; }}
 .github-badge {{ font-size:11px; color:#57606a; border:1px solid #d0d7de; border-radius:6px; padding:1px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px; }}
 .github-badge:hover {{ background:#f6f8fa; }}
-.date-bar-wrap {{ position:relative; }}
-.date-bar-wrap::before {{ content:''; position:absolute; top:-6px; left:0; right:0; height:6px; background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent); z-index:11; pointer-events:none; }}
-.date-bar-wrap::after {{ content:''; position:absolute; bottom:-6px; left:0; right:0; height:6px; background:linear-gradient(to top,rgba(0,0,0,.12),transparent); z-index:11; pointer-events:none; }}
+.date-bar-wrap {{ position:relative; box-shadow:0 -3px 6px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.08); }}
 .date-bar {{ position:sticky; top:35px; z-index:9; background:#fff; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }}
 .date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
@@ -384,12 +386,12 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab.active .date-weekday {{ color:#fb7299; }}
 .date-tab::after {{ content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:18px; height:3px; border-radius:2px; background:transparent; }}
 .date-tab.active::after {{ background:#fb7299; }}
-.today-dot {{ width:4px; height:4px; background:#fb7299; border-radius:50%; margin:0 auto 2px; }}
+.today-dot {{ width:4px; height:4px; background:#fb7299; border-radius:50%; position:absolute; top:3px; left:50%; margin-left:-2px; }}
 .date-num {{ font-size:12px; color:#999; margin-bottom:1px; line-height:16px; }}
 .date-weekday {{ font-size:16px; color:#333; line-height:20px; }}
-.timeline-pager {{ overflow:hidden; position:relative; }}
-.timeline-content {{ display:none; padding:0 16px; transition:transform .3s ease; }}
-.timeline-content.active {{ display:block; }}
+.timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
+.timeline-track {{ display:flex; transition:transform .35s cubic-bezier(.25,.46,.45,.94); will-change:transform; }}
+.timeline-content {{ flex:0 0 100%; min-width:0; padding:0 16px; }}
 .empty-day {{ text-align:center; padding:60px 20px; color:#999; font-size:14px; }}
 .timeline-item {{ display:flex; padding:12px 0; position:relative; }}
 .timeline-item.now-airing {{ background:#fff0f5; margin:0 -16px; padding:12px 16px; border-radius:8px; }}
@@ -398,7 +400,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .timeline-item.now-airing .timeline-cir {{ width:10px; height:10px; background:#fb7299; box-shadow:0 0 6px rgba(251,114,153,.5); }}
 .timeline-line {{ width:1px; flex:1; background:#e0e0e0; min-height:20px; }}
 .timeline-item:last-child .timeline-line {{ display:none; }}
-.timeline-time {{ font-size:13px; color:#999; margin-top:4px; white-space:nowrap; }}
+.timeline-time {{ font-size:13px; color:#666; margin-top:4px; white-space:nowrap; font-weight:600; }}
 .timeline-item.now-airing .timeline-time {{ color:#fb7299; font-weight:600; }}
 .timeline-right {{ flex:1; margin-left:12px; padding-bottom:8px; border-bottom:1px solid #f0f0f0; }}
 .timeline-item:last-child .timeline-right {{ border-bottom:none; }}
@@ -410,6 +412,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .footer a {{ color:#999; text-decoration:underline; }}
 .now-label-bar {{ position:relative; margin:8px 0; text-align:center; border-top:1px dashed #fb7299; padding-top:4px; }}
 .now-label-text {{ font-size:11px; color:#fb7299; background:#fff; padding:0 8px; display:inline-block; }}
+.swipe-hint {{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:8px 18px; border-radius:20px; z-index:100; pointer-events:none; transition:opacity .5s; white-space:nowrap; max-width:calc(100vw - 40px); overflow:hidden; text-overflow:ellipsis; }}
+.swipe-hint.hide {{ opacity:0; }}
 @media (max-width:480px) {{
   .timeline-left {{ flex-basis:48px; }}
   .timeline-cover {{ width:64px; }}
@@ -425,9 +429,9 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     <div class="meta">更新: {updated}</div>
   </div>
   <div class="header-right">
-    <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener">
-      <svg class="github-icon" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      <span class="github-badge">GitHub</span>
+    <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
+      <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="github-badge">Map9876/baha-anime-calendar-chinese</span>
     </a>
   </div>
 </div>
@@ -441,91 +445,227 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 </div>
 
 <div class="timeline-pager" id="timelinePager">
-  {content_divs}
+  <div class="timeline-track" id="timelineTrack">
+    {content_divs}
+  </div>
 </div>
 
 <div class="footer">
   <div><a href="https://ani.gamer.com.tw/">巴哈姆特動畫瘋</a> · <a href="https://www.linetv.tw/channel/2/genre/367?channel_id=2&genre_token=367&page=1&sort=LAST_PUBLISH&source=DRAMA_PAGE_CATEGORY_LABEL">LINE TV 動畫分類</a></div>
   <div style="margin-top:4px"><a href="https://github.com/Map9876/baha-anime-calendar-chinese">GitHub</a></div>
-  <div style="margin-top:4px;font-size:10px;color:#bbb;">← 左右滑动切换日期 →</div>
+  <div id="footerSwipeHint" style="margin-top:4px;font-size:10px;color:#bbb;">← 左右滑动切换日期 →</div>
 </div>
 <div id="swipeHint" class="swipe-hint">← 左右滑动切换日期 →</div>
 
 <script>
 (function() {{
   var tabs = document.querySelectorAll('.date-tab');
-  var pages = document.querySelectorAll('.timeline-content');
   var bar = document.getElementById('dateBar');
+  var pager = document.getElementById('timelinePager');
+  var track = document.getElementById('timelineTrack');
   
-  function switchDay(idx) {{
-    // 同步 swipe handler 的 currentPage
+  function getTaiwanNow() {{
+    var s = new Date().toLocaleString('en-CA', {{
+      timeZone: 'Asia/Taipei',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }});
+    var m = s.match(/(\\d{{4}})-(\\d{{2}})-(\\d{{2}}), (\\d{{2}}):(\\d{{2}})/);
+    if (!m) return {{ iso: '', hour: 0, minute: 0 }};
+    return {{
+      iso: m[1] + '-' + m[2] + '-' + m[3],
+      hour: parseInt(m[4]),
+      minute: parseInt(m[5])
+    }};
+  }}
+  
+  function updateNow() {{
+    var tw = getTaiwanNow();
+    var nowMin = tw.hour * 60 + tw.minute;
+    var nowStr = tw.hour + ':' + String(tw.minute).padStart(2, '0');
+    
+    // Remove old now markers
+    document.querySelectorAll('.now-label-bar').forEach(function(el) {{ el.remove(); }});
+    document.querySelectorAll('.timeline-item.now-airing').forEach(function(el) {{
+      el.classList.remove('now-airing');
+    }});
+    
+    var todayContent = document.querySelector('.timeline-content[data-date="' + tw.iso + '"]');
+    if (!todayContent) return;
+    
+    var items = todayContent.querySelectorAll('.timeline-item');
+    if (!items.length) return;
+    
+    var insertBefore = null;
+    items.forEach(function(item) {{
+      var time = item.getAttribute('data-time');
+      if (!time) return;
+      var parts = time.split(':');
+      var entryMin = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+      if (Math.abs(entryMin - nowMin) <= 15) {{
+        item.classList.add('now-airing');
+      }}
+      if (entryMin > nowMin && !insertBefore) {{
+        insertBefore = item;
+      }}
+    }});
+    
+    var label = document.createElement('div');
+    label.className = 'now-label-bar';
+    label.innerHTML = '<span class="now-label-text">now ' + nowStr + '</span>';
+    
+    if (insertBefore) {{
+      todayContent.insertBefore(label, insertBefore);
+    }} else {{
+      todayContent.appendChild(label);
+    }}
+  }}
+  
+  function switchDay(idx, duration) {{
+    // duration: false=instant, true=normal(.35s), number=seconds
+    if (duration === false || duration === 0) {{
+      track.style.transition = 'none';
+    }} else if (duration === true) {{
+      track.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
+    }} else {{
+      track.style.transition = 'transform ' + duration + 's cubic-bezier(.25,.46,.45,.94)';
+    }}
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    
+    // Sync swipe handler's currentPage with tab clicks
     currentPage = idx;
+    
+    // Update tabs
     tabs.forEach(function(t,i) {{ t.classList.toggle('active',i===idx); }});
-    pages.forEach(function(p,i) {{ p.classList.toggle('active',i===idx); }});
-    // Scroll tab into view
+    
+    // Scroll date bar — instant for tab clicks, smooth for swipes
     var tab = tabs[idx];
     if (tab) {{
       var scrollLeft = tab.offsetLeft - bar.offsetWidth/2 + tab.offsetWidth/2;
-      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:'smooth' }});
+      var scrollBehavior = (duration === 0) ? 'auto' : 'smooth';
+      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:scrollBehavior }});
     }}
+    updateNow();
   }}
   
+  // Date tab clicks — very fast animation like Bilibili app
   tabs.forEach(function(tab,i) {{
-    tab.addEventListener('click',function(){{ switchDay(i); }});
+    tab.addEventListener('click',function(){{ switchDay(i, 0); }});
   }});
   
-  // Touch swipe — 方向锁定 (Bilibili Compose 风格)
+  // Touch swipe — Bilibili Compose 风格: 方向锁定，不重新评估
   var startX = 0, startY = 0, currentPage = 0;
   var isHorizontal = false, isActive = false, lastX = 0;
   var velPoints = [];
-  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
-  var pager = document.getElementById('timelinePager');
   
-  function hTouchStart(e) {{
-    if (e.target.closest('#dateBar') || e.target.closest('.date-bar')) {{ isActive = false; return; }}
-    var t = e.touches[0];
-    startX = t.clientX; startY = t.clientY;
-    lastX = startX; isHorizontal = false; isActive = true;
-    velPoints = [];
-  }}
-  function hTouchMove(e) {{
-    if (!isActive) return;
-    var t = e.touches[0], cx = t.clientX, cy = t.clientY;
-    var dx = cx - startX, dy = cy - startY;
-    var ax = Math.abs(dx), ay = Math.abs(dy);
-    if (!isHorizontal && ay <= 10 && ax <= 10) return;
-    if (!isHorizontal) {{
-      if (ay > ax) {{ isActive = false; return; }}
-      else {{ isHorizontal = true; e.preventDefault(); }}
+  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
+  switchDay(currentPage, false);
+  
+  function handleTouchStart(e) {{
+    // Skip if touch is on date bar
+    if (e.target.closest('#dateBar') || e.target.closest('.date-bar')) {{
+      isActive = false;
+      return;
     }}
+    var t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    lastX = startX;
+    isHorizontal = false;
+    isActive = true;
+    velPoints = [];
+    track.style.transition = 'none';
+  }}
+  
+  function handleTouchMove(e) {{
+    if (!isActive) return;
+    var t = e.touches[0];
+    var cx = t.clientX, cy = t.clientY;
+    var deltaX = cx - startX;
+    var deltaY = cy - startY;
+    var absX = Math.abs(deltaX), absY = Math.abs(deltaY);
+    
+    // 还没有锁定方向: 等移动 >10px 后决定
+    if (!isHorizontal && absY <= 10 && absX <= 10) return;
+    
+    if (!isHorizontal) {{
+      // 第一次判断: 锁定方向（Compose 风格，不重新评估）
+      if (absY > absX) {{
+        // 垂直 → 释放给浏览器原生滚动
+        isActive = false;
+        track.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
+        track.style.transform = 'translateX(' + (-currentPage * 100) + '%)';
+        return;
+      }} else {{
+        // 水平 → 锁定横向模式
+        isHorizontal = true;
+        e.preventDefault();
+      }}
+    }}
+    
+    // 水平跟手 + 速度采样
     if (isHorizontal) {{
       e.preventDefault();
-      if (Math.abs(cx - lastX) >= 5) {{ velPoints.push({{ x: cx, t: Date.now() }}); if (velPoints.length > 7) velPoints.shift(); lastX = cx; }}
+      if (Math.abs(cx - lastX) >= 5) {{
+        velPoints.push({{ x: cx, t: Date.now() }});
+        if (velPoints.length > 7) velPoints.shift();
+        lastX = cx;
+      }}
+      track.style.transform = 'translateX(' + (-currentPage * 100 + deltaX / pager.offsetWidth * 100) + '%)';
     }}
-  }}
-  function hTouchEnd(e) {{
-    if (!isActive || !isHorizontal) return;
-    isActive = false;
-    var endX = e.changedTouches[0].clientX;
-    var dx = endX - startX, ad = Math.abs(dx), pw = pager.offsetWidth;
-    var vel = 0;
-    if (velPoints.length >= 2) {{
-      var n = velPoints.length, f = velPoints[Math.max(0, n-3)], l = velPoints[n-1], dt = l.t - f.t;
-      if (dt > 5) vel = (l.x - f.x) / dt;
-    }}
-    var go = false, dir = 0;
-    if (Math.abs(vel) > 0.12) {{ go = true; dir = vel > 0 ? -1 : 1; }}
-    else if (ad > pw * 0.2) {{ go = true; dir = dx > 0 ? -1 : 1; }}
-    if (go) {{
-      var np = currentPage + dir;
-      if (np >= 0 && np < tabs.length) {{ currentPage = np; switchDay(np); return; }}
-    }}
-    switchDay(currentPage);
   }}
   
-  pager.addEventListener('touchstart', hTouchStart, {{ passive: true }});
-  pager.addEventListener('touchmove', hTouchMove, {{ passive: false }});
-  pager.addEventListener('touchend', hTouchEnd, {{ passive: true }});
+  function handleTouchEnd(e) {{
+    if (!isActive) return;
+    if (!isHorizontal) return;
+    isActive = false;
+    
+    var endX = e.changedTouches[0].clientX;
+    var deltaX = endX - startX;
+    var absDelta = Math.abs(deltaX);
+    var pageW = pager.offsetWidth;
+    
+    // 计算速度 (最后 3 个采样点)
+    var vel = 0;
+    if (velPoints.length >= 2) {{
+      var n = velPoints.length;
+      var first = velPoints[Math.max(0, n - 3)];
+      var last = velPoints[n - 1];
+      var dt = last.t - first.t;
+      if (dt > 5) vel = (last.x - first.x) / dt;
+    }}
+    
+    var shouldSwitch = false;
+    var direction = 0;
+    var absVel = Math.abs(vel);
+    
+    // 速度优先，距离兜底
+    if (absVel > 0.12) {{
+      shouldSwitch = true;
+      direction = vel > 0 ? -1 : 1;
+    }} else if (absDelta > pageW * 0.2) {{
+      shouldSwitch = true;
+      direction = deltaX > 0 ? -1 : 1;
+    }}
+    
+    if (shouldSwitch) {{
+      e.preventDefault();
+      var newPage = currentPage + direction;
+      if (newPage >= 0 && newPage < tabs.length) {{
+        currentPage = newPage;
+        switchDay(newPage, true);
+        return;
+      }}
+    }}
+    
+    // Snap back
+    switchDay(currentPage, true);
+  }}
+  
+  // Attach to track element only — avoids conflict with touch-action:pan-y
+  track.addEventListener('touchstart', handleTouchStart, {{ passive: true }});
+  track.addEventListener('touchmove', handleTouchMove, {{ passive: false }});
+  track.addEventListener('touchend', handleTouchEnd, {{ passive: true }});
   
   // Scroll shadows for date bar
   var shadowL = document.querySelector('.date-bar-shadow-l');
@@ -535,7 +675,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     shadowR.style.opacity = bar.scrollLeft < bar.scrollWidth - bar.clientWidth - 2 ? '1' : '0';
   }}
   bar.addEventListener('scroll', updateShadows);
-  // Scroll to center today's tab on load
+  
+  // Init: scroll to today and show now marker
   setTimeout(function() {{
     var activeTab = document.querySelector('.date-tab.active');
     if (activeTab) {{
@@ -543,7 +684,24 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
       bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:'auto' }});
     }}
     updateShadows();
+    updateNow();
   }}, 50);
+  
+  // Update now marker every 60 seconds
+  setInterval(updateNow, 60000);
+  
+  // Swipe hint — once per browser (localStorage)
+  var hint = document.getElementById('swipeHint');
+  if (hint && !localStorage.getItem('swipeHintShown')) {{
+    localStorage.setItem('swipeHintShown', '1');
+    setTimeout(function() {{ hint.classList.add('hide'); }}, 4000);
+    // Hide on first touch
+    window.addEventListener('touchstart', function() {{
+      hint.classList.add('hide');
+    }}, {{ once: true }});
+  }} else if (hint) {{
+    hint.classList.add('hide');
+  }}
 }})();
 </script>
 <script>
