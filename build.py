@@ -249,7 +249,7 @@ def build_html(schedule, updated):
         dot_html = '<div class="today-dot"></div>' if is_today else ''
         date_str = dt.strftime('%m/%d')
         iso_str = dt.strftime('%Y-%m-%d')
-        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
+        date_tabs += f'<div class="date-tab" data-date="{iso_str}"><div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
     # Map anime entries to dates by weekday
     date_entries = {}
@@ -349,9 +349,7 @@ def build_html(schedule, updated):
     content_divs = ""
     for dt in all_dates:
         key = dt.strftime('%Y-%m-%d')
-        is_today = (dt.date() == now.date())
-        active_cls = ' active' if is_today else ''
-        content_divs += f'<div class="timeline-content{active_cls}" data-date="{key}">{timelines[key]}</div>'
+        content_divs += f'<div class="timeline-content" data-date="{key}">{timelines[key]}</div>'
     
     total = sum(len(v) for v in schedule.values())
     
@@ -558,7 +556,18 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   var isHorizontal = false, isActive = false, lastX = 0;
   var velPoints = [];
   
-  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
+  
+  // 客户端实时日期：不依赖构建时时间
+  var todayStr = new Date().toISOString().slice(0,10);
+  tabs.forEach(function(t,i) {{
+    if (t.dataset.date === todayStr) {{
+      currentPage = i;
+      t.classList.add('active');
+      var dot = document.createElement('div');
+      dot.className = 'today-dot';
+      t.insertBefore(dot, t.firstChild);
+    }}
+  }});
   switchDay(currentPage, false);
   
   function handleTouchStart(e) {{
