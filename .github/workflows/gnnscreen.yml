@@ -22,6 +22,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Start FlareSolverr
+        run: |
+          docker run -d --name flaresolverr -p 8191:8191 ghcr.io/flaresolverr/flaresolverr:latest
+          sleep 15
+
       - name: Install deps
         run: npm install puppeteer-extra puppeteer-extra-plugin-stealth
 
