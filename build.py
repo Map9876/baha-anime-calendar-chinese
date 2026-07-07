@@ -379,6 +379,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
 .date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; min-width:38px; min-height:38px; padding:2px 10px; font-size:17px; }}
+.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; margin:0 auto 3px; }}
 .date-num {{ font-size:13px; color:#999; margin-bottom:2px; line-height:16px; white-space:nowrap; }}
 .date-weekday {{ font-size:18px; color:#333; line-height:24px; }}
 .timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
@@ -557,6 +558,11 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     if (t.dataset.date === todayStr) {{
       currentPage = i;
       t.classList.add('active');
+      // 今天日期上面加粉色小点
+      var dot = document.createElement('div');
+      dot.className = 'today-dot';
+      var num = t.querySelector('.date-num');
+      if (num) t.insertBefore(dot, num);
     }}
   }});
   switchDay(currentPage, false);
