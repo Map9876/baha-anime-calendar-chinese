@@ -37,43 +37,46 @@ function loadDone() { try { return new Set(JSON.parse(fs.readFileSync(MARKER,'ut
 function saveDone(tag) { const d = loadDone(); d.add(tag); fs.mkdirSync(OUT,{recursive:true}); fs.writeFileSync(MARKER,JSON.stringify([...d]),'utf8'); }
 
 function updateReadme() {
-  if (!results.length) return;
+  if (!results.length) {
+    log('⚠️ 没有截图结果，跳过 README 更新');
+    return;
+  }
   const now = new Date().toISOString().slice(0,19).replace('T',' ');
   const tags = [...new Set(results.map(r=>r.tag))].join(', ');
   let sec = `# GNN 截图记录 (${now})\n\n已完成季度: ${tags}\n\n`;
   
-  // 去重：同一篇文章只显示一次，优先季度tag（動畫瘋26夏、動畫瘋26秋等）
+  // 去重：只显示一次，季度tag优先
   const seen = new Set();
-  const uniqueResults = [];
-  // 按tag优先级排序：動畫瘋+年份+季节 优先，其他次之
-  const sorted = [...results].sort((a, b) => {
-    const aIsSeason = /動畫瘋\d{2}[春夏秋冬]/.test(a.tag);
-    const bIsSeason = /動畫瘋\d{2}[春夏秋冬]/.test(b.tag);
-    if (aIsSeason && !bIsSeason) return -1;
-    if (!aIsSeason && bIsSeason) return 1;
-    return 0;
-  });
-  for (const r of sorted) {
-    if (!seen.has(r.title)) {
+  for (const r of results) {
+    if (r.vn === 'mobile' && !seen.has(r.title)) {
       seen.add(r.title);
-      uniqueResults.push(r);
     }
   }
-  sec += `\n`;
-  for (const r of uniqueResults) {
-    if (r.vn === 'mobile') {
+  for (const r of results) {
+    if (r.vn === 'mobile' && seen.has(r.title)) {
       sec += `![${r.tag}](${r.file})\n`;
       sec += `- ${r.title} — ${r.mb} MB\n\n`;
+      seen.delete(r.title);
     }
   }
   
   let rm = '';
   try { rm = fs.readFileSync(README,'utf8'); } catch(e) { rm = ''; }
-  const re = /^# GNN 截图记录[\s\S]*?(?=\n# |\n$|$)/;
-  if (re.test(rm)) rm = rm.replace(re, sec.trimEnd());
-  else rm = sec + '\n\n' + rm;
+  
+  // 用 indexOf 替换 GNN 截图记录章节（比正则更鲁棒）
+  const idx = rm.indexOf('# GNN 截图记录');
+  if (idx >= 0) {
+    const next = rm.indexOf('\n# ', idx + 1);
+    if (next > idx) {
+      rm = rm.slice(0, idx) + sec.trimEnd() + rm.slice(next);
+    } else {
+      rm = rm.slice(0, idx) + sec.trimEnd();
+    }
+  } else {
+    rm = sec + '\n\n' + rm;
+  }
   fs.writeFileSync(README, rm, 'utf8');
-  log('README 已更新');
+  log(`✅ README 已更新 (${results.length} 张截图)`);
 }
 
 // FlareSolverr 获取页面
@@ -141,9 +144,9 @@ div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
 /* 强制中文字体 */
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-* { font-family:'Noto Sans SC','Noto Sans CJK SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
+* { font-family:'Noto Sans SC','Noto Sans CJK SC','Noto Sans CJK','Source Han Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
 </style>
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
