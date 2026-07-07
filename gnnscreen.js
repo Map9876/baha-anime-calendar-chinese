@@ -141,8 +141,10 @@ div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
 /* 强制中文字体 */
-@font-face { font-family:'NotoCJK'; src:local('Noto Sans CJK SC'),local('Noto Sans SC'),local('Source Han Sans SC'); }
-* { font-family:'NotoCJK','Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { font-family:'Noto Sans SC','Noto Sans CJK SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
+</style>
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
 </style></head>`);
