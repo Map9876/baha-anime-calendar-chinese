@@ -67,7 +67,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 09:07</div>
+    <div class="meta">更新: 2026-07-07 09:08</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -1708,12 +1708,36 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   
   
   // 客户端实时日期：不依赖构建时时间
-  // 服务器端已设置active class和track位置，只需同步currentPage和滚动日期栏
-  tabs.forEach(function(t,i) { if(t.classList.contains('active')) {
-    currentPage = i;
-    // 瞬间滚动日期栏让今天居中（无setTimeout无闪烁）
-    bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
-  } });
+  // 客户端实时日期：覆盖服务端硬编码的值
+  // 这样无论 HTML 是什么时候构建的，用户始终看到今天
+  var clientToday = new Date().toISOString().slice(0,10);
+  var foundToday = false;
+  tabs.forEach(function(t,i) {
+    if (t.dataset.date === clientToday) {
+      // 移除所有 active（覆盖服务端可能设置的旧日期）
+      tabs.forEach(function(tt) { tt.classList.remove('active'); });
+      pages.forEach(function(pp) { pp.classList.remove('active'); });
+      // 设置今天为 active
+      t.classList.add('active');
+      pages[i].classList.add('active');
+      currentPage = i;
+      // ��新track位置
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      // 滚动日期栏让今天居中
+      bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
+      // 添加today-dot（服务端可能配错了日期）
+      if (!t.querySelector('.today-dot')) {
+        var dot = document.createElement('div');
+        dot.className = 'today-dot';
+        t.insertBefore(dot, t.firstChild);
+      }
+      foundToday = true;
+    }
+  });
+  // 如果客户端没有找到匹配日期，回退到服务端设置
+  if (!foundToday) {
+    tabs.forEach(function(t,i) { if(t.classList.contains('active')) currentPage=i; });
+  }
   updateNow();
   updateShadows();
   
