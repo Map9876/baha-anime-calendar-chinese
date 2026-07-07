@@ -249,7 +249,7 @@ def build_html(schedule, updated):
         date_str = dt.strftime('%m/%d')
         iso_str = dt.strftime('%Y-%m-%d')
         dot_html = '<div class="today-dot"></div>' if is_today else ''
-        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
+        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-weekday">{day_label}</div><div class="date-num">{date_str}</div></div>'
     
     # Find today's index for inline track positioning
     try:
@@ -391,8 +391,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
 .date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; min-width:28px; min-height:24px; padding:0 7px; font-size:13px; }}
 .today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:3px; left:50%; margin-left:-2.5px; }}
-.date-num {{ font-size:13px; color:#999; margin-bottom:1px; line-height:16px; white-space:nowrap; }}
-.date-weekday {{ font-size:15px; color:#333; line-height:20px; }}
+.date-num {{ font-size:11px; color:#999; margin-top:2px; line-height:14px; white-space:nowrap; }}
+.date-weekday {{ font-size:15px; color:#333; line-height:22px; }}
 .timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
 .timeline-track {{ display:flex; transition:transform .35s cubic-bezier(.25,.46,.45,.94); will-change:transform; touch-action:none; }}
 .timeline-content {{ flex:0 0 100%; min-width:0; padding:0 16px; }}
@@ -564,8 +564,12 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   var velPoints = [];
   
   
-  // 服务端已设置active（build.py按构建时间计算），客户端不做覆盖
-  tabs.forEach(function(t,i) {{ if(t.classList.contains("active")) currentPage=i; }});
+  // 服务端已设置active，客户端同步currentPage并滚动日期栏到居中
+  tabs.forEach(function(t,i) {{ if(t.classList.contains("active")) {{
+    currentPage = i;
+    // 瞬间滚动日期栏让今天居中
+    bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
+  }} }});
   if (!document.querySelector(".date-tab.active")) {{
     currentPage = 0;
     tabs[0].classList.add("active");
