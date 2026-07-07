@@ -389,7 +389,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 2px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
-.date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:50%; width:26px; height:26px; line-height:26px; display:inline-block; text-align:center; font-size:14px; }}
+.date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; min-width:28px; min-height:24px; padding:0 7px; font-size:13px; }}
 .today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:2px; left:50%; margin-left:-2.5px; }}
 .date-num {{ font-size:11px; color:#999; margin-top:2px; line-height:14px; white-space:nowrap; }}
 .date-weekday {{ font-size:14px; color:#333; line-height:20px; }}
