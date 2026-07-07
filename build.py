@@ -553,8 +553,8 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   updateShadows();
   
   var pager = document.getElementById('timelinePager');
-  pager.addEventListener('touchstart',function(e){{ startX=e.touches[0].clientX; }});
-  pager.addEventListener('touchend',function(e){{
+  document.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; },{passive:true});
+  document.addEventListener('touchend',function(e){
     var diff = startX - e.changedTouches[0].clientX;
     if(Math.abs(diff)>50) {{
       e.preventDefault();
