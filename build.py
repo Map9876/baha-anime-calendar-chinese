@@ -390,7 +390,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-weekday {{ font-size:15px; color:#333; line-height:22px; }}
 .timeline-content.active {{ display:block; }}
 .timeline-pager {{ overflow:hidden; position:relative; }}
-.timeline-track {{ display:flex; }}
+.timeline-track {{ display:flex; touch-action:none; }}
 .timeline-content {{ display:none; padding:0 16px; }}
 .empty-day {{ text-align:center; padding:60px 20px; color:#999; font-size:16px; }}
 .timeline-item {{ display:flex; padding:12px 0; position:relative; }}
@@ -554,15 +554,15 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   updateShadows();
   
   var pager = document.getElementById('timelinePager');
-  document.addEventListener('touchstart',function(e){{ startX=e.touches[0].clientX; }});
-  document.addEventListener('touchend',function(e){{
+  track.addEventListener('touchstart',function(e){{ startX=e.touches[0].clientX; }});
+  track.addEventListener('touchend',function(e){{
     var diff = startX - e.changedTouches[0].clientX;
     if(Math.abs(diff)>50) {{
       e.preventDefault();
       var newPage = currentPage + (diff > 0 ? 1 : -1);
       if(newPage >= 0 && newPage < tabs.length) {{
         currentPage = newPage;
-        switchDay(newPage, false);
+        switchDay(newPage);
       }}
     }}
   }});
