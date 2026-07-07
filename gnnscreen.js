@@ -171,7 +171,7 @@ iframe, .gsc-search-box
   log(`FlareSolverr: ${FS_URL}`);
   log(`调试模式: ${DEBUG !== '0' ? '开启' : '��闭'}`);
   
-  const tags = process.argv.slice(2).length ? process.argv.slice(2) : [fmtTag(new Date()), '新番'];
+  const tags = process.argv.slice(2).length ? process.argv.slice(2) : [fmtTag(new Date())];
   log(`搜索标签: ${tags.join(', ')}`);
   
   const done = loadDone();
