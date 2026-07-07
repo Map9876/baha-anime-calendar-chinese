@@ -582,15 +582,18 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   
   // Swipe hint — once per browser (localStorage)
   var hint = document.getElementById('swipeHint');
-  if (hint && !localStorage.getItem('swipeHintShown')) {{
-    localStorage.setItem('swipeHintShown', '1');
-    setTimeout(function() {{ hint.classList.add('hide'); }}, 4000);
-    // Hide on first touch
-    window.addEventListener('touchstart', function() {{
-      hint.classList.add('hide');
-    }}, {{ once: true }});
-  }} else if (hint) {{
-    hint.classList.add('hide');
+  if (hint) {{
+    try {{
+      if (!localStorage.getItem('swipeHintShown')) {{
+        localStorage.setItem('swipeHintShown', '1');
+        setTimeout(function() {{ hint.classList.add('hide'); }}, 4000);
+        window.addEventListener('touchstart', function() {{ hint.classList.add('hide'); }}, {{ once: true }});
+      }} else {{
+        hint.classList.add('hide');
+      }}
+    }} catch(e) {{
+      setTimeout(function() {{ hint.classList.add('hide'); }}, 4000);
+    }}
   }}
 }})();
 </script>

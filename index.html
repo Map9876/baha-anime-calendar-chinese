@@ -68,7 +68,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 09:52</div>
+    <div class="meta">更新: 2026-07-07 09:53</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -1732,15 +1732,18 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   
   // Swipe hint — once per browser (localStorage)
   var hint = document.getElementById('swipeHint');
-  if (hint && !localStorage.getItem('swipeHintShown')) {
-    localStorage.setItem('swipeHintShown', '1');
-    setTimeout(function() { hint.classList.add('hide'); }, 4000);
-    // Hide on first touch
-    window.addEventListener('touchstart', function() {
-      hint.classList.add('hide');
-    }, { once: true });
-  } else if (hint) {
-    hint.classList.add('hide');
+  if (hint) {
+    try {
+      if (!localStorage.getItem('swipeHintShown')) {
+        localStorage.setItem('swipeHintShown', '1');
+        setTimeout(function() { hint.classList.add('hide'); }, 4000);
+        window.addEventListener('touchstart', function() { hint.classList.add('hide'); }, { once: true });
+      } else {
+        hint.classList.add('hide');
+      }
+    } catch(e) {
+      setTimeout(function() { hint.classList.add('hide'); }, 4000);
+    }
   }
 })();
 </script>
