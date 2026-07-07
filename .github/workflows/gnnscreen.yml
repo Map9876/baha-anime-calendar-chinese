@@ -54,6 +54,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
+            git add gnn_screenshot.log
             git commit -m "gnn: screenshot $(date '+%Y-%m-%d')"
             git pull --rebase
             git push
