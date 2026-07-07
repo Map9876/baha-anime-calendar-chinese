@@ -28,12 +28,17 @@ jobs:
           find /usr/share/fonts -name "*NotoSansCJK*" -o -name "*NotoSans*SC*" 2>/dev/null | while read f; do cp "$f" ~/.fonts/; cp "$f" /tmp/fonts/; done
           ls -la ~/.fonts/ 2>/dev/null
           fc-cache -f
-          # 验证字体
-          echo "Font match: $(fc-match 'Noto Sans CJK SC' 2>/dev/null | head -1)"
+          echo "Font match: $(fc-match 'Noto Sans CJK SC' 2>/dev/null || true)"
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Install system Chrome
+        run: |
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb 2>/dev/null || true
+          apt-get install -y -qq /tmp/chrome.deb 2>/dev/null || true
+          echo "Chrome: $(google-chrome-stable --version 2>/dev/null || echo 'not found')"
 
       - name: Start FlareSolverr
         run: |

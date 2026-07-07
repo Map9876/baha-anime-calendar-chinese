@@ -311,8 +311,11 @@ iframe, .gsc-search-box
     // 启动 Chromium 截图
     log('启动 Chromium 用于截图...');
     process.env.FONTCONFIG_PATH = '/etc/fonts';
+    // 优先使用系统 Chrome（已安装 Noto CJK ��体）
+    const chromePath = require("fs").existsSync("/usr/bin/google-chrome-stable") ? "/usr/bin/google-chrome-stable" : undefined;
     const b = await puppeteer.launch({
       headless: true,
+      executablePath: chromePath,
       args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--font-render-hinting=none','--enable-font-antialiasing'],
     });
     const p = await b.newPage();
