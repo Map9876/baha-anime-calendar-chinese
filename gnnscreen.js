@@ -140,6 +140,8 @@ section[id*="comment" i], section[class*="comment" i],
 div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
+/* 强制中文字体 */
+body, .GN-lbox2D a, .GN-lbox2C, .GN-lbox2D { font-family:'Noto Sans CJK SC','Noto Sans SC','Source Han Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
 </style></head>`);

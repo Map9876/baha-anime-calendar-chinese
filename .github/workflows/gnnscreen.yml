@@ -19,9 +19,12 @@ jobs:
 
       - name: Install Chinese fonts
         run: |
-          apt-get update -qq && apt-get install -y -qq fonts-noto-cjk fonts-noto-color-emoji
+          apt-get update -qq && apt-get install -y -qq fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-color-emoji
           fc-cache -f 2>/dev/null
-          echo "Fonts installed: $(fc-list | grep -c 'Noto\|CJK')"
+          echo "=== Available CJK fonts ==="
+          fc-list :lang=zh 2>/dev/null | head -10 || echo "No CJK fonts found"
+          echo "=== Noto fonts ==="
+          fc-list | grep -i "noto\|cjk" | head -10 || echo "No Noto fonts"
 
       - name: Setup Node
         uses: actions/setup-node@v4
