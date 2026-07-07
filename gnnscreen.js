@@ -144,7 +144,27 @@ section[id*="comment" i], section[class*="comment" i],
 .BH-menu, .sidenav, .fixed-right, .member-service,
 .event-prj, .bh-banner, .footer__wrap, .footer__copyright,
 div[class*="ad-"], div[id*="ad-"],
-iframe, .gsc-search-box
+iframe, .gsc-search-box,
+.GN-lbox3B,
+.gnn-detail-foot,
+/* 隐藏底部相关文章推荐、延伸报道、留言、页面导航等 */
+.gnn_detail_box, #gnn_detail_box,
+div[class*="related"], div[id*="related"],
+div[class*="recommend"], div[id*="recommend"],
+.extension, .extend, .延伸, .延伸報導,
+.gnn_pages, div[class*="pagination"],
+.BH-footer, footer,
+/* 隐藏"人已追蹤"、"夏日特惠"等推广 */
+div[class*="active"], div[class*="track"],
+div[class*="campaign"], div[class*="promo"],
+.BH-menu-m,
+.gnn-detail__footer,
+.BH-footer__wrap,
+.app-promo, .open-app,
+[class*="延伸報導"], [id*="延伸報導"],
+.gnn-detail-bottom,
+.gnn-related-news,
+.shop-list
 { display:none !important; }
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
@@ -158,6 +178,33 @@ iframe, .gsc-search-box
     debug(`[${vn}] goto失败, 尝试用setContent回退`);
   });
   debug(`[${vn}] 等待渲染`);
+  // 移除GNN自带的失败字体(巴哈正黑體)并隐藏无关内容
+  await page.evaluate(() => {
+    try {
+      // 删除所有 @font-face 中的 巴哈正黑體
+      for (const ss of document.styleSheets) {
+        try {
+          for (let i = ss.cssRules.length - 1; i >= 0; i--) {
+            const r = ss.cssRules[i];
+            if (r.type === CSSRule.FONT_FACE_RULE && r.style && r.style.fontFamily && r.style.fontFamily.includes('巴哈正黑體')) {
+              ss.deleteRule(i);
+            }
+          }
+        } catch(e) {}
+      }
+      // 移除页面底部无关内容
+      const removeText = ['延伸報導', '開啟 APP'];
+      document.querySelectorAll('div, section, aside').forEach(el => {
+        const text = el.textContent || '';
+        if (removeText.some(t => text.includes(t))) {
+          // 只移除包含这些文本且不是文章主体的元素
+          if (!el.closest('.GN-lbox2D') && !el.closest('.GN-lbox2C')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    } catch(e) { console.log("Cleanup error:", e); }
+  }).catch(e => log(`  ⚠️ 页面清理失败: ${e.message}`));
   // 字体诊断
   const diagOk = await page.evaluate(() => {
     try {
