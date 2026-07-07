@@ -251,12 +251,6 @@ def build_html(schedule, updated):
         dot_html = '<div class="today-dot"></div>' if is_today else ''
         date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-weekday">{day_label}</div><div class="date-num">{date_str}</div></div>'
     
-    # Find today's index for inline track positioning
-    try:
-        init_idx = [i for i, dt in enumerate(all_dates) if dt.date() == now.date()][0]
-    except IndexError:
-        init_idx = 0
-    
     # Map anime entries to dates by weekday
     date_entries = {}
     for dt in all_dates:
@@ -393,9 +387,10 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:3px; left:50%; margin-left:-2.5px; }}
 .date-num {{ font-size:11px; color:#999; margin-top:2px; line-height:14px; white-space:nowrap; }}
 .date-weekday {{ font-size:15px; color:#333; line-height:22px; }}
+.timeline-content.active {{ display:block; }}
 .timeline-pager {{ overflow:hidden; position:relative; }}
-.timeline-track {{ display:flex; transition:transform .35s cubic-bezier(.25,.46,.45,.94); will-change:transform; }}
-.timeline-content {{ flex:0 0 100%; min-width:0; padding:0 16px; }}
+.timeline-track {{ display:flex; }}
+.timeline-content {{ display:none; padding:0 16px; }}
 .empty-day {{ text-align:center; padding:60px 20px; color:#999; font-size:16px; }}
 .timeline-item {{ display:flex; padding:12px 0; position:relative; }}
 .timeline-item.now-airing {{ background:#fff0f5; margin:0 -16px; padding:12px 16px; border-radius:8px; }}
@@ -449,7 +444,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 </div>
 
 <div class="timeline-pager" id="timelinePager">
-  <div class="timeline-track" id="timelineTrack" style="transform:translateX(-{init_idx}00%)">
+  <div class="timeline-track" id="timelineTrack">
     {content_divs}
   </div>
 </div>
@@ -526,29 +521,14 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
     }}
   }}
   
-  function switchDay(idx, duration) {{
-    // duration: false=instant, true=normal(.35s), number=seconds
-    if (duration === false || duration === 0) {{
-      track.style.transition = 'none';
-    }} else if (duration === true) {{
-      track.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
-    }} else {{
-      track.style.transition = 'transform ' + duration + 's cubic-bezier(.25,.46,.45,.94)';
-    }}
-    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
-    
-    // Sync swipe handler's currentPage with tab clicks
+  function switchDay(idx) {{
     currentPage = idx;
-    
-    // Update tabs
     tabs.forEach(function(t,i) {{ t.classList.toggle('active',i===idx); }});
-    
-    // Scroll date bar — instant for tab clicks, smooth for swipes
+    pages.forEach(function(p,i) {{ p.classList.toggle('active',i===idx); }});
     var tab = tabs[idx];
     if (tab) {{
       var scrollLeft = tab.offsetLeft - bar.offsetWidth/2 + tab.offsetWidth/2;
-      var scrollBehavior = (duration === 0) ? 'auto' : 'smooth';
-      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:scrollBehavior }});
+      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:'auto' }});
     }}
     updateNow();
   }}
