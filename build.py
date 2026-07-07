@@ -564,33 +564,11 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   var velPoints = [];
   
   
-  // 客户端实时日期：不依赖构建时时间
-  // 客户端实时日期：覆盖服务端硬编码的值
-  // 这样无论 HTML 是什么时候构建的，用户始终看到今天
-  var clientToday = new Date().toISOString().slice(0,10);
-  var foundToday = false;
-  tabs.forEach(function(t,i) {{
-    if (t.dataset.date === clientToday) {{
-      // 移除所有 active，重新设置今天
-      tabs.forEach(function(tt) {{ tt.classList.remove('active'); }});
-      t.classList.add('active');
-      currentPage = i;
-      // ��新track位置
-      track.style.transform = 'translateX(' + (-i * 100) + '%)';
-      // 滚动日期栏让今天居中
-      bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
-      // 添加today-dot（服务端可能配错了日期）
-      if (!t.querySelector('.today-dot')) {{
-        var dot = document.createElement('div');
-        dot.className = 'today-dot';
-        t.insertBefore(dot, t.firstChild);
-      }}
-      foundToday = true;
-    }}
-  }});
-  // 如果客户端没有找到匹配日期，回退到服务端设置
-  if (!foundToday) {{
-    tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
+  // 服务端已设置active（build.py按构建时间计算），客户端不做覆盖
+  tabs.forEach(function(t,i) {{ if(t.classList.contains("active")) currentPage=i; }});
+  if (!document.querySelector(".date-tab.active")) {{
+    currentPage = 0;
+    tabs[0].classList.add("active");
   }}
   updateNow();
   updateShadows();
