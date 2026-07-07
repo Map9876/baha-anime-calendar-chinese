@@ -26,6 +26,9 @@ jobs:
           echo "=== Noto fonts ==="
           fc-list | grep -i "noto\|cjk" | head -10 || echo "No Noto fonts"
 
+          mkdir -p /usr/share/fonts/truetype/noto-copy
+          cp -r /usr/share/fonts/truetype/noto/*.ttc /usr/share/fonts/truetype/noto-copy/ 2>/dev/null || true
+          cp -r /usr/share/fonts/opentype/noto/*.ttc /usr/share/fonts/truetype/noto-copy/ 2>/dev/null || true
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
