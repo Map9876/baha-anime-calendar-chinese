@@ -42,19 +42,31 @@ function updateReadme() {
   const tags = [...new Set(results.map(r=>r.tag))].join(', ');
   let sec = `# GNN 截图记录 (${now})\n\n已完成季度: ${tags}\n\n`;
   
-  // 按标签分组
-  const byTag = {};
-  for (const r of results) {
-    if (!byTag[r.tag]) byTag[r.tag] = [];
-    byTag[r.tag].push(r);
+  // 去重：同一篇文章只显示一次，优先 動畫瘋26夏 标签
+  const seen = new Set();
+  const uniqueResults = [];
+  // 先处理動畫瘋26夏，再处理其他tag
+  const tagPriority = ['\u52d5\u756b\u760b26\u590f', '\u65b0\u756a']; // 動畫瘋26夏优先
+  for (const tag of tagPriority) {
+    for (const r of results) {
+      if (r.tag === tag && !seen.has(r.title)) {
+        seen.add(r.title);
+        uniqueResults.push(r);
+      }
+    }
   }
-  for (const [tag, items] of Object.entries(byTag)) {
-    sec += `## ${tag}\n\n`;
-    // 只显示 mobile 截图（桌面版不需要）
-    const mobile = items.find(i => i.vn === 'mobile');
-    if (mobile) {
-      sec += `![${tag} 季度时间表](${mobile.file})\n`;
-      sec += `- ${mobile.title} — ${mobile.mb} MB (mobile)\n\n`;
+  // 其他tag
+  for (const r of results) {
+    if (!seen.has(r.title)) {
+      seen.add(r.title);
+      uniqueResults.push(r);
+    }
+  }
+  sec += `\n`;
+  for (const r of uniqueResults) {
+    if (r.vn === 'mobile') {
+      sec += `![${r.tag}](${r.file})\n`;
+      sec += `- ${r.title} — ${r.mb} MB\n\n`;
     }
   }
   
