@@ -68,7 +68,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 09:53</div>
+    <div class="meta">更新: 2026-07-07 09:56</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -1703,8 +1703,8 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   updateShadows();
   
   var pager = document.getElementById('timelinePager');
-  pager.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; });
-  pager.addEventListener('touchend',function(e){
+  document.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; });
+  document.addEventListener('touchend',function(e){
     var diff = startX - e.changedTouches[0].clientX;
     if(Math.abs(diff)>50) {
       e.preventDefault();
