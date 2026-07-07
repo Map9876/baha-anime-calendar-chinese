@@ -67,7 +67,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 09:45</div>
+    <div class="meta">更新: 2026-07-07 09:48</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -1702,16 +1702,11 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
     tab.addEventListener('click',function(){ switchDay(i, 0); });
   });
   
-  // Touch swipe — Bilibili Compose 风格: 方向锁定，不重新评估
-  var startX = 0, startY = 0, currentPage = 0;
-  var isHorizontal = false, isActive = false, lastX = 0;
-  var velPoints = [];
-  
-  
+  // Touch swipe — 原始极简版（无方向锁定，无velocity，不影响页面滚动）
+  var startX = 0, currentPage = 0;
   // 服务端已设置active，客户端同步currentPage并滚动日期栏到居中
   tabs.forEach(function(t,i) { if(t.classList.contains("active")) {
     currentPage = i;
-    // 瞬间滚动日期栏让今天居中
     bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
   } });
   if (!document.querySelector(".date-tab.active")) {
@@ -1721,111 +1716,19 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   updateNow();
   updateShadows();
   
-  function handleTouchStart(e) {
-    // Skip if touch is on date bar
-    if (e.target.closest('#dateBar') || e.target.closest('.date-bar')) {
-      isActive = false;
-      return;
-    }
-    var t = e.touches[0];
-    startX = t.clientX;
-    startY = t.clientY;
-    lastX = startX;
-    isHorizontal = false;
-    isActive = true;
-    velPoints = [];
-    track.style.transition = 'none';
-  }
-  
-  function handleTouchMove(e) {
-    if (!isActive) return;
-    var t = e.touches[0];
-    var cx = t.clientX, cy = t.clientY;
-    var deltaX = cx - startX;
-    var deltaY = cy - startY;
-    var absX = Math.abs(deltaX), absY = Math.abs(deltaY);
-    
-    // 还没有锁定方向: 等移动 >10px 后决定
-    if (!isHorizontal && absY <= 10 && absX <= 10) return;
-    
-    if (!isHorizontal) {
-      // 第一次判断: 锁定方向（Compose 风格，不重新评估）
-      if (absY > absX) {
-        // 垂直 → 释放给浏览器原生滚动
-        isActive = false;
-        track.style.transition = 'transform .35s cubic-bezier(.25,.46,.45,.94)';
-        track.style.transform = 'translateX(' + (-currentPage * 100) + '%)';
-        return;
-      } else {
-        // 水平 → 锁定横向模式
-        isHorizontal = true;
-        e.preventDefault();
-      }
-    }
-    
-    // 水平跟手 + 速度采样
-    if (isHorizontal) {
+  var pager = document.getElementById('timelinePager');
+  pager.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; });
+  pager.addEventListener('touchend',function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if(Math.abs(diff)>50) {
       e.preventDefault();
-      if (Math.abs(cx - lastX) >= 5) {
-        velPoints.push({ x: cx, t: Date.now() });
-        if (velPoints.length > 7) velPoints.shift();
-        lastX = cx;
-      }
-      track.style.transform = 'translateX(' + (-currentPage * 100 + deltaX / pager.offsetWidth * 100) + '%)';
-    }
-  }
-  
-  function handleTouchEnd(e) {
-    if (!isActive) return;
-    if (!isHorizontal) return;
-    isActive = false;
-    
-    var endX = e.changedTouches[0].clientX;
-    var deltaX = endX - startX;
-    var absDelta = Math.abs(deltaX);
-    var pageW = pager.offsetWidth;
-    
-    // 计算速度 (最后 3 个采样点)
-    var vel = 0;
-    if (velPoints.length >= 2) {
-      var n = velPoints.length;
-      var first = velPoints[Math.max(0, n - 3)];
-      var last = velPoints[n - 1];
-      var dt = last.t - first.t;
-      if (dt > 5) vel = (last.x - first.x) / dt;
-    }
-    
-    var shouldSwitch = false;
-    var direction = 0;
-    var absVel = Math.abs(vel);
-    
-    // 速度优先，距离兜底
-    if (absVel > 0.12) {
-      shouldSwitch = true;
-      direction = vel > 0 ? -1 : 1;
-    } else if (absDelta > pageW * 0.2) {
-      shouldSwitch = true;
-      direction = deltaX > 0 ? -1 : 1;
-    }
-    
-    if (shouldSwitch) {
-      e.preventDefault();
-      var newPage = currentPage + direction;
-      if (newPage >= 0 && newPage < tabs.length) {
+      var newPage = currentPage + (diff > 0 ? 1 : -1);
+      if(newPage >= 0 && newPage < tabs.length) {
         currentPage = newPage;
-        switchDay(newPage, true);
-        return;
+        switchDay(newPage, false);
       }
     }
-    
-    // Snap back
-    switchDay(currentPage, true);
-  }
-  
-  // Attach to track element only — avoids conflict with touch-action:pan-y
-  track.addEventListener('touchstart', handleTouchStart, { passive: true });
-  track.addEventListener('touchmove', handleTouchMove, { passive: false });
-  track.addEventListener('touchend', handleTouchEnd, { passive: true });
+  });
   
   // Scroll shadows for date bar
   var shadowL = document.querySelector('.date-bar-shadow-l');
