@@ -162,7 +162,18 @@ iframe, .gsc-search-box
     log(`  ⚠️ goto 超时/错误: ${e.message}`);
     debug(`[${vn}] goto失败, 尝试用setContent回退`);
   });
-  debug(`[${vn}] ��待渲染`);
+  debug(`[${vn}] 等待渲染`);
+  // 字体诊断
+  const diagOk = await page.evaluate(() => {
+    try {
+      const text = document.body.innerText || '';
+      const cjk = (text.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+      const style = getComputedStyle(document.body);
+      const fonts = [...document.fonts].map(f => f.family + ':' + f.status);
+      return { cjk, fontFamily: style.fontFamily, fonts, fontsCount: document.fonts.size };
+    } catch(e) { return { error: e.message }; }
+  }).catch(e => ({ error: e.message }));
+  log(`  [${vn}] 字体诊断: ${JSON.stringify(diagOk)}`);
   // 等待中文字体加载
   // ��JS动态加载Google Font
   await page.evaluate(async () => {
