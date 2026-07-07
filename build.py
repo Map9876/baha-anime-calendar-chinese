@@ -249,7 +249,7 @@ def build_html(schedule, updated):
         date_str = dt.strftime('%m/%d')
         iso_str = dt.strftime('%Y-%m-%d')
         dot_html = '<div class="today-dot"></div>' if is_today else ''
-        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-weekday">{day_label}</div><div class="date-num">{date_str}</div></div>'
+        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
     # Find today's index for inline track positioning
     try:
@@ -390,9 +390,9 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
 .date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; min-width:28px; min-height:24px; padding:0 7px; font-size:13px; }}
-.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:2px; left:50%; margin-left:-2.5px; }}
-.date-num {{ font-size:11px; color:#999; margin-top:2px; line-height:14px; white-space:nowrap; }}
-.date-weekday {{ font-size:14px; color:#333; line-height:20px; }}
+.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:3px; left:50%; margin-left:-2.5px; }}
+.date-num {{ font-size:13px; color:#999; margin-bottom:1px; line-height:16px; white-space:nowrap; }}
+.date-weekday {{ font-size:15px; color:#333; line-height:20px; }}
 .timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
 .timeline-track {{ display:flex; transition:transform .35s cubic-bezier(.25,.46,.45,.94); will-change:transform; }}
 .timeline-content {{ flex:0 0 100%; min-width:0; padding:0 16px; }}
