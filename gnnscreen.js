@@ -54,7 +54,10 @@ function updateReadme() {
   }
   for (const r of results) {
     if (r.vn === 'mobile' && seen.has(r.title)) {
-      sec += `![${r.tag}](${r.file})\n`;
+      // URL编码路径
+      const imgPath = r.file.split("/").map(p => encodeURIComponent(p)).join("/");
+      sec += `![${r.tag}](${imgPath})
+`;
       sec += `- ${r.title} — ${r.mb} MB\n\n`;
       seen.delete(r.title);
     }
