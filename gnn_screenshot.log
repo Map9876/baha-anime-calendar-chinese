@@ -1,0 +1,56 @@
+[16:02:33] === GNN ScreenShot 开始 ===
+[16:02:33] FlareSolverr: http://localhost:8191/v1
+[16:02:33] 调试模式: 开启
+[16:02:33] 搜索标签: 動畫瘋26夏
+[16:02:33] 已完成季度: (无)
+[16:02:33] 待处理: 動畫瘋26夏
+[16:02:33] 测试 FlareSolverr...
+  🔍 FlareSolverr 测试响应: status=ok, message=Challenge not detected!
+[16:02:35] FlareSolverr 测试: OK (269416 字节)
+[16:02:35] 
+====== 标签: 動畫瘋26夏 ======
+[16:02:35] 目标 URL: https://gnn.gamer.com.tw/search_tag.php?q=%E5%8B%95%E7%95%AB%E7%98%8B26%E5%A4%8F
+  🔍 [search_動畫瘋26夏] 请求 FlareSolverr: https://gnn.gamer.com.tw/search_tag.php?q=%E5%8B%95%E7%95%AB%E7%98%8B26%E5%A4%8F
+  🔍 [search_動畫瘋26夏] FlareSolverr 响应 status=ok message=Challenge not detected!
+  🔍 [search_動畫瘋26夏] HTML 长度: 89853 字节
+  🔍 [search_動畫瘋26夏] HTML 已保存到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/_debug/search_動畫瘋26夏_0.html
+  🔍 [search_動畫瘋26夏] <title>: 搜尋 - 巴哈姆特
+[16:02:39] HTML 大小: 87.7 KB
+[16:02:39] 解析文章列表...
+[16:02:39]   方法1 (GN-lbox2D): 0 个
+[16:02:39]   方法2 (detail.php): 1 个
+[16:02:39]   去重后总数: 1
+[16:02:39] 找到 1 篇文章
+[16:02:39]   📄 [detail.php] 動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作
+  🔍      URL: https://gnn.gamer.com.tw/detail.php?sn=307681
+[16:02:39] 启动 Chromium 用于截图...
+[16:02:45] Chromium 就绪
+[16:02:45] 
+--- 動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作 ---
+[16:02:45] URL: https://gnn.gamer.com.tw/detail.php?sn=307681
+  🔍 [article_動畫瘋 2026 夏季新番推出《無職轉生] 请求 FlareSolverr: https://gnn.gamer.com.tw/detail.php?sn=307681
+  🔍 [article_動畫瘋 2026 夏季新番推出《無職轉生] FlareSolverr 响应 status=ok message=Challenge not detected!
+  🔍 [article_動畫瘋 2026 夏季新番推出《無職轉生] HTML 长度: 185552 字节
+  🔍 [article_動畫瘋 2026 夏季新番推出《無職轉生] HTML 已保存到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/_debug/article_動畫瘋 2026 夏季新番推出《無職轉生_1.html
+  🔍 [article_動畫瘋 2026 夏季新番推出《無職轉生] <title>: 動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作 - 巴哈姆特
+[16:02:48] 文章 HTML: 181.2 KB
+[16:02:48]   正文已保存: /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/動畫瘋26夏/article.txt
+[16:02:48]   [desktop] 動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作
+  🔍 [desktop] 保存 HTML 到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/_tmp_page.html (186068 字节)
+  🔍 [desktop] 等待渲染
+[16:02:52]   [desktop] 字体诊断: {"cjk":1643,"fontFamily":"\"Helvetica Neue\", Helvetica, Roboto, Arial, \"Lucida Grande\", \"PingFang TC\", 蘋果儷中黑, \"Apple LiGothic Medium\", sans-serif","fonts":["巴哈正黑體:error","巴哈正黑體:error","Material Icons:unloaded","Material Icons Round:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","FontAwesome:loaded","swiper-icons:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded"],"fontsCount":15}
+  🔍 [desktop] 滚动触发懒加载
+  🔍 [desktop] 截图保存到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/動畫瘋26夏/desktop/動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作.png
+[16:03:06]     ✅ /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/動畫瘋26夏/desktop/動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作.png (22.2 MB)
+[16:03:06]   [mobile] 動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作
+  🔍 [mobile] 保存 HTML 到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/_tmp_page.html (186068 字节)
+  🔍 [mobile] 等待渲染
+[16:03:09]   [mobile] 字体诊断: {"cjk":1645,"fontFamily":"\"Helvetica Neue\", Helvetica, Roboto, Arial, \"Lucida Grande\", \"PingFang TC\", 蘋果儷中黑, \"Apple LiGothic Medium\", sans-serif","fonts":["巴哈正黑體:error","巴哈正黑體:error","Material Icons:unloaded","Material Icons Round:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded","FontAwesome:loaded","swiper-icons:unloaded","Teko:unloaded","Teko:unloaded","Teko:unloaded"],"fontsCount":15}
+  🔍 [mobile] 滚动触发懒加载
+  🔍 [mobile] 截图保存到 /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/動畫瘋26夏/mobile/動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作.png
+[16:03:22]     ✅ /home/runner/work/baha-anime-calendar-chinese/baha-anime-calendar-chinese/gnn_screenshots/動畫瘋26夏/mobile/動畫瘋 2026 夏季新番推出《無職轉生 第三季》《幼女戰記 2》《相反的你和我 第二季》等作.png (16.5 MB)
+[16:03:22] Chromium 已关闭
+[16:03:22] 截图成功: 2 张
+[16:03:22] ✅ README 已更新 (2 张截图)
+[16:03:22] 
+=== 完成 (耗时 0.0 分钟) ===
