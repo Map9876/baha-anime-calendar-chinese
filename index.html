@@ -67,7 +67,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 09:08</div>
+    <div class="meta">更新: 2026-07-07 09:12</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -1608,6 +1608,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <script>
 (function() {
   var tabs = document.querySelectorAll('.date-tab');
+  var pages = document.querySelectorAll('.timeline-content');
   var bar = document.getElementById('dateBar');
   var pager = document.getElementById('timelinePager');
   var track = document.getElementById('timelineTrack');
@@ -1714,12 +1715,9 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   var foundToday = false;
   tabs.forEach(function(t,i) {
     if (t.dataset.date === clientToday) {
-      // 移除所有 active（覆盖服务端可能设置的旧日期）
+      // 移除所有 active，重新设置今天
       tabs.forEach(function(tt) { tt.classList.remove('active'); });
-      pages.forEach(function(pp) { pp.classList.remove('active'); });
-      // 设置今天为 active
       t.classList.add('active');
-      pages[i].classList.add('active');
       currentPage = i;
       // ��新track位置
       track.style.transform = 'translateX(' + (-i * 100) + '%)';

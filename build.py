@@ -464,6 +464,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 <script>
 (function() {{
   var tabs = document.querySelectorAll('.date-tab');
+  var pages = document.querySelectorAll('.timeline-content');
   var bar = document.getElementById('dateBar');
   var pager = document.getElementById('timelinePager');
   var track = document.getElementById('timelineTrack');
@@ -570,12 +571,9 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   var foundToday = false;
   tabs.forEach(function(t,i) {{
     if (t.dataset.date === clientToday) {{
-      // 移除所有 active（覆盖服务端可能设置的旧日期）
+      // 移除所有 active，重新设置今天
       tabs.forEach(function(tt) {{ tt.classList.remove('active'); }});
-      pages.forEach(function(pp) {{ pp.classList.remove('active'); }});
-      // 设置今天为 active
       t.classList.add('active');
-      pages[i].classList.add('active');
       currentPage = i;
       // ��新track位置
       track.style.transform = 'translateX(' + (-i * 100) + '%)';
