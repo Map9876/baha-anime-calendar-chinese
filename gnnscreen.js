@@ -42,21 +42,18 @@ function updateReadme() {
   const tags = [...new Set(results.map(r=>r.tag))].join(', ');
   let sec = `# GNN 截图记录 (${now})\n\n已完成季度: ${tags}\n\n`;
   
-  // 去重：同一篇文章只显示一次，优先 動畫瘋26夏 标签
+  // 去重：同一篇文章只显示一次，优先季度tag（動畫瘋26夏、動畫瘋26秋等）
   const seen = new Set();
   const uniqueResults = [];
-  // 先处理動畫瘋26夏，再处理其他tag
-  const tagPriority = ['\u52d5\u756b\u760b26\u590f', '\u65b0\u756a']; // 動畫瘋26夏优先
-  for (const tag of tagPriority) {
-    for (const r of results) {
-      if (r.tag === tag && !seen.has(r.title)) {
-        seen.add(r.title);
-        uniqueResults.push(r);
-      }
-    }
-  }
-  // 其他tag
-  for (const r of results) {
+  // 按tag优先级排序：動畫瘋+年份+季节 优先，其他次之
+  const sorted = [...results].sort((a, b) => {
+    const aIsSeason = /動畫瘋\d{2}[春夏秋冬]/.test(a.tag);
+    const bIsSeason = /動畫瘋\d{2}[春夏秋冬]/.test(b.tag);
+    if (aIsSeason && !bIsSeason) return -1;
+    if (!aIsSeason && bIsSeason) return 1;
+    return 0;
+  });
+  for (const r of sorted) {
     if (!seen.has(r.title)) {
       seen.add(r.title);
       uniqueResults.push(r);
