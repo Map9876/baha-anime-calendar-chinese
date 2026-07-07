@@ -375,11 +375,11 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 .date-bar-shadow-l {{ position:absolute; top:0; left:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar-shadow-r {{ position:absolute; top:0; right:0; bottom:0; width:16px; background:linear-gradient(to left,rgba(0,0,0,.12),transparent); z-index:10; pointer-events:none; opacity:0; transition:opacity .15s; }}
 .date-bar::-webkit-scrollbar {{ display:none; }}
-.date-tab {{ flex:0 0 72px; min-width:72px; padding:8px 2px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
+.date-tab {{ flex:0 0 52px; min-width:52px; padding:8px 2px; text-align:center; cursor:pointer; -webkit-tap-highlight-color:transparent; position:relative; }}
 .date-tab.active {{ }}
 .date-tab.active .date-num {{ color:#fb7299; font-weight:700; }}
 .date-tab.active .date-weekday {{ color:#fff; background:#fb7299; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; min-width:38px; min-height:38px; padding:2px 10px; font-size:17px; }}
-.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; margin:0 auto 3px; }}
+.today-dot {{ width:5px; height:5px; background:#fb7299; border-radius:50%; position:absolute; top:2px; left:50%; margin-left:-2.5px; }}
 .date-num {{ font-size:13px; color:#999; margin-bottom:2px; line-height:16px; white-space:nowrap; }}
 .date-weekday {{ font-size:18px; color:#333; line-height:24px; }}
 .timeline-pager {{ overflow:hidden; position:relative; touch-action:pan-y; overscroll-behavior:none; }}
@@ -563,9 +563,13 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
       dot.className = 'today-dot';
       var num = t.querySelector('.date-num');
       if (num) t.insertBefore(dot, num);
+      // 同步date bar滚动到今日（瞬间，无闪烁）
+      bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
     }}
   }});
-  switchDay(currentPage, false);
+  // track已从服务器端设置好初始位置，不需要再switchDay
+  updateNow();
+  updateShadows();
   
   function handleTouchStart(e) {{
     // Skip if touch is on date bar
@@ -682,16 +686,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   }}
   bar.addEventListener('scroll', updateShadows);
   
-  // Init: scroll to today and show now marker
-  setTimeout(function() {{
-    var activeTab = document.querySelector('.date-tab.active');
-    if (activeTab) {{
-      var scrollLeft = activeTab.offsetLeft - bar.offsetWidth/2 + activeTab.offsetWidth/2;
-      bar.scrollTo({{ left:Math.max(0,scrollLeft), behavior:'auto' }});
-    }}
-    updateShadows();
-    updateNow();
-  }}, 50);
+  // Init: show now marker and shadows
   
   // Update now marker every 60 seconds
   setInterval(updateNow, 60000);
