@@ -363,6 +363,7 @@ def build_html(schedule, updated):
 <meta name="description" content="巴哈姆特动画疯 &amp; LINE TV 新番时间表 - 每周动漫日历/周历，收录当前季度最新番剧更新时间，支持左右滑动切换日期">
 <meta name="keywords" content="巴哈姆特动画疯,巴哈姆特動畫瘋,番剧,新番,动漫,日历,周历,新番表,时间表,新番時間表,更新,季度,LINE TV,anime schedule">
 <title>新番时间表 - 巴哈姆特动画疯 &amp; LINE TV 动漫日历</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f5f5; color:#333; }}
