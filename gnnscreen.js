@@ -310,9 +310,10 @@ iframe, .gsc-search-box
 
     // 启动 Chromium 截图
     log('启动 Chromium 用于截图...');
+    process.env.FONTCONFIG_PATH = '/etc/fonts';
     const b = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage'],
+      args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--font-render-hinting=none','--enable-font-antialiasing'],
     });
     const p = await b.newPage();
     await p.setExtraHTTPHeaders({ 'Accept-Language': 'zh-TW,zh;q=0.9;en;q=0.7' });
