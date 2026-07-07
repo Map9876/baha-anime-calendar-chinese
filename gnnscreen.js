@@ -147,7 +147,7 @@ div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
 /* 强制中文字体 */
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { font-family:'Noto Sans SC','Noto Sans CJK SC','Noto Sans CJK','Source Han Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
 </style>
@@ -159,6 +159,8 @@ iframe, .gsc-search-box
     log(`  ⚠️ setContent 超时/错误: ${e.message}`);
   });
   debug(`[${vn}] ��待渲染`);
+  // 等待中文字体加载
+  try { await page.evaluate(() => document.fonts.ready); } catch(e) {}
   await page.evaluate(() => new Promise(r => setTimeout(r, 2000)));
   debug(`[${vn}] 滚动触发懒加载`);
   await page.evaluate(async () => {
