@@ -244,9 +244,12 @@ def build_html(schedule, updated):
     date_tabs = ""
     for dt in all_dates:
         day_label = weekday_names[dt.weekday()]
+        is_today = (dt.date() == now.date())
+        active_cls = ' active' if is_today else ''
         date_str = dt.strftime('%m/%d')
         iso_str = dt.strftime('%Y-%m-%d')
-        date_tabs += f'<div class="date-tab" data-date="{iso_str}"><div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
+        dot_html = '<div class="today-dot"></div>' if is_today else ''
+        date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
     # Map anime entries to dates by weekday
     date_entries = {}
@@ -346,7 +349,9 @@ def build_html(schedule, updated):
     content_divs = ""
     for dt in all_dates:
         key = dt.strftime('%Y-%m-%d')
-        content_divs += f'<div class="timeline-content" data-date="{key}">{timelines[key]}</div>'
+        is_today = (dt.date() == now.date())
+        active_cls = ' active' if is_today else ''
+        content_divs += f'<div class="timeline-content{active_cls}" data-date="{key}">{timelines[key]}</div>'
     
     total = sum(len(v) for v in schedule.values())
     
@@ -553,21 +558,12 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   
   
   // 客户端实时日期：不依赖构建时时间
-  var todayStr = new Date().toISOString().slice(0,10);
-  tabs.forEach(function(t,i) {{
-    if (t.dataset.date === todayStr) {{
-      currentPage = i;
-      t.classList.add('active');
-      // 今天日期上面加粉色小点
-      var dot = document.createElement('div');
-      dot.className = 'today-dot';
-      var num = t.querySelector('.date-num');
-      if (num) t.insertBefore(dot, num);
-      // 同步date bar滚动到今日（瞬间，无闪烁）
-      bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
-    }}
-  }});
-  // track已从服务器端设置好初始位置，不需要再switchDay
+  // 服务器端已设置active class，只需同步currentPage和now marker
+  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
+  pages.forEach(function(p,i) {{ if(p.classList.contains('active')) {{
+    // 确保track位置正确（服务器端active内容已可见）
+    track.style.transform = 'translateX(' + (-i * 100) + '%)';
+  }} }});
   updateNow();
   updateShadows();
   
