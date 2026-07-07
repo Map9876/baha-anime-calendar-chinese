@@ -160,6 +160,7 @@ iframe, .gsc-search-box
   debug(`[${vn}] 保存 HTML 到 ${tmpFile} (${cleanHtml.length} 字节)`);
   await page.goto('file://' + tmpFile, { waitUntil: 'networkidle0', timeout: TIMEOUT }).catch(e => {
     log(`  ⚠️ goto 超时/错误: ${e.message}`);
+    debug(`[${vn}] goto失败, 尝试用setContent回退`);
   });
   debug(`[${vn}] ��待渲染`);
   // 等待中文字体加载
