@@ -147,21 +147,35 @@ div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
 /* 强制中文字体 */
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<!-- fonts will be loaded by puppeteer -->
 <style>
 * { font-family:'Noto Sans SC','Noto Sans CJK SC','Noto Sans CJK','Source Han Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
 </style>
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
 </style></head>`);
-  debug(`[${vn}] 设置 HTML 内容 (${cleanHtml.length} 字节)`);
-  await page.setContent(cleanHtml, { waitUntil: 'networkidle0', timeout: TIMEOUT }).catch(e => {
-    log(`  ⚠️ setContent 超时/错误: ${e.message}`);
+  // 用 file:// 加载代替 setContent（data: URI 会限制字体加载）
+  const tmpFile = path.join(__dirname, 'gnn_screenshots/_tmp_page.html');
+  fs.writeFileSync(tmpFile, cleanHtml, 'utf8');
+  debug(`[${vn}] 保存 HTML 到 ${tmpFile} (${cleanHtml.length} 字节)`);
+  await page.goto('file://' + tmpFile, { waitUntil: 'networkidle0', timeout: TIMEOUT }).catch(e => {
+    log(`  ⚠️ goto 超时/错误: ${e.message}`);
   });
   debug(`[${vn}] ��待渲染`);
   // 等待中文字体加载
-  try { await page.evaluate(() => document.fonts.ready); } catch(e) {}
-  await page.evaluate(() => new Promise(r => setTimeout(r, 2000)));
+  // ��JS动态加载Google Font
+  await page.evaluate(async () => {
+    try {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap";
+      document.head.appendChild(link);
+      await new Promise(r => link.onload = r);
+      await document.fonts.ready;
+    } catch(e) { console.log("Font load error:", e); }
+  });
+  // ��外等待
+  await page.evaluate(() => new Promise(r => setTimeout(r, 5000)));
   debug(`[${vn}] 滚动触发懒加载`);
   await page.evaluate(async () => {
     const w = ms => new Promise(r => setTimeout(r, ms));
