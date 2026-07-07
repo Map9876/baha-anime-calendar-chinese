@@ -146,11 +146,6 @@ section[id*="comment" i], section[class*="comment" i],
 div[class*="ad-"], div[id*="ad-"],
 iframe, .gsc-search-box
 { display:none !important; }
-/* 强制中文字体 */
-<!-- fonts will be loaded by puppeteer -->
-<style>
-* { font-family:'Noto Sans SC','Noto Sans CJK SC','Noto Sans CJK','Source Han Sans SC','Microsoft YaHei','PingFang SC',sans-serif !important; }
-</style>
 /* 让正文区域全宽 */
 .GN-lbox2B, .GN-lbox2D, .GN-lbox2C { max-width:none !important; }
 </style></head>`);
@@ -174,7 +169,9 @@ iframe, .gsc-search-box
     } catch(e) { return { error: e.message }; }
   }).catch(e => ({ error: e.message }));
   log(`  [${vn}] 字体诊断: ${JSON.stringify(diagOk)}`);
-  // 等待中文字体加载
+  // 强制注入字体CSS（addStyleTag优先级高于静态样式）
+  await page.addStyleTag({ content: '* { font-family: "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif !important; }' }).catch(e => log(`  ⚠️ addStyleTag失败: ${e.message}`));
+  // ��待中文字体加载
   // ��JS动态加载Google Font
   await page.evaluate(async () => {
     try {
