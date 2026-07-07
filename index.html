@@ -67,7 +67,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 <div class="header">
   <div class="header-left">
     <h1>新番时间表</h1>
-    <div class="meta">更新: 2026-07-07 08:47</div>
+    <div class="meta">更新: 2026-07-07 08:58</div>
   </div>
   <div class="header-right">
     <a href="https://github.com/Map9876/baha-anime-calendar-chinese" target="_blank" rel="noopener" title="Map9876/baha-anime-calendar-chinese">
@@ -86,7 +86,7 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
 </div>
 
 <div class="timeline-pager" id="timelinePager">
-  <div class="timeline-track" id="timelineTrack">
+  <div class="timeline-track" id="timelineTrack" style="transform:translateX(-600%)">
     <div class="timeline-content" data-date="2026-07-01"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="2026-07-02"><div class="empty-day">当天无更新</div></div><div class="timeline-content" data-date="2026-07-03">
             <div class="timeline-item" data-time="00:00">
               <div class="timeline-left">
@@ -1708,11 +1708,11 @@ body { font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; bac
   
   
   // 客户端实时日期：不依赖构建时时间
-  // 服务器端已设置active class，只需同步currentPage和now marker
-  tabs.forEach(function(t,i) { if(t.classList.contains('active')) currentPage=i; });
-  pages.forEach(function(p,i) { if(p.classList.contains('active')) {
-    // 确保track位置正确（服务器端active内容已可见）
-    track.style.transform = 'translateX(' + (-i * 100) + '%)';
+  // 服务器端已设置active class和track位置，只需同步currentPage和滚动日期栏
+  tabs.forEach(function(t,i) { if(t.classList.contains('active')) {
+    currentPage = i;
+    // 瞬间滚动日期栏让今天居中（无setTimeout无闪烁）
+    bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
   } });
   updateNow();
   updateShadows();

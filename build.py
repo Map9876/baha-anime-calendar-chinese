@@ -251,6 +251,12 @@ def build_html(schedule, updated):
         dot_html = '<div class="today-dot"></div>' if is_today else ''
         date_tabs += f'<div class="date-tab{active_cls}" data-date="{iso_str}">{dot_html}<div class="date-num">{date_str}</div><div class="date-weekday">{day_label}</div></div>'
     
+    # Find today's index for inline track positioning
+    try:
+        init_idx = [i for i, dt in enumerate(all_dates) if dt.date() == now.date()][0]
+    except IndexError:
+        init_idx = 0
+    
     # Map anime entries to dates by weekday
     date_entries = {}
     for dt in all_dates:
@@ -443,7 +449,7 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
 </div>
 
 <div class="timeline-pager" id="timelinePager">
-  <div class="timeline-track" id="timelineTrack">
+  <div class="timeline-track" id="timelineTrack" style="transform:translateX(-{init_idx}00%)">
     {content_divs}
   </div>
 </div>
@@ -558,11 +564,11 @@ body {{ font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; ba
   
   
   // 客户端实时日期：不依赖构建时时间
-  // 服务器端已设置active class，只需同步currentPage和now marker
-  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) currentPage=i; }});
-  pages.forEach(function(p,i) {{ if(p.classList.contains('active')) {{
-    // 确保track位置正确（服务器端active内容已可见）
-    track.style.transform = 'translateX(' + (-i * 100) + '%)';
+  // 服务器端已设置active class和track位置，只需同步currentPage和滚动日期栏
+  tabs.forEach(function(t,i) {{ if(t.classList.contains('active')) {{
+    currentPage = i;
+    // 瞬间滚动日期栏让今天居中（无setTimeout无闪烁）
+    bar.scrollLeft = Math.max(0, t.offsetLeft - bar.offsetWidth/2 + t.offsetWidth/2);
   }} }});
   updateNow();
   updateShadows();
