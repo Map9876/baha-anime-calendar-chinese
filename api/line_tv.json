@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-13 02:53",
-  "total": 23,
+  "updated": "2026-07-14 03:13",
+  "total": 20,
   "schedule": {
     "週一": [
       {
@@ -16,13 +16,6 @@
         "source": "linetv",
         "start_date": "2026/07/06",
         "is_premiere": true
-      },
-      {
-        "time": "21:00",
-        "name": "骸骨騎士大人異世界冒險中 第二季",
-        "source": "linetv",
-        "start_date": "2026/07/13",
-        "is_premiere": false
       },
       {
         "time": "23:00",
@@ -45,13 +38,6 @@
       {
         "time": "20:00",
         "name": "Clevatess II-魔獸之王與虛假的勇者傳承-",
-        "source": "linetv",
-        "start_date": "2026/07/08",
-        "is_premiere": true
-      },
-      {
-        "time": "21:00",
-        "name": "澈底對你成癮",
         "source": "linetv",
         "start_date": "2026/07/08",
         "is_premiere": true
@@ -153,13 +139,6 @@
         "name": "鬼的新娘(暫定)",
         "source": "linetv",
         "start_date": "2026/07/05",
-        "is_premiere": true
-      },
-      {
-        "time": "01:30",
-        "name": "花織即使是轉生也想打架",
-        "source": "linetv",
-        "start_date": "2026/07/12",
         "is_premiere": true
       },
       {
