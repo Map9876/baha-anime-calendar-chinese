@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-20 02:20",
+  "updated": "2026-08-21 02:24",
   "total": 80,
   "schedule": {
     "週一": [
@@ -185,10 +185,6 @@
     "週五": [
       {
         "time": "00:00",
-        "name": "尼古喵喵"
-      },
-      {
-        "time": "00:00",
         "name": "科學小飛俠 F",
         "source": "linetv",
         "start_date": "2026/06/26",
@@ -213,6 +209,13 @@
         "name": "(國語)海螺小姐",
         "source": "linetv",
         "start_date": null,
+        "is_premiere": true
+      },
+      {
+        "time": "00:00",
+        "name": "尼古喵喵",
+        "source": "linetv",
+        "start_date": "2026/07/03",
         "is_premiere": true
       },
       {
