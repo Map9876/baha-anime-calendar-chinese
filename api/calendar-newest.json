@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-07 03:46",
-  "total": 80,
+  "updated": "2026-09-08 04:56",
+  "total": 79,
   "schedule": {
     "週一": [
       {
@@ -76,10 +76,6 @@
         "source": "linetv",
         "start_date": "2026/07/07",
         "is_premiere": true
-      },
-      {
-        "time": "23:00",
-        "name": "奇招百出的維多利亞"
       }
     ],
     "週三": [
