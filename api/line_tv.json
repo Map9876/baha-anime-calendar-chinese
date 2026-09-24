@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-24 04:52",
-  "total": 23,
+  "updated": "2026-09-25 04:57",
+  "total": 31,
   "schedule": {
     "週一": [
       {
@@ -18,6 +18,27 @@
         "is_premiere": true
       },
       {
+        "time": "20:30",
+        "name": "與奔馳於透明之夜的你，談一場看不見的戀愛。",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
+        "time": "21:00",
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/13",
+        "is_premiere": false
+      },
+      {
+        "time": "22:30",
+        "name": "無用聖女的異世界美食之旅 憑藉隱藏技能召喚露營車",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
+      },
+      {
         "time": "23:00",
         "name": "鬥球兒彈子",
         "source": "linetv",
@@ -26,6 +47,13 @@
       }
     ],
     "週二": [
+      {
+        "time": "00:00",
+        "name": "GRANDBLUE 碧藍之海3",
+        "source": "linetv",
+        "start_date": "2026/07/07",
+        "is_premiere": true
+      },
       {
         "time": "21:00",
         "name": "拯救替身千金的是冷酷無情冰之王子的愛(暫定)",
@@ -110,10 +138,24 @@
         "is_premiere": true
       },
       {
+        "time": "01:28",
+        "name": "少女怪獸焦糖戀心",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
+      },
+      {
         "time": "20:00",
         "name": "遊戲BUG修復中",
         "source": "linetv",
         "start_date": "2026/06/19",
+        "is_premiere": true
+      },
+      {
+        "time": "21:30",
+        "name": "從0位居民開始的邊境領主大人",
+        "source": "linetv",
+        "start_date": "2026/07/03",
         "is_premiere": true
       }
     ],
@@ -145,6 +187,13 @@
         "source": "linetv",
         "start_date": "2026/07/04",
         "note": "首播"
+      },
+      {
+        "time": "21:00",
+        "name": "BLACK TORCH 闇黑燈火",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "is_premiere": true
       }
     ],
     "週日": [
@@ -158,6 +207,13 @@
       {
         "time": "01:00",
         "name": "鬼的新娘(暫定)",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
+      {
+        "time": "03:08",
+        "name": "才女的侍從 在滿是高嶺之花的貴族學校暗中照顧（毫無生活自理能力的）學院第一大小姐",
         "source": "linetv",
         "start_date": "2026/07/05",
         "is_premiere": true

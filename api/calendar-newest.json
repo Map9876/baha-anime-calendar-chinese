@@ -1,12 +1,8 @@
 {
-  "updated": "2026-09-24 04:52",
-  "total": 71,
+  "updated": "2026-09-25 04:57",
+  "total": 59,
   "schedule": {
     "週一": [
-      {
-        "time": "00:45",
-        "name": "碧藍航線 微速前進！2！！"
-      },
       {
         "time": "00:45",
         "name": "碧藍航線 微速前進！2",
@@ -20,10 +16,6 @@
       },
       {
         "time": "19:05",
-        "name": "Animatica「北斗之拳 拳王軍雜兵們的輓歌」"
-      },
-      {
-        "time": "19:05",
         "name": "北斗之拳 拳王軍雜兵們的輓歌(暫定)",
         "source": "linetv",
         "start_date": "2026/07/06",
@@ -31,23 +23,24 @@
       },
       {
         "time": "20:30",
-        "name": "與奔馳於透明之夜的你，談一場看不見的戀愛。"
+        "name": "與奔馳於透明之夜的你，談一場看不見的戀愛。",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
       },
       {
         "time": "21:00",
-        "name": "骸骨騎士大人異世界冒險中 第二季"
-      },
-      {
-        "time": "21:30",
-        "name": "THE WORLD IS DANCING 世界在起舞"
+        "name": "骸骨騎士大人異世界冒險中 第二季",
+        "source": "linetv",
+        "start_date": "2026/07/13",
+        "is_premiere": false
       },
       {
         "time": "22:30",
-        "name": "無用聖女的異世界美食之旅 憑藉隱藏技能召喚露營車"
-      },
-      {
-        "time": "23:00",
-        "name": "鬥球女彈子"
+        "name": "無用聖女的異世界美食之旅 憑藉隱藏技能召喚露營車",
+        "source": "linetv",
+        "start_date": "2026/07/06",
+        "is_premiere": true
       },
       {
         "time": "23:00",
@@ -60,7 +53,10 @@
     "週二": [
       {
         "time": "00:00",
-        "name": "GRAND BLUE 碧藍之海 3"
+        "name": "GRANDBLUE 碧藍之海3",
+        "source": "linetv",
+        "start_date": "2026/07/07",
+        "is_premiere": true
       },
       {
         "time": "19:30",
@@ -207,7 +203,10 @@
       },
       {
         "time": "01:28",
-        "name": "少女怪獸焦糖戀心"
+        "name": "少女怪獸焦糖戀心",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
       },
       {
         "time": "20:00",
@@ -218,7 +217,10 @@
       },
       {
         "time": "21:30",
-        "name": "從 0 位居民開始的邊境領主大人"
+        "name": "從0位居民開始的邊境領主大人",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
       },
       {
         "time": "23:00",
@@ -284,11 +286,10 @@
       },
       {
         "time": "21:00",
-        "name": "BLACK TORCH 闇黑燈火"
-      },
-      {
-        "time": "22:00",
-        "name": "岩元前輩的推薦"
+        "name": "BLACK TORCH 闇黑燈火",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "is_premiere": true
       }
     ],
     "週日": [
@@ -305,14 +306,6 @@
       },
       {
         "time": "01:00",
-        "name": "鬼的新娘"
-      },
-      {
-        "time": "01:00",
-        "name": "魔法少女奈葉 EXCEEDS Gun Blaze Vengeance"
-      },
-      {
-        "time": "01:00",
         "name": "鬼的新娘(暫定)",
         "source": "linetv",
         "start_date": "2026/07/05",
@@ -324,19 +317,14 @@
       },
       {
         "time": "03:08",
-        "name": "才女的侍從 在滿是高嶺之花的貴族學校暗中照顧（毫無生活自理能力的）學院第一大小姐"
+        "name": "才女的侍從 在滿是高嶺之花的貴族學校暗中照顧（毫無生活自理能力的）學院第一大小姐",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
       },
       {
         "time": "16:30",
         "name": "相反的你和我 第二季"
-      },
-      {
-        "time": "21:00",
-        "name": "世界最強後衛 ～迷宮國的新人探索者～"
-      },
-      {
-        "time": "22:00",
-        "name": "超超超超超喜歡你的 100 個女朋友"
       },
       {
         "time": "22:00",
@@ -344,10 +332,6 @@
         "source": "linetv",
         "start_date": "2026/07/05",
         "is_premiere": true
-      },
-      {
-        "time": "23:00",
-        "name": "黑貓與魔女的教室"
       },
       {
         "time": "23:00",
@@ -359,14 +343,6 @@
         "source": "linetv",
         "start_date": "2026/07/12",
         "is_premiere": false
-      },
-      {
-        "time": "23:30",
-        "name": "再見菈菈"
-      },
-      {
-        "time": "23:45",
-        "name": "我是不才惡女"
       }
     ]
   }
