@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-26 04:53",
-  "total": 57,
+  "updated": "2026-09-27 04:23",
+  "total": 58,
   "schedule": {
     "週一": [
       {
@@ -282,6 +282,10 @@
         "source": "linetv",
         "start_date": "2026/07/04",
         "is_premiere": true
+      },
+      {
+        "time": "21:30",
+        "name": "野生的大魔王出現了！"
       }
     ],
     "週日": [
