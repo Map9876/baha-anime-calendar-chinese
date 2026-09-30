@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-30 05:40",
-  "total": 31,
+  "updated": "2026-10-01 05:40",
+  "total": 32,
   "schedule": {
     "週一": [
       {
@@ -66,6 +66,13 @@
       {
         "time": "20:00",
         "name": "Clevatess II-魔獸之王與虛假的勇者傳承-",
+        "source": "linetv",
+        "start_date": "2026/07/08",
+        "is_premiere": true
+      },
+      {
+        "time": "21:00",
+        "name": "澈底對你成癮",
         "source": "linetv",
         "start_date": "2026/07/08",
         "is_premiere": true
