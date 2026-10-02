@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-02 06:08",
-  "total": 32,
+  "updated": "2026-10-03 05:35",
+  "total": 35,
   "schedule": {
     "週一": [
       {
@@ -164,6 +164,13 @@
         "source": "linetv",
         "start_date": "2026/07/03",
         "is_premiere": true
+      },
+      {
+        "time": "23:30",
+        "name": "畫完這個再去死",
+        "source": "linetv",
+        "start_date": "2026/07/03",
+        "is_premiere": true
       }
     ],
     "週六": [
@@ -177,6 +184,13 @@
       {
         "time": "00:30",
         "name": "從後面來的神威先生 無修版",
+        "source": "linetv",
+        "start_date": "2026/07/04",
+        "is_premiere": true
+      },
+      {
+        "time": "00:30",
+        "name": "地獄模式 ～喜歡挑戰特殊成就的玩家在廢設定的異世界成為無雙～2nd Season",
         "source": "linetv",
         "start_date": "2026/07/04",
         "is_premiere": true
@@ -204,6 +218,13 @@
       }
     ],
     "週日": [
+      {
+        "time": "00:00",
+        "name": "Grow Up Show ～向日葵馬戲團～",
+        "source": "linetv",
+        "start_date": "2026/07/05",
+        "is_premiere": true
+      },
       {
         "time": "00:00",
         "name": "穹廬下的魔女",
